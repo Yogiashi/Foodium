@@ -1,0 +1,18 @@
+<div class="containder">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2 class="text-center mt-5">Foodium</h2>
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control mt-4", placeholder: "パスワード" %>
+        </div>
+         <div class="actions d-flex justify-content-center">
+          <%= f.submit "ログイン", class: "btn btn-primary mt-4 py-2 px-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
