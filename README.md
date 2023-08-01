@@ -1,24 +1,34 @@
-# README
+# Foodium
+​
+## サイト概要
+### サイトテーマ
+日常の外食を投稿したり、全国の料理が知れるSNSサイト
+​
+### テーマを選んだ理由
+今ではお店を探すツールとしてSNSで検索することが主流になっていて、自分も気になるお店を探す際にSNSを活用することが多いです。
+SNSはまだあまり知られていないような料理やユーザが普段使ってるお店も知れたりするのでお店を探すツールとして便利です。
+しかし、通常のSNSは外食というジャンルでまとめられたサービスではないので探すのが価格などの欲しい情報が載ってないことが。
+なのでみんなが食べた美味しい料理が共有できて簡単に探せる食べ物に特化したSNSサイトがあると便利だと考えました。
+食べ歩くことが趣味の人や普段外食で飲食店を探す時にも助けになると考え、このテーマにしました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+​
+### ターゲットユーザ
+- 普段の外食を記録したい人
+- 全国の料理を知りたい人
+- 飲食店を探してる人
+​
+### 主な利用シーン
+- 自分の外食や食べ歩きの記録を残したい時
+- 自分のグルメ記録を投稿したい時
+- 全国の美味しい料理やお店を検索したい時
+​
+## 設計書
+後ほど作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
