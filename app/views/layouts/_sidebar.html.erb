@@ -1,0 +1,24 @@
+<div class="sidebar border-right pr-0">
+  <ul style="list-style: none;">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ホーム", posts_path, class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-5" %>
+      </li>
+      <li>
+        <%= link_to "検索", "#", class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-4" %>
+      </li>
+      <li>
+        <%= link_to "通知", "#", class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-4" %>
+      </li>
+      <li>
+        <%= link_to "投稿", new_post_path, class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-4" %>
+      </li>
+      <li>
+        <%= link_to "プロフィール", user_path(current_user), class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-4" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none btn btn-outline-dark btn-lg col-8 mt-4" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
