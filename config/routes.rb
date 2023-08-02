@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+
 # 顧客用
 devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -20,7 +17,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
    scope module: :public do
     root to: "posts#index"
-    resources :posts
+    resources :posts do
+      resource :likes, only: [:create, :destroy]
+      resources :comments, only: [:index, :create, :destroy]
+    end
     resources :users, except: [:new] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'

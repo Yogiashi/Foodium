@@ -4,3 +4,8 @@ ja:
       user:
         name: ユーザーネーム
         introduction: 自己紹介
+      post:
+        shop_name: ショップ名
+        dish_name: 料理名
+        caption: キャプション
+        post_image: 画像

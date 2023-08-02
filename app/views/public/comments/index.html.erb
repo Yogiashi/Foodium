@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 mx-auto">
+      <div class="card mt-5" style="width: 25rem;">
+        <div class="card-body">
+          <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
+          <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "60x60"%>
+          <%= @post.user.name %>
+          <% end %>
+        </div>
+        <%= image_tag @post.post_image, class: "mx-auto", size: "380x280" %>
+        <div class="card-body">
+          <div class="d-flex border-bottom">
+            <!--いいねボタンajax-->
+            <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
+            <i class="far fa-comment mr-1 mt-1"></i>
+            <span id="comment_count"><%= @post.comments.count %> コメント</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5 mt-5">
+      <!--コメント欄-->
+      <div id="post-comments"><%= render "comments", comments: @comments %></div>
+      <!--コメントフォーム-->
+      <div id="comment-form"><%= render "form", post: @post, comment: Comment.new %></div>
+    </div>
+  </div>
+</div>
