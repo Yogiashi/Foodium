@@ -5,9 +5,11 @@
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div>
-          <%= f.email_field :email, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
+          <%= f.text_field :name, autocomplete: "name", class: "form-control mt-5", placeholder: "ユーザーネーム" %>
         </div>
-        
+        <div>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control mt-4", placeholder: "メールアドレス" %>
+        </div>
         <div>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control mt-4", placeholder: "パスワード（６文字以上）" %>
         </div>
