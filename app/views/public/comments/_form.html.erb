@@ -1,0 +1,4 @@
+<%= form_with model:[post,comment], local: false do |f| %>
+  <%= f.text_area :content, class: "mt-2", style: "border: none;", size: "50x2", placeholder: "コメントをここに" %>
+  <%= f.submit "送信", class: "float-right btn btn-outline-secondary mt-3" %>
+<% end %>
