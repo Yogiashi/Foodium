@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-6 mx-auto mt-5">
       <h1 class="text-center"><strong>プロフィールを編集</strong></h1>
       <%= form_with model:@user do |f| %>
       <%= render 'layouts/errors', obj: @user %>
         <div class="row mt-5">
-          <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-3", size: "120x120" %>
-          <%= f.file_field :profile_image, class: "form-control-file mt-5 img_field col-9", accept: 'image/*' %>
+          <%= f.label :画像, class: "col-form-label col-3"%>
+          <!--画像プレビュー機能-->
+          <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-4", size: "180x180" %>
+          <%= f.file_field :profile_image, class: "mt-5 img_field mx-auto", accept: 'image/*' %>
         </div>
         <div class="row mt-5">
           <%= f.label :ユーザーネーム, class: "col-form-label col-3"%>

@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
 .field_with_errors {
   display: contents;
+}
+
+.sidebar li {
+  margin-top: 2em;
 }

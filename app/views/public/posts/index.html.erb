@@ -1,2 +1,21 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <% @posts.reverse_each do |post| %>
+        <div class="card mt-5" style="width: 37rem;">
+          <div class="card-body">
+            <%= link_to user_path(post.user), class: "text-decoration-none text-dark" do %>
+            <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "50x50"%>
+            <%= post.user.name %>
+            <% end %>
+            <%= link_to "詳細を見る", post_path(post), class: "btn btn-light border decoration-none text-dark float-right mt-3" %>
+          </div>
+          <%= image_tag post.post_image, class: "mx-auto", size: "550x450" %>
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
