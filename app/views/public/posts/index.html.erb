@@ -12,7 +12,8 @@
           </div>
           <%= image_tag post.post_image, class: "mx-auto", size: "550x450" %>
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <!--いいねボタンajax-->
+            <div id="like_btn_<%= post.id %>"><%= render "public/likes/btn", post: post %></div>
           </div>
         </div>
       <% end %>

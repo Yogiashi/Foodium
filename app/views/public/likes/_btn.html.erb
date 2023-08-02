@@ -1,0 +1,14 @@
+<!--いいねボタン-->
+<% if post.user != current_user %>
+  <% if post.liked?(current_user) %>
+    <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+      <i class="fas fa-heart" style="color: red;"></i>
+      <%= post.likes.count %> いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true do %>
+      <i class="far fa-heart"></i>
+      <%= post.likes.count %> いいね
+    <% end %>
+  <% end %>
+<% end %>

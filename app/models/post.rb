@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :user
   
+  belongs_to :user
+  has_many :likes, dependent: :destroy
   has_one_attached :post_image
   
   validates :post_image, presence: true
@@ -10,5 +11,9 @@ class Post < ApplicationRecord
   
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'
+  end
+  
+  def liked?(user)
+     likes.where(user_id: user.id).exists?
   end
 end
