@@ -21,9 +21,17 @@
 }
 
 .field_with_errors {
+  /*エラーメッセージでフォームが崩れないように設定*/
   display: contents;
 }
 
 .sidebar li {
   margin-top: 2em;
+}
+
+body {
+  /*半角英数折返しの設定*/
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
