@@ -23,9 +23,11 @@ end
    scope module: :public do
     root to: "posts#index"
     # 退会確認画面
-     get  '/users/check' => 'users#check'
-     # 論理削除用のルーティング
-     patch  '/users/withdraw' => 'users#withdraw'
+    get  '/users/check' => 'users#check'
+    # 論理削除用のルーティング
+    patch  '/users/withdraw' => 'users#withdraw'
+    # 通知機能のルーティング
+    resources :notifications, only: [:index, :destroy]
     resources :posts do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:index, :create, :destroy]
