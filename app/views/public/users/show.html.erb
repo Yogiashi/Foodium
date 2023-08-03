@@ -16,4 +16,30 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-10 mx-auto mt-5">
+       <!--タブ部分-->
+      <ul class="tab-list list-unstyled d-flex ml-5">
+        <li class="tab tab-active  text-center">
+          New
+        </li>
+        <li class="tab text-center">
+          Likes
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <!--タブで選択された要素部分-->
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <%= render "public/posts/post", posts: @posts %>
+        </div>
+        <div class="tabbox">
+          <%= render "public/posts/post", posts: @liked_posts %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

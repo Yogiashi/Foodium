@@ -33,6 +33,8 @@ end
       resources :comments, only: [:index, :create, :destroy]
     end
     resources :users, except: [:new] do
+      # いいねした投稿を取得するため投稿idを付与
+      get :likes, on: :member
       resource :relationships, only: [:create, :destroy]
       # フォローしてるユーザーを取得するためのルーティング
       get 'followings' => 'relationships#followings', as: 'followings'
