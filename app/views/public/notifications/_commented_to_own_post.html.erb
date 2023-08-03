@@ -1,4 +1,5 @@
 <div>
+  <%= image_tag notification.subject.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
   <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
   があなたの
   <%= link_to '投稿', post_path(notification.subject.post) %>

@@ -15,6 +15,8 @@
             <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
             <i class="far fa-comment mr-1 mt-1"></i>
             <span id="comment_count"><%= @post.comments.count %> コメント</span>
+            <!--投稿時間表示-->
+            <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
           </div>
         </div>
       </div>

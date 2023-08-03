@@ -17,6 +17,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # フォローしてるユーザーの投稿を取得
+    @following_posts = Post.where(user_id: [*current_user.following_ids])
   end
 
   def show

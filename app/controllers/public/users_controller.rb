@@ -7,6 +7,10 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
+    @posts = current_user.posts
+    # いいねした投稿を取得
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @liked_posts = Post.find(likes)
   end
 
   def edit

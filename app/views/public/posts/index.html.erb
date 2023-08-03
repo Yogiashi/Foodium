@@ -1,32 +1,28 @@
 <div class="container">
   <div class="row">
+    <div class="col-10 mx-auto mt-5">
+       <!--タブ部分-->
+      <ul class="tab-list list-unstyled d-flex ml-5">
+        <li class="tab tab-active text-center">
+          New
+        </li>
+        <li class="tab text-center">
+          following_posts
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-6 mx-auto">
-      <% @posts.reverse_each do |post| %>
-        <div class="card mt-5" style="width: 37rem;">
-          <div class="card-body">
-            <%= link_to user_path(post.user), class: "text-decoration-none text-dark" do %>
-            <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>
-            <%= post.user.name %>
-            <% end %>
-            <%= link_to "詳細を見る", post_path(post), class: "btn btn-light border decoration-none text-dark float-right mt-3" %>
-          </div>
-          <%= image_tag post.post_image, class: "mx-auto", size: "550x450" %>
-          <div class="card-body">
-            <div class="d-flex border-bottom">
-              <!--いいねボタンajax-->
-              <div id="like_btn_<%= post.id %>" class="mr-3"><%= render "public/likes/btn", post: post %></div>
-              <%= link_to post_comments_path(post), class: "text-decoration-none text-dark" do %>
-              <i class="far fa-comment"></i>
-              <span id="comment_count"><%= post.comments.count %> コメント</span>
-              <% end %>
-              <!--投稿時間表示-->
-              <div class="ml-auto mr-2"><%= "#{time_ago_in_words(post.created_at)}前" %></div>
-            </div>
-            <!--コメントフォーム-->
-            <%= render "public/comments/form", post: post, comment: Comment.new %>
-          </div>
+      <!--タブで選択された要素部分-->
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <%= render "post", posts: @posts %>
         </div>
-      <% end %>
+        <div class="tabbox">
+          <%= render "post", posts: @following_posts %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
