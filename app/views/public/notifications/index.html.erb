@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto mt-5">
+      <h4>通知</h4>
+      <% if @notifications.present? %>
+        <% @notifications.each do |notification| %>
+            <%= render "#{notification.action_type}", notification: notification %>
+        <% end %>
+      <% else %>
+        通知はありません
+      <% end %> 
+    </div>
+  </div>
+</div>

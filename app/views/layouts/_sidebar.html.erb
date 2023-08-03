@@ -10,7 +10,14 @@
       <%= link_to "検索", "#", class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
     </li>
     <li>
-      <%= link_to "通知", "#", class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
+      <%= link_to notifications_path, class: "text-decoration-none btn btn-outline-dark btn-lg col-6" do %>
+        <% if current_user.notifications.where(checked: false).exists? %>
+          <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
+        <% else %>
+          <i class="fa-sharp fa-solid fa-bell"></i>
+        <% end %>
+        通知
+      <% end %>
     </li>
     <li>
       <%= link_to "投稿", new_post_path, class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
