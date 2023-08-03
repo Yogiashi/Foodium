@@ -19,6 +19,8 @@
               <i class="far fa-comment"></i>
               <span id="comment_count"><%= post.comments.count %> コメント</span>
               <% end %>
+              <!--投稿時間表示-->
+              <div class="ml-auto mr-2"><%= "#{time_ago_in_words(post.created_at)}前" %></div>
             </div>
             <!--コメントフォーム-->
             <%= render "public/comments/form", post: post, comment: Comment.new %>
