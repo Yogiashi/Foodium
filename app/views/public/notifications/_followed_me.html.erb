@@ -1,5 +1,5 @@
 <div>
-  <%= image_tag notification.subject.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
+  <%= image_tag notification.subject.following.get_profile_image, class: "rounded-circle", size: "50x50" %>
   <%= link_to notification.subject.following.name, user_path(notification.subject.following) %>
   があなたをフォローしました
   <%= " (#{time_ago_in_words(notification.created_at)}前)" %>

@@ -17,7 +17,8 @@ devise_scope :user do
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    root to: "posts#index"
+    root to: "users#index"
+    resources :users, only: [:index, :show, :edit, :update]
    end
 
    scope module: :public do

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
-      <h2 class="text-center mt-5">Foodium</h2>
+      <h2 class="text-center mt-5">管理者</h2>
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
