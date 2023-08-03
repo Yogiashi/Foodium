@@ -1,7 +1,7 @@
 <ul class="sidebar", style="list-style: none;">
   <% if user_signed_in? %>
     <div>
-      <%= link_to "LOGO", posts_path, class: "text-decoration-none btn btn-dark btn-lg col-6 mb-5" %>
+      <%= link_to "LOGO", root_path, class: "text-decoration-none btn btn-dark btn-lg col-6 mb-5" %>
     </div>
     <li>
       <%= link_to "ホーム", posts_path, class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
@@ -27,6 +27,14 @@
     </li>
     <li>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
+    </li>
+  <% end %>
+  <% if admin_signed_in? %>
+    <div>
+      <%= link_to "LOGO", admin_root_path, class: "text-decoration-none btn btn-dark btn-lg col-6 mb-5" %>
+    </div>
+    <li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-decoration-none btn btn-outline-dark btn-lg col-6" %>
     </li>
   <% end %>
 </ul>
