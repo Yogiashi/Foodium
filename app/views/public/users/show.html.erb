@@ -7,7 +7,9 @@
          <% if @user.id == current_user.id %>
            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %>
          <% end %>
-         <%= render 'public/relationships/btn', user: @user %>
+         <span id="follow_btn_<%= @user.id %>">
+           <%= render 'public/relationships/btn', user: @user %>
+          </span>
          <div class="text-center p-5"><%= simple_format(@user.introduction) %></div>
         <div class="d-flex justify-content-center border-bottom pb-3">
           <span class="mr-5">投稿数 <%= @user.posts.count %></span>
@@ -27,7 +29,7 @@
        <!--タブ部分-->
         <ul class="tab-list list-unstyled d-flex ml-5">
           <li class="tab tab-active text-center">
-            New
+            Posts
           </li>
           <li class="tab text-center">
             Likes
@@ -37,11 +39,29 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
       <!--タブで選択された要素部分-->
       <div class="tabbox-contents">
         <div class="tabbox box-show">
-          <%= render "public/posts/post", posts: @posts %>
+          <div class="flex">
+          <% @posts.reverse_each do |post| %>
+            <div class="card mt-5 ml-5" style="width: 15rem;">
+              <%= link_to post_path(post) do %>
+                <%= image_tag post.post_image, class: "m-2", size: "220x220" %>
+              <% end %>
+              <div class="card-body">
+                <div class="d-flex border-bottom">
+                  <!--いいねボタンajax-->
+                  <div id="like_btn_<%= post.id %>" class="mr-3"><%= render "public/likes/btn", post: post %></div>
+                  <%= link_to post_comments_path(post), class: "text-decoration-none text-dark" do %>
+                  <i class="far fa-comment"></i>
+                  <span id="comment_count"><%= post.comments.count %> コメント</span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
         </div>
         <div class="tabbox">
           <%= render "public/posts/post", posts: @liked_posts %>
