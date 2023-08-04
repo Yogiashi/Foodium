@@ -1,2 +1,39 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto mt-5">
+      <h1 class="text-center"><strong>投稿を編集</strong></h1>
+      <%= form_with model: @post do |f| %>
+      <%= render 'layouts/errors', obj: @post %>
+        <div class="row mt-5">
+          <%= f.label :画像, class: "col-form-label col-3"%>
+          <!--画像プレビュー機能-->
+          <%= image_tag @post.get_post_image, onClick: "$('.img_field').click()", class: "img_prev col-6", size: "150x250" %>
+          <%= f.file_field :post_image, class: "img_field mx-auto mt-5", accept: 'image/*' %>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :ショップ名, class: "col-form-label col-3", placeholder: "お店の名前を入力..."%>
+          <%= f.text_field :shop_name, class: "col-9 form-control"%>
+        </div>
+         <div class="row mt-5">
+          <%= f.label :料理名, class: "col-form-label col-3", placeholder: "料理の名前を入力..."%>
+          <%= f.text_field :dish_name, class: "col-9 form-control"%>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :キャプション, class: "col-form-label col-3"%>
+          <%= f.text_area :caption, class: "col-9 form-control",placeholder: "キャプションを入力...", size: "30x5"%>
+        </div>
+        <!--地図情報を追加-->
+        <!--価格選択-->
+        <div class="row mt-5">
+          <%= f.label :価格, class: "col-form-label col-3"%>
+          <%= f.number_field :price, class: "col-9"%>
+        </div>
+        <!--タグ機能追加-->
+        <!--表示非表示機能追加-->
+        <div class="row mt-5 d-flex justify-content-center">
+          <%= f.submit "投稿する", class: "btn btn-primary mr-5"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

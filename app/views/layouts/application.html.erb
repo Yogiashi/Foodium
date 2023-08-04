@@ -12,12 +12,20 @@
   </head>
 
   <body>
-    <main>
-      <%= notice %>
-    <div class="d-flex">
-      <div class="sidebar w-25 mt-5 ml-5 pr-2", style="position: fixed;"><%= render "layouts/sidebar" %></div>
-      <%= yield %>
-    </div>
-    </main>
+
+      <div class="row">
+        <% if user_signed_in? %>
+        <div class="col-2 bg-dark">
+          <div class="w-25 mt-5 ml-3", style="position: fixed;"><%= render "layouts/sidebar" %></div>
+        </div>
+        <% end %>
+        <div class="col-10">
+          <main>
+          <%= notice %>
+          <%= yield %>
+          </main>
+        </div>
+      </div>
+
   </body>
 </html>
