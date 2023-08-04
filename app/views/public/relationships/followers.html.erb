@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-6 mx-auto mt-5">
       <h1 class="text-center mb-5"><strong>フォロワー</strong></h1>
       <% if @users.exists? %>
         <table class="table table-borderless">
@@ -13,7 +13,7 @@
           <% end %>
         </table>
       <% else %>
-        <p>ユーザーはいません</p>
+        <h3 class="text-center mt-5">ユーザーはいません</h3>
       <% end %>
     </div>
   </div>

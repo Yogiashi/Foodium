@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mt-5">
+    <div class="col-5 ml-5 mt-5">
       <div class="card" style="width: 25rem;">
         <div class="card-body">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6 mt-5">
+    <div class="col-5 mt-5">
       <!--コメント欄-->
       <div id="post-comments"><%= render "comments", comments: @comments %></div>
       <!--コメントフォーム-->

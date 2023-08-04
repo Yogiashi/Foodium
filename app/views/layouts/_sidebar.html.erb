@@ -4,10 +4,14 @@
       <%= link_to "LOGO", root_path, class: "text-decoration-none btn btn-light btn-lg col-6 mb-5" %>
     </div>
     <li>
-      <%= link_to "ホーム", posts_path, class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+      <%= link_to posts_path, class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
+      <i class="fas fa-home"></i> ホーム
+      <% end %>
     </li>
     <li>
-      <%= link_to "検索", "#", class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+      <%= link_to "#", class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
+        <i class="fas fa-search"></i> 検索
+      <% end %>
     </li>
     <li>
       <%= link_to notifications_path, class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
@@ -20,13 +24,19 @@
       <% end %>
     </li>
     <li>
-      <%= link_to "投稿", new_post_path, class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+      <%= link_to new_post_path, class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
+      <i class="far fa-image"></i> 投稿
+      <% end %>
     </li>
     <li>
-      <%= link_to "プロフィール", user_path(current_user), class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+      <%= link_to user_path(current_user), class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
+      <i class="fas fa-user"></i> プロフィール
+      <% end %>
     </li>
     <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-6" do %>
+      <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
     </li>
   <% end %>
   <% if admin_signed_in? %>

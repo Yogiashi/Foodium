@@ -1,10 +1,10 @@
 <% if user != current_user %>
   <% if current_user.following?(user) %>
-    <%= link_to user_relationships_path(user), method: :delete, class:"text-decoration-none" do %>
+    <%= link_to user_relationships_path(user), method: :delete, class:"text-decoration-none", remote: true do %>
       <button class="btn btn-secondary">フォロー中</button>
     <% end %>
   <% else %>
-    <%= link_to user_relationships_path(user), method: :post, class:"text-decoration-none" do %>
+    <%= link_to user_relationships_path(user), method: :post, class:"text-decoration-none", remote: true do %>
       <button class="btn btn-primary">フォロー</button>
     <% end %>
   <% end %>
