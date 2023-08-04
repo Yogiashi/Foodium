@@ -12,20 +12,18 @@
   </head>
 
   <body>
-
-      <div class="row">
-        <% if user_signed_in? %>
-        <div class="col-2 bg-dark">
-          <div class="w-25 mt-5 ml-3", style="position: fixed;"><%= render "layouts/sidebar" %></div>
-        </div>
-        <% end %>
-        <div class="col-10">
-          <main>
-          <%= notice %>
-          <%= yield %>
-          </main>
-        </div>
+    <div class="row">
+      <% if user_signed_in? %>
+      <div class="col-2">
+        <div class="w-25 mt-5"><%= render "layouts/sidebar" %></div>
       </div>
-
+      <% end %>
+      <div class="col-10">
+        <main>
+        <%= notice %>
+        <%= yield %>
+        </main>
+      </div>
+    </div>
   </body>
 </html>
