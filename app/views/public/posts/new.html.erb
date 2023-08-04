@@ -23,7 +23,11 @@
           <%= f.text_area :caption, class: "col-9 form-control",placeholder: "キャプションを入力...", size: "30x5"%>
         </div>
         <!--地図情報を追加-->
-        <!--価格選択追加-->
+        <!--価格選択-->
+        <div class="row mt-5">
+          <%= f.label :価格, class: "col-form-label col-3"%>
+          <%= f.number_field :price, class: "col-9"%>
+        </div>
         <!--タグ機能追加-->
         <!--表示非表示機能追加-->
         <div class="row mt-5 d-flex justify-content-center">
