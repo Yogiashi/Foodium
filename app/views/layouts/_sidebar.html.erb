@@ -39,13 +39,19 @@
         <i class="fas fa-sign-out-alt"></i> ログアウト
         <% end %>
       </li>
-    <% end %>
-    <% if admin_signed_in? %>
-      <div>
-        <%= link_to "LOGO", admin_root_path, class: "text-decoration-none btn btn-light btn-lg col-6 mb-5" %>
+    <% else %>
+      <div class="mt-4" id="top">
+        <a class="text-decoration-none btn btn-light btn-lg col-8 mb-4" href="#">LOGO</a>
       </div>
       <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-6" %>
+        <%= link_to admin_users_path, class: "text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+        <i class="fas fa-users"></i> ユーザー
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+        <% end %>
       </li>
     <% end %>
   </ul>
