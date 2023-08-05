@@ -9,3 +9,5 @@ ja:
         dish_name: 料理名
         caption: キャプション
         post_image: 画像
+        price: 価格
+        address: 場所

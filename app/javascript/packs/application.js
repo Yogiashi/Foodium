@@ -16,6 +16,7 @@ import "preview.js"
 import "tab.js"
 import "menu.js"
 import "page_top.js"
+import "slide_in.js"
 
 Rails.start()
 // Turbolinks.start()
