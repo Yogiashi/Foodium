@@ -1,7 +1,11 @@
 class Admin::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    if params[:word]
+      @users = User.search(params[:word])
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -20,7 +24,7 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-
+  
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)

@@ -1,6 +1,6 @@
-<div class="sidebar bg-dark">
-  <ul class="text-center", style="list-style: none;">
-    <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="sidebar bg-dark">
+    <ul class="text-center", style="list-style: none;">
       <div class="mt-4" id="top">
         <a class="text-decoration-none btn btn-light btn-lg col-8 mb-4" href="#">LOGO</a>
       </div>
@@ -39,7 +39,11 @@
         <i class="fas fa-sign-out-alt"></i> ログアウト
         <% end %>
       </li>
-    <% else %>
+    </ul>
+  </div>
+<% elsif admin_signed_in? %>
+  <div class="sidebar bg-dark">
+    <ul class="text-center", style="list-style: none;">
       <div class="mt-4" id="top">
         <a class="text-decoration-none btn btn-light btn-lg col-8 mb-4" href="#">LOGO</a>
       </div>
@@ -49,10 +53,18 @@
         <% end %>
       </li>
       <li>
+        <%= link_to "#", class: "text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+          <i class="fas fa-search"></i> 検索
+        <% end %>
+      </li>
+      <li><%= render "admin//users/search" %></li>
+      <li>
         <%= link_to destroy_admin_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-8" do %>
         <i class="fas fa-sign-out-alt"></i> ログアウト
         <% end %>
       </li>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% else %>
+  <div class="sidebar"></div>
+<% end %>
