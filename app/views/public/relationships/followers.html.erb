@@ -8,7 +8,9 @@
             <tr>
               <td><%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %></td>
               <td><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>
-              <td><%= render 'public/relationships/btn', user: user %></td>
+              <td id="follow_btn_<%= user.id %>">
+               <%= render 'public/relationships/btn', user: user %>
+              </td>
             </tr>
           <% end %>
         </table>

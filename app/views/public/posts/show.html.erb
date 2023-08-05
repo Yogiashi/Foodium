@@ -5,10 +5,19 @@
       <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>
       <%= @post.user.name %>
       <% end %>
-      <%= link_to "編集", edit_post_path(@post) %>
-      <%= link_to "削除", post_path(@post), method: :delete %>
+      <span>
+        <ul class="menu">
+          <li class="text-center">
+            ・・・
+            <ul class="menuSub">
+              <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
+              <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </span>
   <div class="row">
     <div class="col-6">
     <%= image_tag @post.post_image, class: "", size: "450x400" %>

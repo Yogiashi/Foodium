@@ -14,6 +14,8 @@ import "bootstrap";
 import "../stylesheets/application";
 import "preview.js"
 import "tab.js"
+import "menu.js"
+import "page_top.js"
 
 Rails.start()
 Turbolinks.start()

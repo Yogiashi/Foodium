@@ -33,7 +33,7 @@ end
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:index, :create, :destroy]
     end
-    resources :users, except: [:new] do
+    resources :users, except: [:new, :destroy] do
       # いいねした投稿を取得するため投稿idを付与
       get :likes, on: :member
       resource :relationships, only: [:create, :destroy]

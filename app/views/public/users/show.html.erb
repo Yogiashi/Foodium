@@ -7,6 +7,7 @@
          <% if @user.id == current_user.id %>
            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %>
          <% end %>
+         <!--フォローボタンajax-->
          <span id="follow_btn_<%= @user.id %>">
            <%= render 'public/relationships/btn', user: @user %>
           </span>
@@ -39,32 +40,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-11 mx-auto">
       <!--タブで選択された要素部分-->
       <div class="tabbox-contents">
         <div class="tabbox box-show">
           <div class="flex">
-          <% @posts.reverse_each do |post| %>
-            <div class="card mt-5 ml-5" style="width: 15rem;">
-              <%= link_to post_path(post) do %>
-                <%= image_tag post.post_image, class: "m-2", size: "220x220" %>
-              <% end %>
-              <div class="card-body">
-                <div class="d-flex border-bottom">
-                  <!--いいねボタンajax-->
-                  <div id="like_btn_<%= post.id %>" class="mr-3"><%= render "public/likes/btn", post: post %></div>
-                  <%= link_to post_comments_path(post), class: "text-decoration-none text-dark" do %>
-                  <i class="far fa-comment"></i>
-                  <span id="comment_count"><%= post.comments.count %> コメント</span>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render "post", posts: @posts %>
           </div>
         </div>
         <div class="tabbox">
-          <%= render "public/posts/post", posts: @liked_posts %>
+          <%= render "post", posts: @liked_posts %>
         </div>
       </div>
     </div>
