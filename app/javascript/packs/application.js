@@ -18,5 +18,5 @@ import "menu.js"
 import "page_top.js"
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()

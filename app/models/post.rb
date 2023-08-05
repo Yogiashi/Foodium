@@ -11,6 +11,9 @@ class Post < ApplicationRecord
   validates :dish_name, presence: true
   validates :caption, presence: true, length: { maximum: 200 }
   
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'
   end
