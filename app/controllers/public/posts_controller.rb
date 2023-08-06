@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(@post.user)
+    redirect_to user_path(@post.user), notice: "投稿を削除しました。"
   end
 
   def search_tag
@@ -70,6 +70,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :tag)
+    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag)
   end
 end
