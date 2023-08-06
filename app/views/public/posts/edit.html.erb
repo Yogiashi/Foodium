@@ -31,13 +31,17 @@
         <!--価格選択-->
         <div class="row mt-5">
           <%= f.label :価格, class: "col-form-label col-3"%>
-          <%= f.number_field :price, class: "col-9"%>
+          <%= f.number_field :price, class: "col-9 form-control"%>
         </div>
-        <!--タグ機能追加-->
+        <!--タグ機能-->
+        <div class="row mt-5">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "col-form-label col-3" %>
+          <%= f.text_field :name,value: @tag_list,class: "col-9 form-control"%>
+        </div>
          <!--地図情報を追加-->
         <div class="row mt-5">
           <%= f.label :address, '場所', class: "col-form-label col-3" %>
-          <%= f.text_field :address, class: 'col-9' %>
+          <%= f.text_field :address, class: 'col-9 form-control' %>
         </div>
         <!--表示非表示機能追加-->
         <div class="row mt-5 d-flex justify-content-center">
