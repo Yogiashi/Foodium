@@ -9,7 +9,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # 受け取った値を,で区切って配列にする
-    tag_list=params[:post][:name].split(',')
+    old_tag = params[:post][:old_name].split(',')
+    new_tag = params[:post][:name].split(',')
+    tag_list = new_tag + old_tag
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿に成功しました。"
@@ -68,6 +70,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :tag_id, :tag)
+    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :tag)
   end
 end

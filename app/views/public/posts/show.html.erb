@@ -70,50 +70,16 @@
               height: 400px;
             }
             </style>
-
             <script>
-            /*
-            mapを関数の外で定義(codeAddressでも使うため)
-            geocoderを用意
-            */
-
-            let map
-            let geocoder
-
             function initMap(){
-              // geocoderを初期化
-              geocoder = new google.maps.Geocoder()
-
-              map = new google.maps.Map(document.getElementById('map'), {
+              let map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>},
-              zoom: 15
+              zoom: 17
               });
               marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
-                position:  {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}, //マーカーを落とす位置を決める（値はDBに入っている）
-                map: map //マーカーを落とすマップを指定
-              });
-            }
-
-
-            function codeAddress(){
-              // 入力を取得
-              let inputAddress = document.getElementById('address').value;
-
-              // geocodingしたあとmapを移動
-              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                if (status == 'OK') {
-            　　　　　　　　　　　　// map.setCenterで地図が移動
-                  map.setCenter(results[0].geometry.location);
-
-            　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-                  var marker = new google.maps.Marker({
-                      map: map,
-                      position: results[0].geometry.location
-                  });
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-                }
-              });
+                            position:  {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}, //マーカーを落とす位置を決める（値はDBに入っている）
+                            map: map //マーカーを落とすマップを指定
+                          });
             }
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
