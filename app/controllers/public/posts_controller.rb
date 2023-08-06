@@ -49,7 +49,7 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "投稿内容を更新しました。"
     else
-      render "edit"
+      render :edit
     end
   end
 

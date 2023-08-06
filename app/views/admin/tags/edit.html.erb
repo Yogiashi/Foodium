@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <!--戻るボタン-->
+    <%= link_to admin_tags_path, class: "ml-auto" do %>
+    <i class="fas fa-times fa-3x"></i>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto mt-5">
+      <h1 class="text-center">タグを編集</h1>
+      <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
+      <%= render 'layouts/errors', obj: @tag %>
+        <div class="row mt-5">
+          <%= f.label :タグ名, class: "col-form-label col-3" %>
+          <%= f.text_field :name, class: "col-9 form-control"%>
+        </div>
+        <div class="row mt-5 d-flex justify-content-center">
+          <%= f.submit "変更を保存する", class: "btn btn-success mr-5"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
