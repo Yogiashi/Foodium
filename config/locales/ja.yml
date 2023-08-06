@@ -11,3 +11,5 @@ ja:
         post_image: 画像
         price: 価格
         address: 場所
+      tag:
+        name: このタグ

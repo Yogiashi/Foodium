@@ -19,6 +19,7 @@ end
   namespace :admin do
     root to: "users#index"
     resources :users, only: [:index, :show, :edit, :update]
+    resources :tags, except: [:new, :show]
    end
 
    scope module: :public do
