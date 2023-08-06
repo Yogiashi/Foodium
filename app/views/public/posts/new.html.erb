@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-6 mx-auto mt-5">
+    <div class="col-7 mx-auto mt-5">
       <h1 class="text-center">新規投稿</h1>
       <%= form_with model: @post do |f| %>
       <%= render 'layouts/errors', obj: @post %>
@@ -26,20 +26,24 @@
         </div>
         <div class="row mt-5">
           <%= f.label :キャプション, class: "col-form-label col-3"%>
-          <%= f.text_area :caption, class: "col-9 form-control",placeholder: "キャプションを入力...", size: "30x5"%>
+          <%= f.text_area :caption, class: "col-9 form-control", placeholder: "キャプションを入力...", size: "30x5"%>
         </div>
         <!--価格選択-->
         <div class="row mt-5">
           <%= f.label :価格, class: "col-form-label col-3"%>
-          <%= f.number_field :price, class: "col-9 form-control"%>
+          <%= f.number_field :price, class: "col-9 form-control" %>
         </div>
         <!--タグ機能-->
         <div class="row mt-5">
-          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "col-form-label col-3" %>
-          <%= f.text_field :name,value: @tag_list,class: "col-9 form-control"%>
+          <%= f.label :タグ, class: "col-form-label col-3" %>
+          <!--過去にユーザーが登録したタグ一覧-->
+          <%= f.select :old_name, options_from_collection_for_select(Tag.all, :name, :name), include_blank: "タグを選択してください", class: "form-control" %>
+          <p class="offset-md-3 mt-2">好きなタグがなければ下記のフォームより入力してください</p>
+          <!--新規でタグを登録するフォーム-->
+          <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数タグを登録できます"%>
         </div>
         <!--表示非表示機能追加-->
-        <!--地図情報を追加-->
+        <!--地図情報入力フォーム-->
         <div class="row mt-5">
           <%= f.label :address, '場所', class: "col-form-label col-3" %>
           <%= f.text_field :address, class: 'col-9 form-control' %>
