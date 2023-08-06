@@ -1,8 +1,8 @@
 <div>
   <%= image_tag notification.subject.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
-  <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
+  <strong><%= link_to notification.subject.user.name, user_path(notification.subject.user), class: "text-dark text-decoration-none" %></strong>
   があなたの
-  <%= link_to '投稿', post_path(notification.subject.post) %>
+  <strong><%= link_to '投稿', post_path(notification.subject.post), class: "text-dark text-decoration-none" %></strong>
   にコメントしました
   <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   <%= link_to "削除",notification_path(notification), method: :delete,class:"btn btn-light" %>

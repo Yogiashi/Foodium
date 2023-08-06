@@ -33,7 +33,11 @@
           <%= f.label :価格, class: "col-form-label col-3"%>
           <%= f.number_field :price, class: "col-9 form-control"%>
         </div>
-        <!--タグ機能追加-->
+        <!--タグ機能-->
+        <div class="row mt-5">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "col-form-label col-3" %>
+          <%= f.text_field :name,value: @tag_list,class: "col-9 form-control"%>
+        </div>
         <!--表示非表示機能追加-->
         <!--地図情報を追加-->
         <div class="row mt-5">
