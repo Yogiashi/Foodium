@@ -26,13 +26,15 @@ end
     root to: "posts#index"
     # 退会確認画面
     get  '/users/check' => 'users#check'
-    # タグの検索用のルーティング
-    get "search_tag"=>"posts#search_tag"
     # 論理削除用のルーティング
     patch  '/users/withdraw' => 'users#withdraw'
     # 通知機能のルーティング
     resources :notifications, only: [:index, :destroy]
     resources :posts do
+      collection do
+      # タグの検索用のルーティング
+      get "search_tag"
+      end
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:index, :create, :destroy]
     end
