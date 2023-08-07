@@ -18,6 +18,7 @@
       </div>
       <div class="col-10">
         <span class="ml-5"><%= notice %></span>
+        <% if user_signed_in? %>
         <div style="position: fixed; top: 4px; right: 3px;">
           <%= form_with url: users_path, local: true, method: :get do |form| %>
             <%= form.text_field :word, placeholder: "ユーザー検索", class: "form_control" %>
@@ -30,6 +31,7 @@
             <%= f.submit "検索", class: "btn btn-dark" %>
            <% end %>
         </div>
+        <% end %>
         <main>
         <%= yield %>
         </main>
