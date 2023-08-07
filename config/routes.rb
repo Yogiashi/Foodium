@@ -34,6 +34,7 @@ end
       collection do
       # タグの検索用のルーティング
       get "search_tag"
+      get 'search'
       end
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:index, :create, :destroy]

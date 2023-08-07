@@ -68,6 +68,10 @@ class Public::PostsController < ApplicationController
     @posts = @tag.posts
   end
 
+  def search
+    @posts = Post.search(params[:word])
+  end
+
   private
   def post_params
     params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag)
