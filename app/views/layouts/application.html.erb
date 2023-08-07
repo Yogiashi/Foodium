@@ -18,22 +18,33 @@
       </div>
       <div class="col-10">
         <span class="ml-5"><%= notice %></span>
-        <% if user_signed_in? %>
-        <div style="position: fixed; top: 4px; right: 3px;">
-          <%= form_with url: users_path, local: true, method: :get do |form| %>
-            <%= form.text_field :word, placeholder: "ユーザー検索", class: "form_control" %>
-            <%= form.submit '検索', class: "btn btn-light" %>
-          <% end %>
-        </div>
-        <div style="position: fixed; top: 50px; right: 3px;">
-          <%= form_with(url: search_posts_path, local: true, method: :get) do |f| %>
-            <%= f.text_field :word, placeholder: "投稿検索", class: "form_control" %>
-            <%= f.submit "検索", class: "btn btn-dark" %>
-           <% end %>
-        </div>
-        <% end %>
         <main>
-        <%= yield %>
+         <div id="search-wrap">
+           <div class="close-btn"><span></span><span></span></div>
+           <div class="search-area">
+              <div>
+                <!--ユーザー検索フォーム-->
+                <%= form_with url: users_path, local: true, method: :get do |form| %>
+                  <div class="input-group">
+                    <%= form.text_field :word, placeholder: "ユーザー検索", class: "form-control w-75" %>
+                    <button class="btn btn-light form-control", type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                <% end %>
+                <!--投稿検索フォーム-->
+                <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+                  <div class="input-group">
+                    <%= f.text_field :word, placeholder: "投稿検索", class: "form-control w-75" %>
+                    <button class="btn btn-light form-control", type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                 <% end %>
+              </div>
+            </div>
+          </div>
+          <%= yield %>
         </main>
     </div>
   </body>
