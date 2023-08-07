@@ -25,7 +25,7 @@ class Post < ApplicationRecord
   def liked?(user)
      likes.where(user_id: user.id).exists?
   end
-  
+
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -44,5 +44,13 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
    end
+  end
+
+  def self.search(search)
+    if search != ""
+      Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      Post.all
+    end
   end
 end
