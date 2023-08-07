@@ -2,6 +2,11 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   
   def index
+    if params[:word]
+      @users = User.search(params[:word])
+    else
+      @users = User.all
+    end
   end
 
   def show
