@@ -1,5 +1,5 @@
 <% posts.reverse_each do |post| %>
-  <div class="card mt-5 ml-5" style="width: 17rem;">
+  <div class="card mt-5 ml-2" style="width: 17rem;">
     <%= link_to post_path(post) do %>
       <%= image_tag post.post_image, class: "m-2", size: "255x220" %>
     <% end %>

@@ -50,3 +50,86 @@ body {
   word-break: break-all;
   overflow-wrap: break-word;
 }
+
+/*#jqs-2 {*/
+/*  width: 500px;*/
+/*}*/
+
+/*========= 検索窓の設定 ===============*/
+
+/*==検索窓背景のエリア*/
+
+#search-wrap{
+  position:fixed;/*固定配置にして*/
+  top: 0;
+  left: 0;
+  z-index: -1;/*最背面に設定*/
+  opacity: 0;/*透過を0に*/
+  transition: all 0.8s;/*transitionを使ってスムースに現れる*/
+  width:30%;
+  height: 100vh;
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+#search-wrap.panelactive{
+  opacity: 1;/*不透明に変更*/
+   z-index: 3;/*全面に出現*/
+   background:#333;
+    /*中の要素を天地中央揃えにする設定*/
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/*==検索窓のエリア*/
+
+#search-wrap .search-area{
+  display: none;/*検索窓のエリアは、はじめ非表示*/
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+#search-wrap.panelactive .search-area{
+  display: block;/*検索窓エリアを表示*/
+  position: relative;
+}
+
+/*==検索フォームの設定*/
+
+#search-wrap form{
+  height: 66px;
+}
+
+/*=======　閉じるための×ボタン　========*/
+.close-btn{
+  position: absolute;
+  top:10px;
+  right:10px;
+  z-index: 2;
+  cursor: pointer;
+  width: 60px;
+  height:60px;
+}
+
+.close-btn span{
+    display: inline-block;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #fff;
+ }
+
+/*×マーク*/
+.close-btn span:nth-of-type(1) {
+    top: 21px;
+    left: 16px;
+    transform: translateY(6px) rotate(-135deg);
+    width: 50%;
+}
+
+.close-btn span:nth-of-type(2){
+    top: 32px;
+    left: 16px;
+    transform: translateY(-6px) rotate(135deg);
+    width: 50%;
+}
