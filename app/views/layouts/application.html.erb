@@ -17,8 +17,20 @@
         <div class="w-25 mt-5"><%= render "layouts/sidebar" %></div>
       </div>
       <div class="col-10">
-        <main>
         <span class="ml-5"><%= notice %></span>
+        <div style="position: fixed; top: 4px; right: 3px;">
+          <%= form_with url: users_path, local: true, method: :get do |form| %>
+            <%= form.text_field :word, placeholder: "ユーザー検索", class: "form_control" %>
+            <%= form.submit '検索', class: "btn btn-light" %>
+          <% end %>
+        </div>
+        <div style="position: fixed; top: 50px; right: 3px;">
+          <%= form_with(url: search_posts_path, local: true, method: :get) do |f| %>
+            <%= f.text_field :word, placeholder: "投稿検索", class: "form_control" %>
+            <%= f.submit "検索", class: "btn btn-dark" %>
+           <% end %>
+        </div>
+        <main>
         <%= yield %>
         </main>
     </div>
