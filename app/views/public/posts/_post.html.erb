@@ -6,7 +6,7 @@
     <div class="card-body">
       <%= link_to user_path(post.user), class: "text-decoration-none text-dark" do %>
       <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>
-      <%= post.user.name %>
+      <i class="fas fa-user"></i> <%= post.user.name %>
       <% end %>
       <%= link_to "詳細を見る", post_path(post), class: "btn btn-light border decoration-none text-dark float-right mt-3" %>
     </div>
