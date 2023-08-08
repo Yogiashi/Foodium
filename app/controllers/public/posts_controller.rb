@@ -8,10 +8,16 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # 受け取った値を,で区切って配列にする
-    old_tag = params[:post][:old_name].split(',')
-    new_tag = params[:post][:name].split(',')
-    tag_list = new_tag + old_tag
+    # プルダウンから送られてきたタグidを受け取る
+    old_tag_ids = params[:post][:old_name]
+    # 受け取った値から空白のものを取り除く
+    old_tag_ids.delete('')
+    # 受け取ったタグidからタグの名前を取得
+    old_tags = Tag.find(old_tag_ids).pluck('name')
+    # 新規で入力されたタグを受け取る
+    new_tags = params[:post][:name].split(',')
+    # プルダウンから選択されたタグと新規で入力されたタグを足す
+    tag_list = new_tags + old_tags
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿に成功しました。"
