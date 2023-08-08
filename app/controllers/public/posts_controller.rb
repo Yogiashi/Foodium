@@ -70,6 +70,14 @@ class Public::PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:word], params[:min_search], params[:max_search])
+    @tag_ids = params[:tag_ids]&.select(&:present?)
+    if @tag_ids.present?
+      @tag_word = " "
+      @tag_ids.each do |id|
+        @tag_word = @tag_word + " " + "'" + Tag.find(id).name + "'"  if id != ""
+      end
+      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}")
+    end
   end
 
   private
