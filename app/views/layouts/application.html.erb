@@ -40,7 +40,13 @@
                       <i class="fas fa-search"></i>
                     </button>
                   </div>
-                 <% end %>
+                <% end %>
+                <!--価格検索フォーム-->
+                <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+                  <%= f.number_field :min_search, placeholder: "最小価格", class: "form-control w-100" %> <span class="text-white">〜</span>
+                  <%= f.number_field :max_search, placeholder: "最大価格", class: "form-control w-100" %>
+                  <%= f.submit "価格検索する", class: "btn btn-light float-right" %>
+                <% end %>
               </div>
             </div>
           </div>

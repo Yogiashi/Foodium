@@ -1,5 +1,8 @@
 <% posts.reverse_each do |post| %>
   <div class="card mt-5 ml-3" style="width: 37rem;">
+    <%= link_to post_path(post) do %>
+      <%= image_tag post.post_image, class: "card-img-top", size: "500x450" %>
+      <% end %>
     <div class="card-body">
       <%= link_to user_path(post.user), class: "text-decoration-none text-dark" do %>
       <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>
@@ -7,7 +10,7 @@
       <% end %>
       <%= link_to "詳細を見る", post_path(post), class: "btn btn-light border decoration-none text-dark float-right mt-3" %>
     </div>
-    <%= image_tag post.post_image, class: "mx-auto", size: "550x450" %>
+
     <div class="card-body">
       <div class="d-flex border-bottom">
         <!--いいねボタンajax-->

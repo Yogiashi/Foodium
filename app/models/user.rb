@@ -25,7 +25,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  def self.search(word)
+  def self.search(word, min_search, max_search)
       @user = User.where("name LIKE?","%#{word}%")
   end
   

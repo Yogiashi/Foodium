@@ -69,7 +69,7 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:word])
+    @posts = Post.search(params[:word], params[:min_search], params[:max_search])
   end
 
   private
