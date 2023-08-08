@@ -96,7 +96,7 @@ body {
 /*==検索フォームの設定*/
 
 #search-wrap form{
-  height: 66px;
+  margin-top: 30px;
   width: 400px;
 }
 
