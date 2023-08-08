@@ -26,7 +26,7 @@
                 <!--ユーザー検索フォーム-->
                 <%= form_with url: users_path, local: true, method: :get do |form| %>
                   <div class="input-group">
-                    <%= form.text_field :word, placeholder: "ユーザー検索", class: "form-control w-75" %>
+                    <%= form.text_field :word, placeholder: "ユーザー検索(ユーザーネーム)", class: "form-control w-75" %>
                     <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
                     <i class="fas fa-search"></i>
                     <% end %>
@@ -35,7 +35,7 @@
                 <!--投稿検索フォーム-->
                 <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
                   <div class="input-group">
-                    <%= f.text_field :word, placeholder: "投稿検索", class: "form-control w-75" %>
+                    <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-75" %>
                     <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
                     <i class="fas fa-search"></i>
                     <% end %>
@@ -44,8 +44,8 @@
                 <% end %>
                 <!--価格検索フォーム-->
                 <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-                  <%= f.number_field :min_search, placeholder: "最小価格", class: "form-control w-100" %> <span class="text-white">〜</span>
-                  <%= f.number_field :max_search, placeholder: "最大価格", class: "form-control w-100" %>
+                  <%= f.number_field :min_search, placeholder: "最小価格(半角入力)", class: "form-control w-100" %> <span class="text-white">〜</span>
+                  <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100" %>
                   <%= f.submit "価格検索する", class: "btn btn-light float-right" %>
                 <% end %>
               </div>

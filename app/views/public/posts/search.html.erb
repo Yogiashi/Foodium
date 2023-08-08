@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto mt-5">
-      <h1 class="text-center"><strong>"<%= params[:word] %>"</strong>の検索結果</h1>
+      <h1 class="text-center">
+        <% if params[:word] %>
+          キーワード<strong>"<%= params[:word] %>"</strong>を含む
+        <% else %>
+          価格が <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円の
+        <% end %>
+        投稿</h1>
       <div class="flex justify-content-center">
         <%= render "post", posts: @posts %>
       </div>
