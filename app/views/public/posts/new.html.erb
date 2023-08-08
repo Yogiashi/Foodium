@@ -31,7 +31,7 @@
         <div class="row mt-5">
           <%= f.label :タグ, class: "col-form-label col-3" %>
           <!--過去にユーザーが登録したタグ一覧-->
-          <%= f.collection_select :old_name, Tag.all, :id, :name, {include_blank: "タグを選択してください(複数選択はcommandを押しながら選択)"}, {class: "form-control col-9", multiple: true} %>
+          <%= f.collection_select :old_name, Tag.all, :id, :name, {include_blank: "タグを選択してください(複数選択はshift[command]を押しながら)"}, {class: "form-control col-9", multiple: true} %>
           <p class="offset-md-3 mt-2">好きなタグがなければ下記のフォームより入力してください</p>
           <!--新規でタグを登録するフォーム-->
           <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数タグを登録できます"%>
