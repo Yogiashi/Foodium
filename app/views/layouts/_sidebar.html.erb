@@ -42,10 +42,10 @@
     </ul>
   </div>
 <% elsif admin_signed_in? %>
-  <div class="sidebar bg-dark">
+  <div class="sidebar"  style="background-color: #2e8b57">
     <ul class="text-center", style="list-style: none;">
       <div class="mt-4" id="top">
-        <a class="text-decoration-none btn btn-light btn-lg col-8 mb-4" href="#">LOGO</a>
+        <a class="col-8" href="#"><%= image_tag "foodium2.jpg", class: "ml-3 rounded", size: "200x80" %></a>
       </div>
       <li>
         <%= link_to admin_users_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9 mt-4" do %>

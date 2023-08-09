@@ -31,7 +31,7 @@
         <!--地図情報入力フォーム-->
         <div class="row mt-5">
           <%= f.label :address, '場所', class: "col-form-label col-3" %>
-          <%= f.text_field :address, class: 'col-9 form-control' %>
+          <%= f.text_field :address, class: 'col-9 form-control', placeholder: "渋谷, スカイツリー, ⚪︎⚪︎タワー１階" %>
         </div>
          <!--タグ機能-->
         <div class="row mt-5">
@@ -48,7 +48,7 @@
           <%#= f.collection_select :old_name, Tag.all, :id, :name, {include_blank: "タグを選択してください(複数選択はshift[command]を押しながら)"}, {class: "form-control col-9", multiple: true} %>
           <p class="offset-md-3">タグがなければ下記のフォームより入力してください</p>
           <!--新規でタグを登録するフォーム-->
-          <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数タグを登録できます"%>
+          <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
         </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
