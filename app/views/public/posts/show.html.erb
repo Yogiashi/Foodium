@@ -7,15 +7,17 @@
       <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>
       <strong><%= @post.user.name %></strong>
       <% end %>
-      <ul class="menu">
-        <li class="text-center">
-          <strong>・・・</strong>
-          <ul class="menuSub">
-            <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
-            <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
-          </ul>
-        </li>
-      </ul>
+      <% if @post.user.id == current_user.id %>
+        <ul class="menu">
+          <li class="text-center">
+            <strong>・・・</strong>
+            <ul class="menuSub">
+              <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
+              <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -90,5 +92,5 @@
     </div>
   </div>
   </div>
-     
+
 </div>

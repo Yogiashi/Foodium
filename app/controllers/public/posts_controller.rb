@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -9,7 +10,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # プルダウンから送られてきたタグidを受け取る
-    old_tag_ids = params[:post][:old_name]
+    old_tag_ids = params[:post][:tag_ids]
     # 受け取った値から空白のものを取り除く
     old_tag_ids.delete('')
     # 受け取ったタグidからタグの名前を取得
@@ -89,5 +90,12 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag)
+  end
+  
+  def is_matching_login_user
+    post = Post.find(params[:id])
+    unless post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 end

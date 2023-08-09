@@ -1,7 +1,14 @@
 class Admin::TagsController < ApplicationController
 
   def index
+    @tag = Tag.new
     @tags = Tag.all
+  end
+
+  def create
+      @tag = Tag.new(tag_params)
+      @tag.save
+      redirect_to admin_tags_path
   end
 
   def edit
@@ -20,7 +27,7 @@ class Admin::TagsController < ApplicationController
   def destroy
     tag = Tag.find(params[:id])
     tag.destroy
-    redirect_to admin_tags_path, notice: "タグの削除に成功しました。"
+    redirect_to admin_tags_path
   end
 
   private
