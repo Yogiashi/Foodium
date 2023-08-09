@@ -1,7 +1,8 @@
-<div class="container">
+<div class="top-image">
+  <div class="container">
   <div class="row">
-    <div class="col-6", style="margin-left: 170px;">
-      <h2 class="text-center mt-5">Foodium</h2>
+    <div class="col-6 login-form p-4 mt-4", style="margin-left: 290px;">
+      <h2 class="text-center site-name">Foodium</h2>
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div>
@@ -13,7 +14,7 @@
         <div>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control mt-4", placeholder: "パスワード（６文字以上）" %>
         </div>
-        
+
         <div>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mt-4", placeholder: "パスワード（確認）" %>
         </div>
@@ -22,10 +23,11 @@
         </div>
         <% end %>
         <div class="border mt-5"></div>
-        <div class="d-flex justify-content-center mt-4">
+        <div class="d-flex justify-content-center mt-4 border pt-3 bg-light rounded">
           <p class="mr-3">アカウントをお持ちですか？</p>
         <div><%= render "public/shared/links" %></div>
       </div>
     </div>
   </div>
+</div>
 </div>

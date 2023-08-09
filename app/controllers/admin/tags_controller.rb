@@ -1,4 +1,5 @@
 class Admin::TagsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @tag = Tag.new
@@ -7,8 +8,12 @@ class Admin::TagsController < ApplicationController
 
   def create
       @tag = Tag.new(tag_params)
-      @tag.save
-      redirect_to admin_tags_path
+    if @tag.save
+      redirect_to admin_tags_path, notice: "タグの登録に成功しました。"
+    else
+      @tags = Tag.all
+      render :index
+    end
   end
 
   def edit

@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-7 mx-auto mt-5">
       <h1 class="text-center">タグ一覧</h1>
+      <%= render 'layouts/errors', obj: @tag %>
       <div class="mt-5">
       <%= form_with model: @tag, url: admin_tags_path do |f| %>
       <div class="row">

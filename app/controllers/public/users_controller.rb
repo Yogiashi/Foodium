@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :draft]
 
   def index
     if params[:word]
@@ -38,6 +38,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  # 退会アクション
   def withdraw
     @user = User.find(current_user.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -52,6 +53,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
   
+  # urlから直接アクセスされるのを防ぐ
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
