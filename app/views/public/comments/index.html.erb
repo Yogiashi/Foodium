@@ -26,8 +26,10 @@
     <div class="col-5 mt-5">
       <!--コメント欄-->
       <div id="post-comments"><%= render "comments", comments: @comments %></div>
-      <!--コメントフォーム-->
-      <div id="comment-form", class="border-top"><%= render "form", post: @post, comment: Comment.new %></div>
+      <% if @post.user != current_user %>
+        <!--コメントフォーム-->
+        <div id="comment-form", class="border-top"><%= render "form", post: @post, comment: Comment.new %></div>
+      <% end %>
     </div>
   </div>
 </div>

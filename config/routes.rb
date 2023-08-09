@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
 
-# 顧客用
-devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-# 管理者用
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
-
-# ゲストログイン用のパス
-devise_scope :user do
-  post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
-end
+  # 顧客用
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
+  # 管理者用
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  # ゲストログイン用のパス
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
     root to: "users#index"
@@ -23,16 +23,16 @@ end
    end
 
    scope module: :public do
-    root to: "posts#index"
-    # 退会確認画面
+    root to:  'homes#top'
+    # 退会確認画面のルーティング
     get  '/users/check' => 'users#check'
-    # 論理削除用のルーティング
+    # 論理削除のルーティング
     patch  '/users/withdraw' => 'users#withdraw'
     # 通知機能のルーティング
     resources :notifications, only: [:index, :destroy]
     resources :posts do
       collection do
-      # タグの検索用のルーティング
+      # タグ検索のルーティング
       get "search_tag"
       get 'search'
       end
@@ -43,6 +43,7 @@ end
       member do
         # いいねした投稿を取得するため投稿idを付与
         get :likes
+        # 下書き一覧ページのルーティング
         get :draft
       end
       resource :relationships, only: [:create, :destroy]

@@ -1,0 +1,33 @@
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.top-image {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: url(top_image.jpg);
+  background-size: contain;
+}
+
+.top-sidebar {
+  width: 35%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.top-name {
+  font-size: 100px;
+  text-align: center;
+  padding-top: 40%;
+  font-family: cursive;
+}
+
+.top-link {
+  margin-top: 150px;
+}

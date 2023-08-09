@@ -26,7 +26,7 @@ class Admin::SessionsController < Devise::SessionsController
   # end
   protected
   def after_sign_in_for_path(resource)
-    root_path
+    users_path
     # 投稿一覧ページを作成したら修正
   end
 

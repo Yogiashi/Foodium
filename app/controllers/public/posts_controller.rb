@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit]
 
   def new
     @post = Post.new
@@ -49,8 +49,8 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split(',')
     if @post.update(post_params)
       @old_relations = PostTag.where(post_id: @post.id)
-      # それらを取り出し、消す。消し終わる
-       @old_relations.each do |relation|
+      # それらを取り出し、消す
+      @old_relations.each do |relation|
       relation.delete
       end
       @post.save_tag(tag_list)
