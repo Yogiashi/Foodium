@@ -12,11 +12,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "preview.js"
-import "tab.js"
-import "menu.js"
-import "page_top.js"
-import "slide_in.js"
+import "script.js"
 
 Rails.start()
 // Turbolinks.start()
