@@ -43,7 +43,16 @@
           <%= f.label :address, '場所', class: "col-form-label col-3" %>
           <%= f.text_field :address, class: 'col-9 form-control' %>
         </div>
-        <!--表示非表示機能追加-->
+        <!--投稿の公開・非公開ボタン-->
+        <div class="row mt-5">
+          <%=f.label:"公開範囲",class:"col-3"%>
+          <div style="padding-right:80px;">
+          <%= f.radio_button :displayed, :true %>
+          <%= f.label :displayed, "公開", {value: :true, style: "display: inline-block;"} %></div>
+          <div style="padding-right:20px;">
+          <%= f.radio_button :displayed, :false %>
+          <%= f.label :displayed, "下書き保存", {value: :false, style: "display: inline-block;"} %></div>
+        </div>
         <div class="row mt-5 d-flex justify-content-center">
           <%= f.submit "変更を保存する", class: "btn btn-success mr-5"%>
         </div>

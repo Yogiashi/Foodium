@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="row">
     <div class="card mt-5 container" style="width: 60rem; margin-left: 90px;">
   <div class="row">
@@ -12,6 +12,11 @@
           <li class="text-center">
             <strong>・・・</strong>
             <ul class="menuSub">
+              <% if @post.displayed %>
+              <li class=" my-1 border border-dark text-center rounded">公開中</li>
+            <% else %>
+              <li class=" my-1 border border-dark text-center rounded">非公開</li>
+            <% end %>
               <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
               <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
             </ul>
@@ -40,28 +45,33 @@
           <% end %>
         </div>
       </div>
-      <div class="col-7 mt-3">
+      <div class="col-7 mt-5">
         <div class="row">
-          <p class="col-4 ml-3">ショップ名</p>
+          <p class="col-3 ml-3">ショップ名</p>
            <h3 class="col-7 text-center"><%= @post.shop_name %></h3>
         </div>
+        <hr>
         <div class="row mt-4">
-          <p class="col-4 ml-3">料理名</p>
+          <p class="col-3 ml-3">料理名</p>
             <h4 class="col-7 text-center"><%= @post.dish_name %></h4>
         </div>
+        <hr>
         <div class="row mt-4">
-          <p class="col-4 ml-3">価格</p>
+          <p class="col-3 ml-3">価格</p>
            <div class="col-7 text-center"><%= @post.price %> 円</div>
         </div>
+        <hr>
         <div class="row mt-4">
-          <p class="col-4 ml-3">キャプション</p>
-          <div class="col-7 text-aline border rounded"><%= simple_format(@post.caption) %></div>
+          <p class="col-3 ml-3">キャプション</p>
+          <div class="col-7 border rounded"><%= simple_format(@post.caption) %></div>
         </div>
+        <hr>
         <div class="row mt-4">
-          <p class="col-4 ml-3">場所</p>
+          <p class="col-3 ml-3">場所</p>
             <p class="col-7 text-center"><%= @post.address %></p>
         </div>
       </div>
+      <hr>
       <!--googl map-->
       <div class='container'>
         <div class='row'>

@@ -13,10 +13,16 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
-    @posts = @user.posts
+    @posts = @user.posts.where(displayed: :true)
     # いいねした投稿を取得
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
     @liked_posts = Post.find(likes)
+  end
+  
+  # 下書き一覧ページ
+  def draft
+    @user = User.find(params[:id])
+    @posts = @user.posts.where(displayed: false)
   end
 
   def edit
@@ -46,7 +52,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
   
-    def is_matching_login_user
+  def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to posts_path

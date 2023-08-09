@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # プルダウンから送られてきたタグidを受け取る
+    # チェックボックスから送られてきたタグidを受け取る
     old_tag_ids = params[:post][:tag_ids]
     # 受け取った値から空白のものを取り除く
     old_tag_ids.delete('')
@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
     old_tags = Tag.find(old_tag_ids).pluck('name')
     # 新規で入力されたタグを受け取る
     new_tags = params[:post][:name].split(',')
-    # プルダウンから選択されたタグと新規で入力されたタグを足す
+    # チェックボックスから選択されたタグと新規で入力されたタグを足す
     tag_list = new_tags + old_tags
     if @post.save
       @post.save_tag(tag_list)
@@ -28,9 +28,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.where(displayed: :true)
     # フォローしてるユーザーの投稿を取得
-    @following_posts = Post.where(user_id: [*current_user.following_ids])
+    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true)
     @tag_list=Tag.all
   end
 
@@ -89,7 +89,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag)
+    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
   end
   
   def is_matching_login_user
