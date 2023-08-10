@@ -1,29 +1,20 @@
 // トップページのスライドショー
-$(function() {
-  let slideIndex = 0;
-  showSlides();
-
-  function showSlides() {
-    // スライドの要素を取得
-    const slides = document.querySelectorAll(".slide.fade");
-
-    // slideIndexを1増やす（次のスライドに進む）
-    slideIndex++;
-
-    // スライドの数よりもslideIndexが大きくなった場合、最初のスライドに戻る
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-
-    // 現在のスライドを表示（opacityを1に設定）
-    slides[slideIndex - 1].style.opacity = "1";
-
-    // 1つ前のスライドを非表示（opacityを0に設定）
-    slides[slideIndex - 2 < 0 ? slides.length - 1 : slideIndex - 2].style.opacity = "0";
-
-    // 一定時間（6000ミリ秒＝6秒）後に再度showSlides関数を呼び出す（次のスライドに進むための処理）
-    setTimeout(showSlides, 4000);
-  }
+$(function(){
+    $('.slider').slick({
+    autoplay: true,//自動的に動き出すか。初期値はfalse。
+    autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
+    speed:1000,//スライドの動きのスピード。初期値は300。
+    infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+    slidesToShow: 1,//スライドを画面に3枚見せる
+    slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+    arrows: true,//左右の矢印あり
+    prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+    nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+    dots: true,//下部ドットナビゲーションの表示
+        pauseOnFocus: false,//フォーカスで一時停止を無効
+        pauseOnHover: false,//マウスホバーで一時停止を無効
+        pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
+    });
 });
 
 $(function(){
