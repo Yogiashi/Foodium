@@ -3,9 +3,9 @@
     <div class="col-8">
       <h1 class="text-center">新規投稿</h1>
       <%= form_with model: @post do |f| %>
-      <%= render 'layouts/errors', obj: @post %>
+        <%= render 'layouts/errors', obj: @post %>
         <div class="row mt-5">
-          <%= f.label :画像, class: "col-form-label col-3"%>
+          <%= f.label :画像, class: "col-form-label col-3" %>
           <!--画像プレビュー機能-->
         <% @post.post_images.each do |image| %>
           <%= image_tag image, onClick: "$('.img_field').click()", class: "img_prev col-6", size: "150x250" %>
@@ -62,7 +62,6 @@
           <%= f.radio_button :displayed, :false %>
           <%= f.label :displayed, "下書き保存", {value: :false, style: "display: inline-block;"} %></div>
         </div>
-
         <div class="row mt-5 d-flex justify-content-center">
           <%= f.submit "投稿する", class: "btn btn-outline-primary mr-5"%>
         </div>

@@ -3,8 +3,8 @@
     <div class="col-12">
       <div class="ml-5">
         <div class="row justify-content-center">
-          <%= image_tag @user.get_profile_image, size: '150x150', class: "rounded-circle mr-5" %>
-          <h3 class="mt-5"><%= @user.name %></h3>
+          <%= image_tag @user.get_profile_image, size: '150x180', class: "rounded-circle mr-5" %>
+          <h3 class="mt-5 mx-5"><%= @user.name %></h3>
            <% if @user.id == current_user.id %>
            <div class="mt-4 ml-5">
              <div class="mb-3"><%=link_to "下書き一覧", draft_user_path(@user), class: "btn btn-outline-info", style: "width: 170px;" %></div>
@@ -49,7 +49,7 @@
       <div class="tabbox-contents">
         <div class="tabbox box-show" >
           <div class="flex">
-          <%= render "post", posts: @posts%>
+            <%= render "post", posts: @posts %>
           </div>
         </div>
         <div class="tabbox">
