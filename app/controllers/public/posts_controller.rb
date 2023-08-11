@@ -89,9 +89,9 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
+    params.require(:post).permit({post_images: []}, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
   end
-  
+
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user.id == current_user.id

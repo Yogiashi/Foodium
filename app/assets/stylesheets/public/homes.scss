@@ -3,34 +3,27 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .top-sidebar {
-  width: 35%;
+  width: 40vw;
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
 }
 
 .top-name {
   font-size: 100px;
   text-align: center;
-  padding-top: 40%;
+  padding-top: calc(40vh - 1em);
   font-family: cursive;
 }
 
 .top-link {
-  margin-top: 150px;
+  margin-top: 25vh;
 }
 
-.slider .slide img {
-  width: 100%;
+.swiper-slide img {
+  width: 100vw;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.slide.fade:first-child {
-  opacity: 1;
 }
