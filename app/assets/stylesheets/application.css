@@ -21,8 +21,8 @@
 }
 
 :root {
-  --swiper-navigation-color: #000;
-  --swiper-pagination-color: #000;
+  --swiper-navigation-color: #2f4f4f;
+  --swiper-pagination-color: #2f4f4f;
 }
 
 .field_with_errors {
@@ -40,7 +40,7 @@ body {
 .full-page {
   width: 100vw;
   height: 100vh;
-  background-color: #f0ffff;
+  background-color: #fffacd;
 }
 
 .login-form {

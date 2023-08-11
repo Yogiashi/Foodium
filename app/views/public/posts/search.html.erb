@@ -1,17 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 mx-auto mt-5">
+<div class="container" style="margin-top: 10%;">
+  <div class="row justify-content-center">
+    <div class="col-12">
       <h1 class="text-center">
         <% if params[:word] %>
           キーワード<strong>"<%= params[:word] %>"</strong>を含む
         <% elsif params[:tag_ids] %>
           タグが<strong><%= @tag_word %></strong>の
         <% else %>
-          価格が <strong>"<%= params[:min_search].name %> 〜 <%= params[:max_search] %>"</strong>円の
+          価格が <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円の
         <% end %>
         投稿</h1>
       <div class="flex justify-content-center">
-        <%= render "post", posts: @posts %>
+        <%= render "public/users/post", posts: @posts %>
       </div>
     </div>
   </div>

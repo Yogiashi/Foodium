@@ -22,16 +22,16 @@ $(function() {
   });
 });
 
+//管理者側のユーザー検索ボタン
 $(function() {
-//ボタンのイベント
   $(".btn1").click(function(){
     $(".search-form").show('slow');
     $(".btn1").hide('slow')
   });
 });
 
-$(document).on('click touchend', function(event) {
   // 表示した検索フォーム以外の部分をクリックしたとき
+$(document).on('click touchend', function(event) {
   if (!$(event.target).closest('.search-group').length) {
     $('.search-form').hide('slow');
      $(".btn1").show('slow');
@@ -74,7 +74,7 @@ $(function() {
 });
 
 
-// Swiper w/o calicurum
+// swiper
 document.addEventListener("DOMContentLoaded", function(){
   var mySwiper = new Swiper('.swiper', {
     loop: true,

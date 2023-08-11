@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 mx-auto">
+<div class="container" style="margin-top: 10%;">
+  <div class="row justify-content-center">
+    <div class="col-12">
       <h1 class="text-center">タグが<strong>"<%= @tag.name %>"</strong>の投稿一覧</h1>
        <div class="d-flex justify-content-center">
          <!--タグリスト-->
@@ -10,8 +10,8 @@
         <% end %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-9 mt-5", style="margin-left: 155px;">
+    <div class="row  justify-content-center">
+      <div class="col-12 mt-5">
         <div class="flex">
           <%= render "public/users/post", posts: @posts %>
         </div>
