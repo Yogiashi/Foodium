@@ -1,6 +1,6 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-6 mx-auto mt-5">
+<div class="container" style="margin-top: 10%;">
+  <div class="row justify-content-center">
+    <div class="col-8">
       <h1 class="text-center">プロフィールを編集</h1>
       <% if @user.email == 'guest@example.com'%>
         <h5 class="text-center mt-5 ml-5">ゲストユーザーはプロフィールの編集ができません。</h5>
@@ -10,7 +10,7 @@
           <div class="row mt-5">
             <%= f.label :画像, class: "col-form-label col-3"%>
             <!--画像プレビュー機能-->
-            <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-4", size: "180x150" %>
+            <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-4", size: "180x180" %>
             <%= f.file_field :profile_image, class: "mt-5 img_field mx-auto", style: 'display:none;', accept: 'image/*' %>
           </div>
           <div class="row mt-5">

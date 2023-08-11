@@ -12,61 +12,58 @@
   </head>
 
   <body class="full-page">
+    <% if user_signed_in? or admin_signed_in? %>
+      <header><%= render "layouts/header" %></header>
+    <% end %>
     <% if notice %>
       <span class="ml-5 motice"><%= notice %></span>
     <% end %>
-    <div class="d-flex">
-      <!--サイドバー-->
-      <div class="sidebar" style="width: 20%; background-color: #006400;" ><%= render "layouts/sidebar" %></div>
-      <main class="mx-auto">
-       <div id="search-wrap">
+    <main>
+      <div id="search-wrap">
          <div class="close-btn"><span></span><span></span></div>
          <div class="search-area">
-            <div>
-              <!--ユーザー検索フォーム-->
-              <%= form_with url: users_path, local: true, method: :get do |form| %>
-                <div class="input-group">
-                  <%= form.text_field :word, placeholder: "ユーザー検索(ユーザーネーム)", class: "form-control w-75" %>
-                  <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
-                    <i class="fas fa-search"></i>
-                  <% end %>
-                </div>
-              <% end %>
-              <!--投稿検索フォーム-->
-              <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-                <div class="input-group">
-                  <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-75" %>
-                  <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
-                    <i class="fas fa-search"></i>
-                  <% end %>
-                </div>
-              <% end %>
-              <!--価格検索フォーム-->
-              <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-                <%= f.number_field :min_search, placeholder: "最小価格(半角入力)", class: "form-control w-100" %> <span class="text-white">〜</span>
-                <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100" %>
-                <%= f.submit "価格検索する", class: "btn btn-light float-right" %>
-              <% end %>
-              <!--タグ検索フォーム-->
-              <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-              <span class="text-white">タグ一覧</span>
-                <div class="d-flex flex-row flex-wrap p-2 border rounded">
-                  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
-              	    <div class="mx-1">
-              	      <%= b.check_box %>
-              	      <%= b.label class: "text-white" %>
-              	    </div>
-                  <% end %>
-                  <%= button_tag type: "submit", class: "btn btn-light ml-auto" do %>
-        	          <i class="fas fa-search"></i>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+            <!--ユーザー検索フォーム-->
+            <%= form_with url: users_path, local: true, method: :get do |form| %>
+              <div class="input-group">
+                <%= form.text_field :word, placeholder: "ユーザー検索(ユーザーネーム)", class: "form-control w-75" %>
+                <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
+            <!--投稿検索フォーム-->
+            <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+              <div class="input-group">
+                <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-75" %>
+                <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
+            <!--価格検索フォーム-->
+            <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+              <%= f.number_field :min_search, placeholder: "最小価格(半角入力)", class: "form-control w-100" %> <span class="text-white">〜</span>
+              <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100" %>
+              <%= f.submit "価格検索する", class: "btn btn-light float-right" %>
+            <% end %>
+            <!--タグ検索フォーム-->
+            <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+            <span class="text-white">タグ一覧</span>
+              <div class="d-flex flex-row flex-wrap p-2 border rounded">
+                <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+            	    <div class="mx-1">
+            	      <%= b.check_box %>
+            	      <%= b.label class: "text-white" %>
+            	    </div>
+                <% end %>
+                <%= button_tag type: "submit", class: "btn btn-light ml-auto" do %>
+      	          <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
         <%= yield %>
       </main>
-    </div>
   </body>
 </html>

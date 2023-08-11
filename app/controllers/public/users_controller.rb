@@ -13,6 +13,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
+    # 公開中の投稿を取得
     @posts = @user.posts.where(displayed: :true)
     # いいねした投稿を取得
     likes = Like.where(user_id: current_user.id).pluck(:post_id)

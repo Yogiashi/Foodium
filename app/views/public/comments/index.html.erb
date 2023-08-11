@@ -1,10 +1,23 @@
-<div class="container">
+<div class="container" style="margin-top: 10%;">
   <div class="row">
-    <div class="col-5 ml-5 mt-5">
-      <div class="card" style="width: 25rem;">
-        <%= link_to post_path(@post) do %>
-          <%= image_tag @post.post_image, class: "card-img-top", size: "380x280" %>
-        <% end %>
+    <div class="col-7">
+      <div class="card">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <% @post.post_images.each do |image| %>
+              <div class="swiper-slide">
+                <%= link_to post_path(@post) do %>
+                  <div class=""><%= image_tag image, class: "card-img-top", size: "380x280" %></div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <!-- ページネーションの要素 -->
+          <div class="swiper-pagination"></div>
+          <!-- ナビゲーションボタン （前、次） -->
+          <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+          <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+        </div>
         <div class="card-body">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
           <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "60x60"%>
