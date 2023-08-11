@@ -6,9 +6,9 @@ class Post < ApplicationRecord
   has_many :post_tags,dependent: :destroy
   has_many :tags,through: :post_tags, dependent: :destroy
   has_one :notification, as: :subject, dependent: :destroy
-  has_one_attached :post_image
+  has_many_attached :post_images
 
-  validates :post_image, presence: true
+  validates :post_images, presence: true
   validates :shop_name, presence: true
   validates :dish_name, presence: true
   validates :caption, presence: true, length: { maximum: 200 }
@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   def get_post_image
-    (post_image.attached?) ? post_image : 'no_image.jpg'
+    (post_images.attached?) ? post_images : 'no_image.jpg'
   end
 
   def liked?(user)

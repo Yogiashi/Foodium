@@ -1,8 +1,21 @@
 <% posts.reverse_each do |post| %>
-  <div class="card mt-5 ml-3" style="width: 37rem;">
-    <%= link_to post_path(post) do %>
-      <%= image_tag post.post_image, class: "card-img-top", size: "500x450" %>
-      <% end %>
+  <div class="bg-white mb-5 card">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <% post.post_images.each do |image| %>
+          <div class="swiper-slide">
+            <%= link_to post_path(post) do %>
+              <div class=""><%= image_tag image, class: "card-img-top", size: "400" %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <!-- ページネーションの要素 -->
+      <div class="swiper-pagination"></div>
+      <!-- ナビゲーションボタン （前、次） -->
+      <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+      <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+    </div>
     <div class="card-body">
       <%= link_to user_path(post.user), class: "text-decoration-none text-dark" do %>
       <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "70x70"%>

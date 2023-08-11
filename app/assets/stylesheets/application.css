@@ -13,29 +13,26 @@
  *= require_tree .
  *= require_self
  */
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #6c6b6b;
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
+:root {
+  --swiper-navigation-color: #000;
+  --swiper-pagination-color: #000;
+}
+
+.nav-item {
+  margin: 0 10% 10% 15%;
+  width: 100%;
+}
 
 .field_with_errors {
   /*エラーメッセージでフォームが崩れないように設定*/
   display: contents;
-}
-
-.sidebar {
-  width: 270px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.sidebar li {
-  margin-top: 2em;
 }
 
 body {
@@ -43,43 +40,41 @@ body {
   word-wrap: break-word;
   word-break: break-all;
   overflow-wrap: break-word;
-  margin: 0;
 }
 
 .full-page {
   width: 100%;
-  height: 100%;
-  padding-bottom: 10%;
+  height: 100vh;
+  background-color: #f0ffff;
 }
 
 .login-form {
   background-color: rgba(255, 255, 255, 0.5);
 }
-.site-name {
-  font-size: 50px;
-  font-family: cursive;
-}
 
 .top-image {
+  width: 100vw;
+  height: 100vh;
   background-image: url("top_image.jpg");
   background-size: cover;
   background-position: center;
-  width: 100%;
+}
+
+.sidebar {
   height: 100vh;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+}
+
+.site-name {
+  font-size: 50px;
+  font-family: cursive;
 }
 
 .flex {
   display: flex;
   flex-flow: wrap;
 }
-
-/*#jqs-2 {*/
-/*  width: 500px;*/
-/*}*/
 
 /*========= 検索窓の設定 ===============*/
 

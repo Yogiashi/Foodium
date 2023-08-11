@@ -1,83 +1,77 @@
 <% if user_signed_in? %>
-  <div class="sidebar" style="background-color: #006400">
-    <ul class="text-center", style="list-style: none;">
-      <div class="mt-4" id="top">
-        <a class="col-8" href="#"><%= image_tag "foodium.jpg", class: "ml-3 rounded", size: "200x80" %></a>
-      </div>
-      <li>
-        <%= link_to posts_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9 mt-3" do %>
-        <i class="fas fa-home rounded-circle p-2 bg-light"></i> ホーム
+  <ul class="nav flex-column">
+    <li id="top nav-item">
+      <a href="#"><%= image_tag "foodium.jpg", class: "nav-link active rounded ml-4 mt-3", size: "250x100" %></a>
+    </li>
+    <li class="nav-item">
+      <%= link_to posts_path, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8 mt-5" do %>
+      <i class="fas fa-home rounded-circle p-2 bg-light"></i> ホーム
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#", id:"search", class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+        <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to notifications_path, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+        <% if current_user.notifications.where(checked: false).exists? %>
+          <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
+        <% else %>
+          <i class="fa-sharp fa-solid fa-bell rounded-circle p-2 bg-light"></i>
         <% end %>
-      </li>
-      <li>
-        <%= link_to "#", id:"search", class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-          <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
-        <% end %>
-      </li>
-      <li>
-        <%= link_to notifications_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-          <% if current_user.notifications.where(checked: false).exists? %>
-            <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
-          <% else %>
-            <i class="fa-sharp fa-solid fa-bell rounded-circle p-2 bg-light"></i>
-          <% end %>
-          通知
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_post_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-        <i class="far fa-image rounded-circle p-2 bg-light"></i> 投稿
-        <% end %>
-      </li>
-      <li>
-        <%= link_to user_path(current_user), class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-        <i class="fas fa-user rounded-circle p-2 bg-light"></i> プロフィール
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_user_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-        <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
-        <% end %>
-      </li>
-    </ul>
-  </div>
+        通知
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_post_path, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+      <i class="far fa-image rounded-circle p-2 bg-light"></i> 投稿
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to user_path(current_user), class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+      <i class="fas fa-user rounded-circle p-2 bg-light"></i> プロフィール
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+      <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
+      <% end %>
+    </li>
+  </ul>
 <% elsif admin_signed_in? %>
-  <div class="sidebar"  style="background-color: #006400">
-    <ul class="text-center", style="list-style: none;">
-      <div class="mt-4" id="top">
-        <a class="col-8" href="#"><%= image_tag "foodium2.jpg", class: "ml-3 rounded", size: "200x80" %></a>
-      </div>
-      <li>
-        <%= link_to admin_users_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9 mt-4" do %>
-        <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_tags_path, class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-        <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ
-        <% end %>
-      </li>
-      <li class="search-group">
-        <%= link_to "#", class: "text-decoration-none btn btn-outline-light btn-lg col-9 btn1" do %>
-          <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
-        <% end %>
-        <!--検索フォーム-->
-       <div class="search-form col-10 mx-auto", style='display:none;'>
-         <%= form_with url: admin_users_path, local: true, method: :get, class: "input-group" do |form| %>
-            <%= form.text_field :word, class: "form-control justify-content-center", placeholder: "ユーザー検索" %>
-            <%= button_tag type: "submit", class: "btn btn-light ml-auto form-control col-3" do %>
-  	          <i class="fas fa-search"></i>
-            <% end %>
+  <ul class="nav flex-column">
+    <div class="mt-4" id="top">
+      <a class="col-8" href="#"><%= image_tag "foodium2.jpg", class: "ml-3 rounded", size: "200x80" %></a>
+    </div>
+    <li class="nav-item">
+      <%= link_to admin_users_path, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8 mt-4" do %>
+      <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to admin_tags_path, class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8" do %>
+      <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ
+      <% end %>
+    </li>
+    <li class="nav-item search-group">
+      <%= link_to "#", class: "nav-link active text-decoration-none btn btn-outline-light btn-lg col-8 btn1" do %>
+        <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
+      <% end %>
+      <!--検索フォーム-->
+     <div class="search-form col-10 mx-auto", style='display:none;'>
+       <%= form_with url: admin_users_path, local: true, method: :get, class: "input-group" do |form| %>
+          <%= form.text_field :word, class: "form-control justify-content-center", placeholder: "ユーザー検索" %>
+          <%= button_tag type: "submit", class: "btn btn-light ml-auto form-control col-3" do %>
+	          <i class="fas fa-search"></i>
           <% end %>
-       </div>
-      </li>
-      <li>
-        <%= link_to destroy_admin_session_path, method: :delete, class: "text-decoration-none btn btn-outline-light btn-lg col-9" do %>
-        <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
         <% end %>
-      </li>
-    </ul>
-  </div>
-<% else %>
-  <div class="sidebar"></div>
+     </div>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_admin_session_path, method: :delete, class: "tnav-link active ext-decoration-none btn btn-outline-light btn-lg col-8" do %>
+      <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
+      <% end %>
+    </li>
+  </ul>
 <% end %>
