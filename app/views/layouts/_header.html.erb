@@ -4,14 +4,14 @@
       <a href="#"><%= image_tag "foodium.jpg", class: "navbar-brand", size: "250x100" %></a>
     </div>
     <!--ハンバーガーメニュー-->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <% if user_signed_in? %>
-        <ul class="navbar-nav mb-2 ml-auto">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mb-2 ml-auto">
+        <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to posts_path, class: "nav-link active btn" do %>
+            <%= link_to posts_path, class: "nav-link active" do %>
               <i class="fas fa-home rounded-circle p-2 bg-light"></i> ホーム
             <% end %>
           </li>
@@ -45,10 +45,8 @@
             <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
             <% end %>
           </li>
-        </ul>
-      <% elsif admin_signed_in? %>
-        <ul class="navbar-nav mb-2 ml-auto">
-          <li class="nav-item search-group">
+        <% elsif admin_signed_in? %>
+          <li class="nav-item search-group  ml-auto">
             <%= link_to "#", class: "nav-link active btn1" do %>
               <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
             <% end %>
@@ -62,23 +60,23 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  ml-auto">
             <%= link_to admin_users_path, class: "nav-link active" do %>
             <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー
             <% end %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  ml-auto">
             <%= link_to admin_tags_path, class: "nav-link active" do %>
               <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ
             <% end %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  ml-auto">
             <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link active" do %>
             <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
             <% end %>
           </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

@@ -39,20 +39,24 @@ $(document).on('click touchend', function(event) {
 });
 
 // 画像プレビュー機能
-$(function() {
-  function readURL(input) {
-      if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-  $('.img_prev').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-      }
-  }
-  $(document).on('change', '.img_field', function(){
-    readURL(this);
+$(function(){
+  $('.img_field').on('change', function(e) {
+    let files = e.target.files;
+    let previewContainer = $('#image-preview');
+    previewContainer.empty(); // 既存のプレビューをクリア
+    Array.from(files).forEach(file => {
+      let reader = new FileReader();
+      reader.onload = function(event) {
+        console.log({event})
+        let imagePreview = $('<img>').attr('src', event.target.result).addClass('img_prev col-3').attr('size', '150x250');
+        previewContainer.append(imagePreview);
+      };
+      reader.readAsDataURL(file);
+    })
   });
-});// ロゴをクリックするとページの最上部にスクロール
+});
+
+// ロゴをクリックするとページの最上部にスクロール
 $(function() {
 $('#top a').on('click',function(event){
   $('body, html').animate({

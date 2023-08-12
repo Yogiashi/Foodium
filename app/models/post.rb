@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   def get_post_image
     (post_images.attached?) ? post_images : 'no_image.jpg'
   end
-  
+
   # 投稿にいいねされてるかの判別
   def liked?(user)
      likes.where(user_id: user.id).exists?

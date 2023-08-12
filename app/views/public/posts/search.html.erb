@@ -10,7 +10,7 @@
           価格が <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円の
         <% end %>
         投稿</h1>
-      <div class="flex justify-content-center">
+      <div class="flex">
         <%= render "public/users/post", posts: @posts %>
       </div>
     </div>

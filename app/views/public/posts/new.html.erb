@@ -5,12 +5,18 @@
       <%= form_with model: @post do |f| %>
         <%= render 'layouts/errors', obj: @post %>
         <div class="row mt-5">
-          <%= f.label :画像, class: "col-form-label col-3" %>
-          <!--画像プレビュー機能-->
-        <% @post.post_images.each do |image| %>
-          <%= image_tag image, onClick: "$('.img_field').click()", class: "img_prev col-6", size: "150x250" %>
-        <% end %>
-          <%= f.file_field :post_images, class: "img_field mx-auto mt-5", multiple: true, accept: 'image/*' %>
+          <div class="col-12">
+            <div id="image-preview" class="row">
+              <!--画像プレビュー機能-->
+              <% @post.post_images.each do |image| %>
+                <div class="col-4"><%= image_tag image, class: "img_prev img-fluid" %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :画像, class: "col-form-label col-3"%>
+          <%= f.file_field :post_images, class: "img_field col-9", multiple: true, accept: 'image/*' %>
         </div>
         <div class="row mt-5">
           <%= f.label :ショップ名, class: "col-form-label col-3", placeholder: "お店の名前を入力..."%>

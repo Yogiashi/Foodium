@@ -31,8 +31,8 @@
           <div class="swiper">
               <div class="swiper-wrapper">
                 <% @post.post_images.each do |image| %>
-                  <div class="swiper-slide">
-                    <div class="images mt-5", style="height: 300px"><%= image_tag image %></div>
+                  <div class="swiper-slide mt-5">
+                    <div style="height: 380px"><%= image_tag image, class: "img-fluid" %></div>
                   </div>
                 <% end %>
               </div>
@@ -42,7 +42,7 @@
               <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
               <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
             </div>
-    
+
             <div class="d-flex border-bottom my-3">
               <!--いいねボタンajax-->
               <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
@@ -92,7 +92,7 @@
             <div class='row'>
               <div class='col-12 mx-auto mb-1'>
                 <div id='map'></div>
-    
+
                 <style>
                 #map{
                   height: 400px;
