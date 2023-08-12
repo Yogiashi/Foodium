@@ -13,8 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
-
 .swiper {
   width: 100%;
   height: 100%;
@@ -49,19 +47,39 @@ body {
 .full-page {
   width: 100vw;
   height: 100vh;
-  background-color: #fffacd;
+  background-color: #f7f7f7;
+}
+
+.container {
+  margin-top: 150px;
+  padding-bottom: 5%;
 }
 
 .login-form {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.top-image {
+.session-image {
   width: 100vw;
   height: 100vh;
-  background-image: url("top_image.jpg");
+  background-image: url("morning.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.registration-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("pudding.jpg");
+  background-size: cover;
+}
+
+.admin-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("cheese_cake.jpg");
+  background-size: cover;
+  background-position: top 10% right 20%;
 }
 
 header {
@@ -96,7 +114,7 @@ header {
 
 #search-wrap{
   position:fixed;/*固定配置にして*/
-  top: 14%;
+  top: 100px;
   right: 0;
   z-index: -1;/*最背面に設定*/
   opacity: 0;/*透過を0に*/
@@ -108,12 +126,11 @@ header {
 /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
 #search-wrap.panelactive{
   opacity: 0.9;/*不透明に変更*/
-   z-index: 3;/*全面に出現*/
-   background: gray;
-    /*中の要素を天地中央揃えにする設定*/
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  z-index: 3;/*全面に出現*/
+  background: gray;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 /*==検索窓のエリア*/

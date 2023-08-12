@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 10%;">
+<div class="container">
   <div class="row">
     <div class="col-7">
       <div class="card">
@@ -7,7 +7,7 @@
             <% @post.post_images.each do |image| %>
               <div class="swiper-slide">
                 <%= link_to post_path(@post) do %>
-                  <div class=""><%= image_tag image, class: "card-img-top", size: "380x280" %></div>
+                  <div class=""><%= image_tag image, class: "card-img-top" %></div>
                 <% end %>
               </div>
             <% end %>

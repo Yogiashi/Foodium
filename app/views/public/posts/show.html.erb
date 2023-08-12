@@ -1,4 +1,4 @@
-<div class="container"  style="margin-top: 10%;">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <div class="card mt-5 container" style="width: 70rem;">
@@ -32,7 +32,7 @@
               <div class="swiper-wrapper">
                 <% @post.post_images.each do |image| %>
                   <div class="swiper-slide mt-5">
-                    <div style="height: 380px"><%= image_tag image, class: "img-fluid" %></div>
+                    <div style="height: 400px"><%= image_tag image %></div>
                   </div>
                 <% end %>
               </div>
@@ -76,9 +76,9 @@
                <div class="col-7 text-center"><%= @post.price %> 円</div>
             </div>
             <hr>
-            <div class="row mt-4 p-2">
+            <div class="row p-2">
               <p class="col-3 ml-3">キャプション</p>
-              <div class="col-7 border rounded"><%= simple_format(@post.caption) %></div>
+              <div class="col-7 border rounded p-3"><%= simple_format(@post.caption) %></div>
             </div>
             <hr>
             <div class="row mt-4 p-2">
@@ -90,7 +90,7 @@
           <!--googl map-->
           <div class='container' style="margin-top: 100px;">
             <div class='row'>
-              <div class='col-12 mx-auto mb-1'>
+              <div class='col-12 mx-auto'>
                 <div id='map'></div>
 
                 <style>

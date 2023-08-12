@@ -1,7 +1,7 @@
-<div class="container" style="margin-top: 10%;">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-8">
-      <h1 class="text-center"><strong><%= @user.name %>さんの編集画面</strong></h1>
+      <h1 class="text-center"><%= @user.name %>さんの編集画面</h1>
       <%= form_with model: @user, url: admin_user_path do |f| %>
       <%= render 'layouts/errors', obj: @user %>
         <div class="row mt-5">
