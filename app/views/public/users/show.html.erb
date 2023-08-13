@@ -46,16 +46,17 @@
               <div class="flex">
                 <%= render "post", posts: @posts %>
               </div>
+              <div class="d-flex justify-content-center"><%= paginate @posts, :param_name => 'posts_page' %></div>
             </div>
             <div class="tabbox">
               <div id="liked_posts" class="flex">
                 <%= render "post", posts: @liked_posts %>
               </div>
+              <div class="d-flex justify-content-center"><%= paginate @liked_posts, :param_name => 'liked_page' %></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center"><%= paginate @posts, :param_name => 'posts_page' %></div>
     </div>
   </div>
 </div>

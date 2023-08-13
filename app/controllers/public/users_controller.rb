@@ -14,10 +14,10 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     # 公開中の投稿を取得
-    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(15)
+    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(2)
     # いいねした投稿を取得
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
-    @liked_posts = Post.find(likes)
+    @liked_posts = Post.where(id: likes).page(params[:liked_page]).per(2)
   end
 
   # 下書き一覧ページ
