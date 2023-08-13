@@ -42,18 +42,25 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
    end
   end
-
-  def self.search(search, min_search, max_search)
+  
+  # キーワード検索
+  def self.search(search)
     if search != nil && search != ''
       Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
-    elsif max_search != '' && max_search != nil && min_search != '' && min_search != nil
+    else
+      Post.all
+    end
+  end
+  
+  # 最小価格〜最大価格の
+  def self.price_search(min_search, max_search)
+    if max_search != '' && max_search != nil && min_search != '' && min_search != nil
         @posts = Post.where("price >= #{min_search} and price <= #{max_search}")
     elsif max_search != '' && max_search != nil
         @posts = Post.where("price <= #{max_search}")
     elsif min_search != '' && min_search != nil
         @posts = Post.where("price >= #{min_search}")
-    else
-      Post.all
     end
+    
   end
 end

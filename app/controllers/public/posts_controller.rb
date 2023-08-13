@@ -76,7 +76,8 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:word], params[:min_search], params[:max_search])
+    @posts = Post.search(params[:word])
+    @posts = Post.price_search(params[:min_search], params[:max_search]) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?
       @tag_word = " "
