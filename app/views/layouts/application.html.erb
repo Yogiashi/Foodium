@@ -31,12 +31,19 @@
                 <% end %>
               </div>
             <% end %>
+            <div class="border border-dark mt-3"></div>
             <!--投稿検索フォーム-->
             <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-100 mb-4" %>
+            <div class="input-group">
+              <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-75 mb-4" %>
+              <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+            </div>
               <!--価格検索フォーム-->
               <%= f.number_field :min_search, placeholder: "最小価格(半角入力)", class: "form-control w-100" %> <span class="text-white">〜</span>
-              <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100 mb-4" %>
+              <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100" %>
+              <%= f.submit "価格検索", class: "btn btn-light ml-auto d-flex" %>
               <!--タグ検索フォーム-->
             <span class="text-white">タグ一覧</span>
               <div class="d-flex flex-row flex-wrap p-2 border rounded">
@@ -47,9 +54,7 @@
             	    </div>
                 <% end %>
               </div>
-              <%= button_tag type: "submit", class: "btn btn-light ml-auto mt-3 m" do %>
-      	          <i class="fas fa-search"></i>
-                <% end %>
+              <%= f.submit "絞り込み", class: "btn btn-light mx-auto mt-3 d-flex" %>
             <% end %>
           </div>
         </div>

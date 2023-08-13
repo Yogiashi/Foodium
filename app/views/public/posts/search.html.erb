@@ -2,13 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12">
       <h1 class="text-center">
-        <% if params[:word] %>
-          キーワード<strong>"<%= params[:word] %>"</strong>を含む
-        <% if params[:tag_ids]  %>
-          タグが<strong><%= @tag_word %></strong>の
-        <% if  params[:min_search].present? or  params[:max_search] %>
-          価格が <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円の
-        <% end %>
+       
         投稿</h1>
       <div class="flex mt-5">
         <%= render "public/users/post", posts: @posts %>
