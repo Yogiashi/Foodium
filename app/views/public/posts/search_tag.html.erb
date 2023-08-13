@@ -5,17 +5,17 @@
        <div class="d-flex justify-content-center">
          <!--タグリスト-->
         <% @tag_list.each do |list|%>
-          <strong><%=link_to list.name, search_tag_posts_path(tag_id: list.id), class: "text-dark ml-1" %></strong>
+          <strong><%=link_to list.name, search_tag_posts_path(tag_id: list.id), class: "text-dark" %></strong>
           <%="(#{list.posts.count})" %>
         <% end %>
       </div>
     </div>
     <div class="row  justify-content-center">
-      <div class="col-12 mt-5">
+      <div class="col-12 mt-5 ml-5">
         <div class="flex">
           <%= render "public/users/post", posts: @posts %>
         </div>
-        <div class="d-flex justify-content-center"><%= paginate @posts %></div>
+        <div class="d-flex justify-content-center mt-5"><%= paginate @posts %></div>
       </div>
     </div>
   </div>
