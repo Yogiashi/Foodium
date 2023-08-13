@@ -1,19 +1,18 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12">
-      <h1 class="text-center">
-        <% if params[:word] %>
-          キーワード<strong>"<%= params[:word] %>"</strong>を含む
-        <% if params[:tag_ids]  %>
-          タグが<strong><%= @tag_word %></strong>の
-        <% if  params[:min_search].present? or  params[:max_search] %>
-          価格が <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円の
-        <% end %>
-        投稿</h1>
+      <div class="d-flex justify-content-center">
+        <h4>
+          <div class="">キーワード: <strong>"<%= params[:word] %>"</strong></div>
+          <div class="">タグ: <strong><%= @tag_word %></strong></div>
+          <div class="">価格:  <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円</div>
+        </h4>
+      <h1 class="ml-4 mt-3">の投稿</h1>
+      </div>
       <div class="flex mt-5">
         <%= render "public/users/post", posts: @posts %>
       </div>
-      <div class="d-flex justify-content-center"><%= paginate @posts %></div>
+      <div class="d-flex justify-content-center mt-5"><%= paginate @posts %></div>
     </div>
   </div>
 </div>

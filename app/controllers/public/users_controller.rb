@@ -14,16 +14,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     # 公開中の投稿を取得
-    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(2)
+    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(12)
     # いいねした投稿を取得
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
-    @liked_posts = Post.where(id: likes).page(params[:liked_page]).per(2)
+    @liked_posts = Post.where(id: likes).page(params[:liked_page]).per(12)
   end
 
   # 下書き一覧ページ
   def draft
     @user = User.find(params[:id])
-    @posts = @user.posts.where(displayed: false).page(params[:page]).per(15)
+    @posts = @user.posts.where(displayed: false).page(params[:page]).per(12)
   end
 
   def edit
