@@ -14,16 +14,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     # 公開中の投稿を取得
-    @posts = @user.posts.where(displayed: :true)
+    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(15)
     # いいねした投稿を取得
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
     @liked_posts = Post.find(likes)
   end
-  
+
   # 下書き一覧ページ
   def draft
     @user = User.find(params[:id])
-    @posts = @user.posts.where(displayed: false)
+    @posts = @user.posts.where(displayed: false).page(params[:page]).per(15)
   end
 
   def edit
@@ -53,7 +53,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
-  
+
   # urlから直接アクセスされるのを防ぐ
   def is_matching_login_user
     user = User.find(params[:id])
