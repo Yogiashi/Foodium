@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.where(displayed: :true)
+    @posts = Post.all.where(displayed: :true).page(params[:page]).per(15)
     # フォローしてるユーザーの投稿を取得
     @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true)
     @tag_list=Tag.all
@@ -76,15 +76,15 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:word])
-    @posts = Post.price_search(params[:min_search], params[:max_search]) if params[:min_search].present? or  params[:max_search].present?
+    @posts = Post.search(params[:word]).page(params[:page]).per(15)
+    @posts = Post.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(15) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?
       @tag_word = " "
       @tag_ids.each do |id|
         @tag_word = @tag_word + " " + "'" + Tag.find(id).name + "'"  if id != ""
       end
-      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}")
+      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}").page(params[:page]).per(15)
     end
   end
 
