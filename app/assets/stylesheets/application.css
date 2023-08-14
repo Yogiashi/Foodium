@@ -13,3 +13,296 @@
  *= require_tree .
  *= require_self
  */
+
+
+/*投稿画像のスワイパー*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  object-fit: cover;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+:root {
+  --swiper-navigation-color: #2f4f4f;
+  --swiper-pagination-color: #2f4f4f;
+}
+
+/*エラーメッセージでフォームが崩れないように設定*/
+.field_with_errors {
+  display: contents;
+}
+
+header {
+  width: 100%;
+  background-color: #006400;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+body {
+  /*半角英数折返しの設定*/
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.container {
+  margin-top: 150px;
+  padding-bottom: 5%;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.session-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url("morning.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.registration-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url("pudding.jpg");
+  background-size: cover;
+}
+
+.admin-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url("cheese_cake.jpg");
+  background-size: cover;
+  background-position: top 10% right 20%;
+}
+
+.site-name {
+  font-size: 50px;
+  font-family: cursive;
+}
+
+/*投稿を横並びに設定*/
+.flex {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.nav-link:hover{
+  opacity: 0.6;
+  background-color: #fff;
+  border-color: #444;
+  color: #444;
+  border-radius: 10px;
+}
+
+/*========= 検索窓の設定 ===============*/
+
+/*==検索窓背景のエリア*/
+
+#search-wrap{
+  position:fixed;
+  top: 100px;
+  right: 0;
+  z-index: -1;/*最背面に設定*/
+  opacity: 0;
+  transition: all 0.5s;/*transitionを使ってスムースに現れる*/
+  width: 100%;
+  height: 100vh;
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+#search-wrap.panelactive{
+  opacity: 0.9;/*不透明に変更*/
+  z-index: 5;/*全面に出現*/
+  background: gray;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+/*==検索窓のエリア*/
+
+#search-wrap .search-area{
+  display: none;/*検索窓のエリアは、はじめ非表示*/
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+#search-wrap.panelactive .search-area{
+  display: block;/*検索窓エリアを表示*/
+  position: relative;
+}
+
+/*==検索フォームの設定*/
+
+#search-wrap form{
+  margin-top: 30px;
+  width: 400px;
+}
+
+/*=======閉じるための×ボタン========*/
+.close-btn{
+  position: absolute;
+  top:10px;
+  right:10px;
+  z-index: 2;
+  cursor: pointer;
+  width: 60px;
+  height:60px;
+}
+
+.close-btn span{
+    display: inline-block;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #fff;
+ }
+
+/*×マーク*/
+.close-btn span:nth-of-type(1) {
+    top: 21px;
+    left: 16px;
+    transform: translateY(6px) rotate(-135deg);
+    width: 50%;
+}
+
+.close-btn span:nth-of-type(2){
+    top: 32px;
+    left: 16px;
+    transform: translateY(-6px) rotate(135deg);
+    width: 50%;
+}
+
+.top-sidebar {
+  width: 40vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+.top-name {
+  font-size: 100px;
+  text-align: center;
+  padding-top: calc(40vh - 1em);
+  font-family: cursive;
+}
+
+.top-link {
+  margin-top: 25vh;
+}
+
+.swiper-slide img {
+  width: 100vw;
+  height: 100vh;
+}
+
+/*// タブ切り替え*/
+.tab {
+  width: 45%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab:first-child {
+  border-left: none;
+}
+/*// タブがactiveのときのデザイン*/
+.tab-active {
+  color: #FFF;
+  background: #2f4f4f;
+  transition: all 0.2s ease-in-out;
+}
+/*// タブの中身、最初は非表示*/
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+/*// box-showクラスのものだけ表示*/
+.box-show {
+  display: block;
+}
+/*// hover時のアクション*/
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.menu {
+  float: right;
+  display: flex;
+  list-style-type: none;
+  color: #fff;
+  padding: 0;
+}
+
+.menu li {
+  position: relative;
+  width:100px;
+  padding-bottom: 2px;
+  list-style-type: none;
+}
+
+.menuSub {
+  position: absolute;
+  margin-left: -6px;
+  padding: 0;
+  display: none;
+}
+
+.menuSub li a {
+  display: block;
+  text-decoration: none;
+}
+
+.menuSub li a:hover {
+  background: #FFCA7B;
+}
+
+.top-sidebar {
+  width: 40vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+.top-name {
+  font-size: 100px;
+  text-align: center;
+  padding-top: calc(40vh - 1em);
+  font-family: cursive;
+}
+
+.top-link {
+  margin-top: 25vh;
+}
+
+.swiper-slide img {
+  width: 100vw;
+  height: 100vh;
+}

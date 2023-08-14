@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="row d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image, size: '150x180', class: "rounded-circle mr-5" %>
+        <h3 class="mt-5 mx-5"><%= @user.name %></h3>
+         <% if @user.id == current_user.id %>
+           <div class="mt-4 ml-5">
+             <div class="mb-3"><%=link_to "下書き一覧", draft_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
+             <div class=""><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
+           </div>
+           <% end %>
+           <!--フォローボタンajax-->
+          <span id="follow_btn_<%= @user.id %>", class="mt-5 ml-5">
+             <%= render 'public/relationships/btn', user: @user %>
+          </span>
+        </div>
+      <div class="text-center p-5"><%= simple_format(@user.introduction) %></div>
+      <div class="d-flex justify-content-center">
+        <span style="margin-right: 60px;">投稿数 <%= @user.posts.count %></span>
+        <span id="follow_count_<%= @user.id %>"><%= render "public/relationships/follow_count", user: @user %></span>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-12 mt-5">
+          <% if @user.id == current_user.id %>
+           <!--タブ部分-->
+            <ul class="tab-list list-unstyled d-flex justify-content-center">
+              <li class="tab tab-active text-center">
+                Posts
+              </li>
+              <li class="tab text-center">
+                Likes
+              </li>
+            </ul>
+          <% else %>
+            <div class="border text-white text-center mx-auto", style="height: 50px; width: 80%; padding: 10px; background-color: #2f4f4f; ">Posts</div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <!--タブで選択された要素部分-->
+          <div class="tabbox-contents">
+            <div class="tabbox box-show" >
+              <div class="flex">
+                <%= render "post", posts: @posts %>
+              </div>
+              <div class="d-flex justify-content-center mt-5"><%= paginate @posts, :param_name => 'posts_page' %></div>
+            </div>
+            <div class="tabbox">
+              <div id="liked_posts" class="flex">
+                <%= render "post", posts: @liked_posts %>
+              </div>
+              <div class="d-flex justify-content-center mt-5"><%= paginate @liked_posts, :param_name => 'liked_page' %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

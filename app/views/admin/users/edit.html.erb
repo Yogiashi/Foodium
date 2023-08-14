@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1 class="text-center"><%= @user.name %>さんの編集画面</h1>
+      <%= form_with model: @user, url: admin_user_path do |f| %>
+      <%= render 'layouts/errors', obj: @user %>
+        <div class="row mt-5">
+          <%= f.label :画像, class: "col-form-label col-3"%>
+          <!--画像プレビュー機能-->
+          <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-4", size: "180x180" %>
+          <%= f.file_field :profile_image, class: "mt-5 img_field mx-auto", style: 'display:none;', accept: 'image/*' %>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :ユーザーネーム, class: "col-form-label col-3"%>
+          <%= f.text_field :name, class: "col-9 form-control"%>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :自己紹介, class: "col-form-label col-3"%>
+          <%= f.text_area :introduction, class: "col-9 form-control",placeholder: "50文字まで", size: "30x5"%>
+        </div>
+        <div class="row mt-5">
+          <%= f.label :ステータス, class: "col-form-label col-3"%>
+          <%= f.radio_button :is_deleted, :false, class: "ml-5" %>
+          <%= f.label :is_deleted_false, "有効", class: "col-form-label col-3" %>
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_deleted_true, "退会", class: "col-form-label col-3" %>
+        </div>
+        <div class="row mt-5 d-flex justify-content-center">
+          <%= f.submit "変更を保存する", class: "btn btn-success"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

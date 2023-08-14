@@ -1,0 +1,13 @@
+@use '~bootstrap/scss/bootstrap';
+
+ /*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #000;   /*文字の色を変える*/
+  border-radius: 50%;     /*角を丸くする*/
+  background: #e6e6fa;
+}
+
+.page-item.active .page-link {
+   background-color: #000;
+}

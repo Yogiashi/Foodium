@@ -1,0 +1,4 @@
+<% @notifications = current_user.notifications.order(created_at: :desc) %>
+ <% @notifications.where(checked: false).each do |notification| %>
+ $('#notification').html("<%= j(render "#{notification.action_type}", notification: notification %>");
+<% end %>

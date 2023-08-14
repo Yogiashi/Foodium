@@ -6,11 +6,53 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+  <script src="https://kit.fontawesome.com/f9e80abfb4.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="full-page">
+    <% if user_signed_in? or admin_signed_in? %>
+      <header><%= render "layouts/header" %></header>
+    <% end %>
+    <% if notice %>
+      <span class="ml-5"><%= notice %></span>
+    <% end %>
+    <main>
+      <div id="search-wrap">
+         <div class="close-btn"><span></span><span></span></div>
+         <div class="search-area">
+            <!--ユーザー検索フォーム-->
+            <%= form_with url: users_path, local: true, method: :get do |form| %>
+              <div class="input-group">
+                <%= form.text_field :word, placeholder: "ユーザー検索(ユーザーネーム)", class: "form-control w-75" %>
+                <%= button_tag type: "submit", class: "btn btn-light form-control" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="border border-dark mt-3"></div>
+            <!--投稿検索フォーム-->
+            <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+              <%= f.text_field :word, placeholder: "投稿検索(フリーワード: ハンバーグ, 東京...)", class: "form-control w-100 mb-4" %>
+              <!--価格検索フォーム-->
+              <%= f.number_field :min_search, placeholder: "最小価格(半角入力)", class: "form-control w-100" %> <span class="text-white">〜</span>
+              <%= f.number_field :max_search, placeholder: "最大価格(半角入力)", class: "form-control w-100" %>
+              <!--タグ検索フォーム-->
+            <div class="text-white mt-2">タグ一覧</div>
+              <div class="d-flex flex-row flex-wrap p-2 border rounded">
+                <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+            	    <div class="mx-1">
+            	      <%= b.check_box %>
+            	      <%= b.label class: "text-white" %>
+            	    </div>
+                <% end %>
+              </div>
+              <%= f.submit "絞り込み", class: "btn btn-light mx-auto mt-3 d-flex" %>
+            <% end %>
+          </div>
+        </div>
+        <%= yield %>
+      </main>
   </body>
 </html>

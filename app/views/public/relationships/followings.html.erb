@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <!--戻るボタン-->
+    <%= link_to :back, class: "ml-auto text-dark" do %>
+    <i class="fas fa-times fa-3x"></i>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h1 class="text-center mb-5">フォロー中</h1>
+      <% if @users.exists? %>
+        <table class="table table-borderless">
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                <%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %>
+                <% end %>
+              </td>
+              <td><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>
+              <td id="follow_btn_<%= user.id %>">
+               <%= render 'public/relationships/btn', user: user %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+       <h3 class="text-center mt-5">ユーザーはいません</h3>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="swiper-top">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <%= image_tag "green_cake.jpg" %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag "egg.jpg" %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag "pancake.jpg" %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag "lunch.jpg" %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag "cakeset.jpg" %>
+    </div>
+  </div>
+</div>
+<div class="top-sidebar">
+  <div class="top-name">Foodium</div>
+  <div class="top-link">
+    <div class="text-center text-dark">アカウントをお持ちの方<%= link_to "こちら", new_user_session_path, class: "text-success text-decoration-none" %></div>
+    <div class="text-center text-dark">アカウントをお持ちでない方<%= link_to "こちら", new_user_registration_path, class: "text-success text-decoration-none" %></div>
+  </div>
+</div>

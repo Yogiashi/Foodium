@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザーネーム
+        introduction: 自己紹介
+      post:
+        shop_name: ショップ名
+        dish_name: 料理名
+        caption: キャプション
+        post_images: 画像
+        price: 価格
+        address: 場所
+      tag:
+        name: タグ

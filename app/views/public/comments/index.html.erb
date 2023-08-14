@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <div class="card">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <% @post.post_images.each do |image| %>
+              <div class="swiper-slide">
+                <%= link_to post_path(@post) do %>
+                  <div class=""><%= image_tag image, class: "card-img-top" %></div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <!-- ページネーションの要素 -->
+          <div class="swiper-pagination"></div>
+          <!-- ナビゲーションボタン （前、次） -->
+          <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+          <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+        </div>
+        <div class="card-body">
+          <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
+          <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "60x60"%>
+          <%= @post.user.name %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="d-flex border-bottom">
+            <!--いいねボタンajax-->
+            <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
+            <i class="far fa-comment mr-1 mt-1"></i>
+            <span id="comment_count"><%= @post.comments.count %> コメント</span>
+            <!--投稿時間表示-->
+            <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5 mt-5">
+      <!--コメント欄-->
+      <div id="post-comments"><%= render "comments", comments: @comments %></div>
+      <% if @post.user != current_user %>
+        <!--コメントフォーム-->
+        <div id="comment-form", class="border-top"><%= render "form", post: @post, comment: Comment.new %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

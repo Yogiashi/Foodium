@@ -1,0 +1,35 @@
+<% posts.reverse_each do |post| %>
+  <div class="bg-white ml-1 mb-1 card" style="width: 22rem; height: 25rem;">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <% post.post_images.each do |image| %>
+          <div class="swiper-slide">
+            <%= link_to post_path(post) do %>
+              <%= image_tag image, class: "card-img-top" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <!-- ページネーションの要素 -->
+      <div class="swiper-pagination"></div>
+      <!-- ナビゲーションボタン （前、次） -->
+      <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+      <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+    </div>
+
+    <div class="card-body">
+      <div class="d-flex border-bottom">
+        <!--いいねボタンajax-->
+        <div id="like_btn_<%= post.id %>" class="mr-3"><%= render "public/likes/btn", post: post %></div>
+        <%= link_to post_comments_path(post), class: "text-decoration-none text-dark" do %>
+        <i class="far fa-comment"></i>
+        <span id="comment_count"><%= post.comments.count %> コメント</span>
+        <% end %>
+      </div>
+      <!--タグ-->
+      <% post.tags.each do |tag| %>
+        <i class="fas fa-tag"></i> <%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
