@@ -11,14 +11,14 @@
       <% if @users.exists? %>
         <table class="table table-borderless">
           <% @users.each do |user| %>
-            <tr>
-              <td>
+            <tr style="vertical-align:middle;">
+              <td style="vertical-align:middle;">
                 <%= link_to user_path(user) do %>
                 <%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %>
                 <% end %>
               </td>
-              <td><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>
-              <td id="follow_btn_<%= user.id %>">
+              <td style="vertical-align:middle;"><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>
+              <td id="follow_btn_<%= user.id %>" style="vertical-align:middle;">
                <%= render 'public/relationships/btn', user: user %>
               </td>
             </tr>
