@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-md-8 col-12">
       <h1 class="text-center"><strong>"<%= params[:word] %>"</strong>を含むユーザー</h1>
       <table class="table mt-5">
         <% @users.each do |user| %>
         <tr>
-          <td class="w-25"><%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle mr-5" %></td>
+          <td class="">
+            <%= link_to user_path(user), class: "text-decoration-none text-dark" do %>
+              <%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %>
+            <% end %>
+          </td>
           <td  style="vertical-align:middle;"><strong><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></strong></td>
-          <td  style="vertical-align:middle;"><%= user.email  %></td>
           <td colspan="2",  style="vertical-align:middle;">
             <div id="follow_btn_<%= user.id %>">
              <%= render 'public/relationships/btn', user: user %>
