@@ -1,5 +1,5 @@
-<div class="session-image" style="padding-top: 5%;">
-  <div class="col-5 mx-auto p-3 login-form">
+<div class="session-image">
+  <div class="col-md-5 col-sm-12 mx-auto p-3 login-form">
     <h2 class="text-center site-name">Foodium</h2>
     <%= form_with model: @user, url: user_session_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="card mt-5 container" style="width: 70rem;">
+      <div class="card mt-5 container">
       <div class="row">
         <div class="card-body">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-6 col-12 mb-5 mb-md-0">
           <div class="swiper">
               <div class="swiper-wrapper">
                 <% @post.post_images.each do |image| %>
@@ -60,7 +60,7 @@
               <% end %>
             </div>
           </div>
-          <div class="col-6 mt-5">
+          <div class="col-md-6 col-12 mt-5">
             <div class="row p-2">
               <p class="col-3 ml-3">ショップ名</p>
                <h3 class="col-7 text-center"><%= @post.shop_name %></h3>

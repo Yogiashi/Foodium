@@ -5,7 +5,7 @@
       <%= image_tag comment.user.get_profile_image, class: "rounded-circle mr-2", size: "40x40" %>
       <%= link_to comment.user.name, user_path(comment.user), class: "text-decoration-none text-dark" %>
     </td>
-    <td style="width: 70px;">
+    <td style="width: 70%;">
       <%= link_to post_comment_path(comment.post_id, comment), class: " text-decoration-none text-dark btn btn-outline-light px-1", method: :delete, remote: true do %>
       <i class="far fa-trash-alt"></i>削除
       <% end %>
