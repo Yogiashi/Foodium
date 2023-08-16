@@ -18,14 +18,15 @@
       <div class="tabbox-contents">
         <div class="tabbox box-show">
           <%= render "post", posts: @posts %>
+          <div class="d-flex justify-content-center mt-5"><%= paginate @posts, :param_name => 'posts_page' %></div>
         </div>
         <div class="tabbox">
           <div id="following_posts">
             <%= render "post", posts: @following_posts %>
+            <div class="d-flex justify-content-center mt-5"><%= paginate @following_posts, :param_name => 'following_page' %></div>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center"><%= paginate @posts %></div>
     </div>
   </div>
 </div>

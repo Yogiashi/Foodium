@@ -28,9 +28,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.where(displayed: :true).page(params[:page]).per(15)
+    @posts = Post.all.where(displayed: :true).page(params[:posts_page]).per(12)
     # フォローしてるユーザーの投稿を取得
-    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true)
+    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true).page(params[:following_page]).per(12)
     @tag_list=Tag.all
   end
 
