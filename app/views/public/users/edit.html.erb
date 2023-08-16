@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-md-8 col-11">
       <h1 class="text-center">プロフィールを編集</h1>
       <% if @user.email == 'guest@example.com'%>
         <h5 class="text-center mt-5 ml-5">ゲストユーザーはプロフィールの編集ができません。</h5>
@@ -8,18 +8,18 @@
         <%= form_with model: @user do |f| %>
         <%= render 'layouts/errors', obj: @user %>
           <div class="row mt-5">
-            <%= f.label :画像, class: "col-form-label col-3"%>
+            <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
             <!--画像プレビュー機能-->
-            <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-4", size: "180x180" %>
+            <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-sm-4 col-8 mx-auto", size: "180x180" %>
             <%= f.file_field :profile_image, class: "mt-5 img_field mx-auto", style: 'display:none;', accept: 'image/*' %>
           </div>
           <div class="row mt-5">
-            <%= f.label :ユーザーネーム, class: "col-form-label col-3"%>
-            <%= f.text_field :name, class: "col-9 form-control"%>
+            <%= f.label :ユーザーネーム, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.text_field :name, class: "col-sm-9 form-control"%>
           </div>
           <div class="row mt-5">
-            <%= f.label :自己紹介, class: "col-form-label col-3"%>
-            <%= f.text_area :introduction, class: "col-9 form-control",placeholder: "50文字まで", size: "30x5"%>
+            <%= f.label :自己紹介, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.text_area :introduction, class: "col-sm-9 form-control",placeholder: "50文字まで", size: "30x5"%>
           </div>
           <div class="row mt-5 d-flex justify-content-center">
             <%= f.submit "変更を保存する", class: "btn btn-outline-success mr-5"%>

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-7">
+    <div class="col-md-6 col-12">
       <div class="card">
         <div class="swiper">
           <div class="swiper-wrapper">
             <% @post.post_images.each do |image| %>
               <div class="swiper-slide">
                 <%= link_to post_path(@post) do %>
-                  <div class=""><%= image_tag image, class: "card-img-top" %></div>
+                  <div class=""><%= image_tag image, class: "card-img-top", style: "height: 30em" %></div>
                 <% end %>
               </div>
             <% end %>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="col-5 mt-5">
+    <div class="col-md-6 col-12 mt-5">
       <!--コメント欄-->
       <div id="post-comments"><%= render "comments", comments: @comments %></div>
       <% if @post.user != current_user %>

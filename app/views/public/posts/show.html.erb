@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="card mt-5 container" style="width: 70rem;">
+  <div class="card">
+    <div class="card-body">
       <div class="row">
-        <div class="card-body">
+        <div class="col-12">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
           <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-5", size: "90x90"%>
           <strong><%= @post.user.name %></strong>
@@ -27,8 +26,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
-          <div class="swiper">
+        <div class="col-md-6 col-12">
+          <div class="row">
+            <div class="swiper">
               <div class="swiper-wrapper">
                 <% @post.post_images.each do |image| %>
                   <div class="swiper-slide mt-5">
@@ -42,8 +42,9 @@
               <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
               <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
             </div>
-
-            <div class="d-flex border-bottom my-3">
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 d-flex border-bottom">
               <!--いいねボタンajax-->
               <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
               <%= link_to post_comments_path(@post), class: "text-decoration-none text-dark" do %>
@@ -53,69 +54,70 @@
               <!--投稿時間表示-->
               <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
             </div>
-            <div class="mb-3">
+          </div>
+          <div class="row">
+            <div class="col-12 mb-3">
               <!--タグ-->
               <% @post_tags.each do |tag| %>
                  <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none" %></strong><%= "(#{tag.posts.count})" %>
               <% end %>
             </div>
           </div>
-          <div class="col-6 mt-5">
-            <div class="row p-2">
-              <p class="col-3 ml-3">ショップ名</p>
-               <h3 class="col-7 text-center"><%= @post.shop_name %></h3>
-            </div>
-            <hr>
-            <div class="row mt-4 p-2">
-              <p class="col-3 ml-3">料理名</p>
-                <h4 class="col-7 text-center"><%= @post.dish_name %></h4>
-            </div>
-            <hr>
-            <div class="row mt-4 p-2">
-              <p class="col-3 ml-3">価格</p>
-               <div class="col-7 text-center"><%= @post.price %> 円</div>
-            </div>
-            <hr>
-            <div class="row p-2">
-              <p class="col-3 ml-3">キャプション</p>
-              <div class="col-7 border rounded p-3"><%= simple_format(@post.caption) %></div>
-            </div>
-            <hr>
-            <div class="row mt-4 p-2">
-              <p class="col-3 ml-3">場所</p>
-                <p class="col-7 text-center"><%= @post.address %></p>
-            </div>
+        </div>
+        <div class="col-md-6 col-12 mt-5">
+          <div class="row p-2">
+            <p class="col-sm-3 ml-3 text-center">ショップ名</p>
+             <h3 class="col-sm-7 text-center"><%= @post.shop_name %></h3>
           </div>
           <hr>
-          <!--googl map-->
-          <div class='container' style="margin-top: 100px;">
-            <div class='row'>
-              <div class='col-12 mx-auto'>
-                <div id='map'></div>
-
-                <style>
-                #map{
-                  height: 400px;
-                }
-                </style>
-                <script>
-                function initMap(){
-                  let map = new google.maps.Map(document.getElementById('map'), {
-                  center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>},
-                  zoom: 17
-                  });
-                  marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
-                                position:  {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}, //マーカーを落とす位置を決める（値はDBに入っている）
-                                map: map //マーカーを落とすマップを指定
-                              });
-                }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
-              </div>
-            </div>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-3 ml-3 text-center">料理名</p>
+              <h4 class="col-sm-7 text-center"><%= @post.dish_name %></h4>
           </div>
+          <hr>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-3 ml-3 text-center">価格</p>
+             <div class="col-sm-7 text-center"><%= @post.price %> 円</div>
+          </div>
+          <hr>
+          <div class="row p-2">
+            <p class="col-form-label col-sm-3 ml-3 text-center">キャプション</p>
+            <div class="col-sm-7 border rounded p-3"><%= simple_format(@post.caption) %></div>
+          </div>
+          <hr>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-3 ml-3 text-center">場所</p>
+              <p class="col-sm-7 text-center"><%= @post.address %></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!--googl map-->
+      <div class='row'>
+        <div class='col-12 mx-auto'>
+          <div id='map'></div>
+  
+          <style>
+          #map{
+            height: 400px;
+          }
+          </style>
+          <script>
+          function initMap(){
+            let map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>},
+            zoom: 17
+            });
+            marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
+                          position:  {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}, //マーカーを落とす位置を決める（値はDBに入っている）
+                          map: map //マーカーを落とすマップを指定
+                        });
+          }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
         </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -46,7 +46,7 @@
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
-          <li class="nav-item search-group  ml-auto">
+          <li class="nav-item search-group">
             <%= link_to "#", class: "nav-link active btn1" do %>
               <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
             <% end %>
@@ -60,17 +60,17 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item  ml-auto">
+          <li class="nav-item">
             <%= link_to admin_users_path, class: "nav-link active" do %>
             <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー
             <% end %>
           </li>
-          <li class="nav-item  ml-auto">
+          <li class="nav-item">
             <%= link_to admin_tags_path, class: "nav-link active" do %>
               <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ
             <% end %>
           </li>
-          <li class="nav-item  ml-auto">
+          <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link active" do %>
             <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
             <% end %>

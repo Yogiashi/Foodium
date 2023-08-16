@@ -58,7 +58,7 @@ body {
 .full-page {
   width: 100vw;
   height: 100vh;
-  background-color: #f7f7f7;
+  background-color: #fff;
 }
 
 .container {
@@ -73,6 +73,7 @@ body {
 .session-image {
   width: 100vw;
   height: 100vh;
+  padding-top: 5%;
   background-image: image-url("morning.jpg");
   background-size: cover;
   background-position: center;
@@ -81,8 +82,10 @@ body {
 .registration-image {
   width: 100vw;
   height: 100vh;
+  padding-top: 3%;
   background-image: image-url("pudding.jpg");
   background-size: cover;
+  background-position: center;
 }
 
 .admin-image {
@@ -118,7 +121,7 @@ body {
 
 #search-wrap{
   position:fixed;
-  top: 100px;
+  top: 115px;
   right: 0;
   z-index: -1;/*最背面に設定*/
   opacity: 0;
@@ -130,7 +133,7 @@ body {
 /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
 #search-wrap.panelactive{
   opacity: 0.9;/*不透明に変更*/
-  z-index: 5;/*全面に出現*/
+  z-index: 11;/*全面に出現*/
   background: gray;
   padding-top: 5%;
   display: flex;
@@ -212,11 +215,6 @@ body {
   margin-top: 25vh;
 }
 
-.swiper-slide img {
-  width: 100vw;
-  height: 100vh;
-}
-
 /*// タブ切り替え*/
 .tab {
   width: 45%;
@@ -278,7 +276,7 @@ body {
 }
 
 .menuSub li a:hover {
-  background: #FFCA7B;
+  background: #ffa500;
 }
 
 .top-sidebar {
@@ -305,4 +303,70 @@ body {
 .swiper-slide img {
   width: 100vw;
   height: 100vh;
+}
+
+@media screen and (max-width:1200px) {
+  .flex {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width:600px) {
+  .flex {
+    display: flex;
+    justify-content: center;
+  }
+  .comment-form {
+    display: none;
+  }
+  .back-btn {
+    display: none;
+  }
+  .login-form {
+    margin-top : 30%;
+  }
+  .registration-image {
+    background-image: image-url("ice.jpg");
+    background-size: cover;
+  }
+  .post-title {
+    display: none;
+  }
+  .tag-title {
+    font-size: 30px;
+    margin-left: 45px;
+  }
+  .top-sidebar {
+    width: 1000vw;
+    height: 100vh;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 10;
+  }
+  .swiper-top {
+    width: 100vw;
+    height: 100vh;
+    background-image: image-url("green_cake.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  .top-name {
+    font-size: 100px;
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    right: 20px;
+    font-family: cursive;
+  }
+  .top-link {
+    position: fixed;
+    bottom: 100px;
+    left: 20px;
+    right: 20px;
+  }
 }
