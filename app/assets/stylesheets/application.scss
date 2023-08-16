@@ -15,7 +15,7 @@
  */
 
 
-/*投稿画像のスワイパー*/
+/*===投稿画像のスワイパー設定==*/
 .swiper {
   width: 100%;
   height: 100%;
@@ -26,10 +26,13 @@
 }
 
 .swiper-slide img {
+  width: 100vw;
+  height: 100vh;
   max-width: 100%;
   max-height: 100%;
 }
 
+// swiperナビゲーションボタン
 :root {
   --swiper-navigation-color: #2f4f4f;
   --swiper-pagination-color: #2f4f4f;
@@ -49,7 +52,7 @@ header {
 }
 
 body {
-  /*半角英数折返しの設定*/
+// 半角英数折返しの設定
   word-wrap: break-word;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -66,10 +69,12 @@ body {
   padding-bottom: 5%;
 }
 
-.login-form {
+/* ===新規登録・ログイン画面の設定===*/
+.form-background {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+// ユーザーログイン画面
 .session-image {
   width: 100vw;
   height: 100vh;
@@ -79,6 +84,7 @@ body {
   background-position: center;
 }
 
+// ユーザー新規登録画面
 .registration-image {
   width: 100vw;
   height: 100vh;
@@ -88,12 +94,14 @@ body {
   background-position: center;
 }
 
+// 管理者ログイン画面
 .admin-image {
   width: 100vw;
   height: 100vh;
-  background-image: image-url("cheese_cake.jpg");
+  padding-top: 7%;
+  background-image: image-url("pasta.jpg");
   background-size: cover;
-  background-position: top 10% right 20%;
+  background-position: center;
 }
 
 .site-name {
@@ -115,10 +123,9 @@ body {
   border-radius: 10px;
 }
 
-/*========= 検索窓の設定 ===============*/
+/*==== 検索窓の設定 ====*/
 
-/*==検索窓背景のエリア*/
-
+/*検索窓背景のエリア*/
 #search-wrap{
   position:fixed;
   top: 115px;
@@ -140,8 +147,7 @@ body {
   justify-content: center;
 }
 
-/*==検索窓のエリア*/
-
+/*検索窓のエリア*/
 #search-wrap .search-area{
   display: none;/*検索窓のエリアは、はじめ非表示*/
 }
@@ -152,14 +158,13 @@ body {
   position: relative;
 }
 
-/*==検索フォームの設定*/
-
+// 検索フォームの設定
 #search-wrap form{
   margin-top: 30px;
   width: 400px;
 }
 
-/*=======閉じるための×ボタン========*/
+/*===検索フォームを閉じるための×ボタン===*/
 .close-btn{
   position: absolute;
   top:10px;
@@ -167,7 +172,7 @@ body {
   z-index: 2;
   cursor: pointer;
   width: 60px;
-  height:60px;
+  height: 60px;
 }
 
 .close-btn span{
@@ -179,7 +184,6 @@ body {
   background-color: #fff;
  }
 
-/*×マーク*/
 .close-btn span:nth-of-type(1) {
     top: 21px;
     left: 16px;
@@ -194,6 +198,7 @@ body {
     width: 50%;
 }
 
+/*==トップ画面のサイドバー==*/
 .top-sidebar {
   width: 40vw;
   height: 100vh;
@@ -215,7 +220,7 @@ body {
   margin-top: 25vh;
 }
 
-/*// タブ切り替え*/
+/*==投稿一覧画面とユーザー詳細画面のタブ設定==*/
 .tab {
   width: 45%;
   padding: 10px;
@@ -227,27 +232,30 @@ body {
 .tab:first-child {
   border-left: none;
 }
-/*// タブがactiveのときのデザイン*/
+
+// タブがactiveのときのデザイン
 .tab-active {
   color: #FFF;
   background: #2f4f4f;
   transition: all 0.2s ease-in-out;
 }
-/*// タブの中身、最初は非表示*/
+
+// タブの中身、最初は非表示
 .tabbox {
   display: none;
   padding: 15px;
 }
-/*// box-showクラスのものだけ表示*/
+// box-showクラスのものだけ表示
 .box-show {
   display: block;
 }
-/*// hover時のアクション*/
+// hover時のアクション
 .tab:hover{
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
 
+/*==ユーザー編集画面の「・・・」の設定==*/
 .menu {
   float: right;
   display: flex;
@@ -279,63 +287,55 @@ body {
   background: #ffa500;
 }
 
-.top-sidebar {
-  width: 40vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: 10;
-}
-
-.top-name {
-  font-size: 100px;
-  text-align: center;
-  padding-top: calc(40vh - 1em);
-  font-family: cursive;
-}
-
-.top-link {
-  margin-top: 25vh;
-}
-
-.swiper-slide img {
-  width: 100vw;
-  height: 100vh;
-}
-
 @media screen and (max-width:1200px) {
   .flex {
     display: flex;
     justify-content: center;
   }
 }
+
 @media screen and (max-width:600px) {
+  // 投稿が中央になるように設定
   .flex {
     display: flex;
     justify-content: center;
   }
+  // 投稿一覧ページのコメントフォームを非表示
   .comment-form {
     display: none;
   }
+  // xボタンを非表示
   .back-btn {
     display: none;
   }
-  .login-form {
+  .form-background {
     margin-top : 30%;
   }
   .registration-image {
     background-image: image-url("ice.jpg");
     background-size: cover;
   }
+  // 検索結果画面のタイトルを非表示
   .post-title {
     display: none;
   }
+  // タグ検索結果画面のタイトルの調整
   .tag-title {
     font-size: 30px;
     margin-left: 45px;
   }
+  // トップページのデザイン
+  .swiper-top {
+    width: 100vw;
+    height: 100vh;
+    background-image: image-url("green_cake.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  /*==トップページのサイドバーの設定==*/
   .top-sidebar {
     width: 1000vw;
     height: 100vh;
@@ -345,15 +345,6 @@ body {
     right: 0;
     background-color: rgba(255, 255, 255, 0.6);
     z-index: 10;
-  }
-  .swiper-top {
-    width: 100vw;
-    height: 100vh;
-    background-image: image-url("green_cake.jpg");
-    background-size: cover;
-    position: fixed;
-    top: 0;
-    right: 0;
   }
   .top-name {
     font-size: 100px;

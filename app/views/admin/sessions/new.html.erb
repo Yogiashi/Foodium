@@ -1,6 +1,6 @@
-<div class="admin-image" style=" background-color: #8fbc8f; padding-top: 5%;">
-  <div class="col-5 mx-auto login-form pt-4">
-  <h2 class="text-center mt-5">管理者</h2>
+<div class="admin-image">
+  <div class="col-md-5 col-sm-12 mx-auto form-background pt-3">
+  <h2 class="text-center mt-5 site-name">admin</h2>
   <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="field">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
