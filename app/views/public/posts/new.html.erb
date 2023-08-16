@@ -6,9 +6,10 @@
         <%= render 'layouts/errors', obj: @post %>
         <div class="row mt-5">
           <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.file_field :post_images, class: "img_field col-sm-9 mb-2", multiple: true, accept: 'image/*' %>
+          <%= f.file_field :post_images, class: "img_field col-sm-4 mb-2", multiple: true, accept: 'image/*' %>
+          <p class="col-sm-5">※ 添付できる画像は４枚までです。</p>
           <div class="col-12">
-            <div id="image-preview" class="row">
+            <div id="image-preview" class="row ml-md-5">
               <!--画像プレビュー機能-->
               <% @post.post_images.each do |image| %>
                 <div class="col-4"><%= image_tag image, class: "img_prev img-fluid" %></div>
@@ -56,18 +57,15 @@
         </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
-          <%=f.label:"公開範囲",class:"col-sm-3"%>
-          <div style="padding-right:80px;">
-          <%= f.radio_button :displayed, :true %>
-          <%= f.label :displayed, "公開", {value: :true, style: "display: inline-block;"} %></div>
-          <div style="padding-right:20px;">
+          <%=f.label:"公開範囲",class:"col-sm-3 text-center"%>
+          <%= f.radio_button :displayed, :true, style: "margin-left: 80px;" %>
+          <%= f.label :displayed, "公開", class: "col-form-label col-3" %>
           <%= f.radio_button :displayed, :false %>
-          <%= f.label :displayed, "下書き保存", {value: :false, style: "display: inline-block;"} %></div>
+          <%= f.label :displayed, "下書き保存", class: "col-form-label col-4" %>
         </div>
         <div class="row mt-5 d-flex justify-content-center">
           <%= f.submit "投稿する", class: "btn btn-outline-primary mr-5"%>
         </div>
       <% end %>
-    </div>
   </div>
 </div>

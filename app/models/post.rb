@@ -14,6 +14,9 @@ class Post < ApplicationRecord
   validates :caption, presence: true, length: { maximum: 200 }
   validates :price, presence: true
   validates :address, presence: true
+  validate :validate_number_of_files
+
+  FILE_NUMBER_LIMIT = 4
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -42,7 +45,7 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
    end
   end
-  
+
   # キーワード検索
   def self.search(search)
     if search != nil && search != ''
@@ -51,7 +54,7 @@ class Post < ApplicationRecord
       Post.all
     end
   end
-  
+
   # 最小価格〜最大価格の
   def self.price_search(min_search, max_search)
     if max_search != '' && max_search != nil && min_search != '' && min_search != nil
@@ -61,6 +64,11 @@ class Post < ApplicationRecord
     elsif min_search != '' && min_search != nil
         @posts = Post.where("price >= #{min_search}")
     end
-    
+  end
+  
+  # 添付できる画像を４枚までに制限
+  def validate_number_of_files
+    return if post_images.length <= FILE_NUMBER_LIMIT
+    errors.add(:post_images, "の添付は#{FILE_NUMBER_LIMIT}枚までです。")
   end
 end
