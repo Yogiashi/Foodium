@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8 col-11">
+    <div class="col-md-8 col-12">
       <h1 class="text-center title">プロフィールを編集</h1>
       <% if @user.email == 'guest@example.com'%>
-        <h5 class="text-center mt-5 ml-5">ゲストユーザーはプロフィールの編集ができません。</h5>
+        <h5 class="text-center mt-5">ゲストユーザーはプロフィールの編集ができません。</h5>
       <% else %>
         <%= form_with model: @user do |f| %>
         <%= render 'layouts/errors', obj: @user %>

@@ -2,11 +2,13 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-8 col-md-10 mb-5 mb-md-0">
-          <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
-            <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 profile-image", size: "120x120"%>
-          <% end %>
-          <i class="fas fa-user"></i> <%= @post.user.name %>
+        <div class="col-8 col-md-10 d-md-flex">
+          <div class="">
+            <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
+              <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 profile-image", size: "120x120"%>
+            <% end %>
+          </div>
+          <div class="mt-md-4 pt-3"> <i class="fas fa-user"></i> <%= @post.user.name %></div>
         </div>
         <div class="col-4 col-md-2">
           <% if @post.user.id == current_user.id %>
@@ -48,7 +50,7 @@
           <div class="row mt-3">
             <div class="col-12 d-flex border-bottom">
               <!--いいねボタンajax-->
-              <div id="like_btn_<%= @post.id %>" class="mr-3"><%= render "public/likes/btn", post: @post %></div>
+              <div id="like_btn_<%= @post.id %>" class="mr-md-3 mr-2"><%= render "public/likes/btn", post: @post %></div>
               <%= link_to post_comments_path(@post), class: "text-decoration-none text-dark" do %>
               <i class="far fa-comment"></i>
               <span id="comment_count"><%= @post.comments.count %> コメント</span>
