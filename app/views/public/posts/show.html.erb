@@ -8,7 +8,7 @@
           <% end %>
         </div>
         <div class="col-6 col-md-8 mt-2 mt-md-5">
-          <strong><%= @post.user.name %></strong>
+           <i class="fas fa-user"></i> <strong><%= @post.user.name %></strong>
         </div>
         <div class="col-4 col-md-2">
           <% if @post.user.id == current_user.id %>
