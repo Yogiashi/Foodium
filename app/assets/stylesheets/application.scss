@@ -261,7 +261,7 @@ body {
 
 /*==ユーザー編集画面の「・・・」の設定==*/
 .menu {
-  
+
   display: flex;
   list-style-type: none;
   color: #fff;
@@ -363,12 +363,15 @@ body {
   margin-top: 30px;
   width: 330px;
 }
-.show-profile-image {
+.post-profile-image, .show-profile-image {
   width: 50px;
   height: 50px;
 }
 .user-show-profile-image {
   width: 80px;
   height: 80px;
+}
+.post-image {
+  height: 21em;
 }
 }
