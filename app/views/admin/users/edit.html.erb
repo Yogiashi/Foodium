@@ -13,8 +13,8 @@
         <div class="row mt-5">
           <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
           <!--画像プレビュー機能-->
-          <%= image_tag @user.get_profile_image, onClick: "$('.img_field').click()", class: "img_prev rounded-circle col-sm-4 col-8 ml-md-5 mx-auto", size: "180x180" %>
-          <%= f.file_field :profile_image, class: "mt-5 img_field ml-5", style: 'display:none;', accept: 'image/*' %>
+          <%= image_tag @user.get_profile_image, onClick: "$('.user_img_field').click()", class: "user_img_prev rounded-circle col-sm-4 col-8 ml-md-5 mx-auto", size: "180x180" %>
+          <%= f.file_field :profile_image, class: "mt-5 user_img_field ml-5", style: 'display:none;', accept: 'image/*' %>
         </div>
         <div class="row mt-5">
           <%= f.label :ユーザーネーム, class: "col-form-label col-sm-3 text-center"%>
