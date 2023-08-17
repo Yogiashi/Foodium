@@ -12,8 +12,8 @@
       <%= render 'layouts/errors', obj: @post %>
         <div class="row mt-5">
           <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.file_field :post_images, class: "img_field col-sm-4 mb-2 text-center", multiple: true, accept: 'image/*' %>
-          <p class="col-sm-5">※ 添付できる画像は４枚までです。</p>
+          <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0  mb-2 text-center", multiple: true, accept: 'image/*' %>
+          <p class="col-md-9 offset-md-3 col-11 offset-1">※ 添付できる画像は４枚までです。</p>
           <div class="col-12">
             <div id="image-preview" class="row">
               <!--画像プレビュー機能-->
