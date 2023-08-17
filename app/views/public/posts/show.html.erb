@@ -2,13 +2,13 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-5">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
-          <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2", size: "90x90"%>
+          <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 show_profile_image", size: "90x90"%>
           <strong><%= @post.user.name %></strong>
           <% end %>
           <% if @post.user.id == current_user.id %>
-            <ul class="menu float-right">
+            <ul class="menu">
               <li class="text-center text-secondary">
                 <strong>・・・</strong>
                 <ul class="menuSub">
