@@ -38,6 +38,10 @@
   --swiper-pagination-color: #2f4f4f;
 }
 
+.swiper-button-next::after, .swiper-button-prev::after {
+ content: none !important;
+}
+
 /*エラーメッセージでフォームが崩れないように設定*/
 .field_with_errors {
   display: contents;
@@ -315,14 +319,9 @@ body {
     background-image: image-url("ice.jpg");
     background-size: cover;
   }
-  // 検索結果画面のタイトルを非表示
-  .post-title {
-    display: none;
-  }
   // タグ検索結果画面のタイトルの調整
-  .tag-title {
-    font-size: 30px;
-    margin-left: 45px;
+  .search-title {
+    font-size: 20px;
   }
   // トップページのデザイン
   .swiper-top {
@@ -360,4 +359,8 @@ body {
     left: 20px;
     right: 20px;
   }
+  #search-wrap form{
+  margin-top: 30px;
+  width: 330px;
+}
 }

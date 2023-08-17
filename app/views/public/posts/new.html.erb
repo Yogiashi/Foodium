@@ -58,13 +58,13 @@
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
           <%=f.label:"公開範囲",class:"col-sm-3 text-center"%>
-          <%= f.radio_button :displayed, :true, style: "margin-left: 80px;" %>
+          <%= f.radio_button :displayed, :true, class: "ml-5 ml-md-0" %>
           <%= f.label :displayed, "公開", class: "col-form-label col-3" %>
-          <%= f.radio_button :displayed, :false %>
-          <%= f.label :displayed, "下書き保存", class: "col-form-label col-4" %>
+          <%= f.radio_button :displayed, :false, class: "ml-4 ml-md-0" %>
+          <%= f.label :displayed, "下書き保存", class: "col-form-label col-5" %>
         </div>
         <div class="row mt-5 d-flex justify-content-center">
-          <%= f.submit "投稿する", class: "btn btn-outline-primary mr-5"%>
+          <%= f.submit "投稿する", class: "btn btn-outline-primary"%>
         </div>
       <% end %>
   </div>

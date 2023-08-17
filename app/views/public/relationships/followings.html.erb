@@ -14,7 +14,7 @@
             <tr style="vertical-align:middle;">
               <td style="vertical-align:middle;">
                 <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %>
+                <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %>
                 <% end %>
               </td>
               <td style="vertical-align:middle;"><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>

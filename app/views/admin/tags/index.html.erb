@@ -5,14 +5,14 @@
       <%= render 'layouts/errors', obj: @tag %>
       <div class="mt-5">
       <%= form_with model: @tag, url: admin_tags_path do |f| %>
-      <div class="row">
-        <%= f.label :name, "タグ追加", class: "col-3 col-form-label ml-4" %>
-          <%= f.text_field :name, class: "col-6 form-control" %>
-          <%= f.submit "追加", class: "btn btn-success col-2 ml-1"%>
-        <% end %>
-      </div>
+        <div class="row">
+          <%= f.label :name, "タグ追加", class: "col-md-2  col-4 col-form-label ml-1" %>
+          <%= f.text_field :name, class: "col-md-6 col-5 form-control" %>
+          <%= f.submit "追加", class: "btn btn-success col-2 ml-md-2 ml-1"%>
+        </div>
+      <% end %>
     </div>
-      <table class="table table-borderless mt-5 ml-5">
+      <table class="table table-borderless mt-5">
         <% @tags.each do |tag| %>
           <tr>
             <td><%= tag.name %></td>
