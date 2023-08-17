@@ -5,7 +5,4 @@
 #
 #  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #  Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(
-  email: 'ado@ado',
-  password: 'minmin'
-)
+load(Rails.root.join("db", "seeds", "#{Rails.env.downcase}.rb"))

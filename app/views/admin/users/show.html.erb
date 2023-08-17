@@ -7,7 +7,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-md-8 col-12">
-      <h1 class="text-center"><%= @user.name %>さんの詳細</h1>
+      <h1 class="text-center title"><%= @user.name %>さんの詳細</h1>
       <div class="row my-5 justify-content-center">
         <span class="col-sm-3 text-center mb-3 mb-md-0">プロフィール画像</span>
         <span class="col-sm-9 text-center text-md-left"><%= image_tag @user.get_profile_image, class: "rounded-circle", size: "180x180" %></span>
