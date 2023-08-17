@@ -33,16 +33,18 @@
             <!--投稿時間表示-->
             <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
           </div>
+          <!--タグ付け-->
+          <% @post.tags.each do |tag| %>
+          <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %></strong>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="col-md-6 col-12 mt-5">
       <!--コメント欄-->
       <div id="post-comments"><%= render "comments", comments: @comments %></div>
-      <% if @post.user != current_user %>
-        <!--コメントフォーム-->
-        <div id="comment-form", class="border-top"><%= render "form", post: @post, comment: Comment.new %></div>
-      <% end %>
+      <!--コメントフォーム-->
+      <div id="comment-form", class="border-top"><%= render "form", post: @post, comment: Comment.new %></div>
     </div>
   </div>
 </div>
