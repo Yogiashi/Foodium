@@ -11,8 +11,8 @@
       <%= form_with model: @post do |f| %>
       <%= render 'layouts/errors', obj: @post %>
         <div class="row mt-5">
-          <%= f.label :画像, class: "col-form-label col-sm-3"%>
-          <%= f.file_field :post_images, class: "img_field col-sm-4 mb-2", multiple: true, accept: 'image/*' %>
+          <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
+          <%= f.file_field :post_images, class: "img_field col-sm-4 mb-2 text-center", multiple: true, accept: 'image/*' %>
           <p class="col-sm-5">※ 添付できる画像は４枚までです。</p>
           <div class="col-12">
             <div id="image-preview" class="row">
@@ -24,25 +24,25 @@
           </div>
         </div>
         <div class="row mt-5">
-          <%= f.label :ショップ名, class: "col-form-label col-sm-3", placeholder: "お店の名前を入力..."%>
+          <%= f.label :ショップ名, class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
           <%= f.text_field :shop_name, class: "col-sm-9 form-control"%>
         </div>
          <div class="row mt-5">
-          <%= f.label :料理名, class: "col-form-label col-sm-3", placeholder: "料理の名前を入力..."%>
+          <%= f.label :料理名, class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
           <%= f.text_field :dish_name, class: "col-sm-9 form-control"%>
         </div>
         <div class="row mt-5">
-          <%= f.label :キャプション, class: "col-form-label col-sm-3"%>
+          <%= f.label :キャプション, class: "col-form-label col-sm-3 text-center"%>
           <%= f.text_area :caption, class: "col-sm-9 form-control",placeholder: "キャプションを入力...", size: "30x5"%>
         </div>
         <!--価格選択-->
         <div class="row mt-5">
-          <%= f.label :価格, class: "col-form-label col-sm-3"%>
+          <%= f.label :価格, class: "col-form-label col-sm-3 text-center"%>
           <%= f.number_field :price, class: "col-sm-9 form-control"%>
         </div>
                 <!--タグ機能-->
         <div class="row mt-5">
-          <%= f.label :タグ, class: "col-form-label col-sm-3" %>
+          <%= f.label :タグ, class: "col-form-label col-sm-3 text-center" %>
           <!--過去にユーザーが登録したタグ一覧-->
           <div class="d-flex flex-row flex-wrap p-2 border rounded col-sm-9 mb-3">
             <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) do |b| %>
@@ -58,19 +58,19 @@
         </div>
          <!--地図情報を追加-->
         <div class="row mt-5">
-          <%= f.label :address, '場所', class: "col-form-label col-sm-3" %>
+          <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
           <%= f.text_field :address, class: 'col-sm-9 form-control' %>
         </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
           <%=f.label:"公開範囲",class:"col-sm-3 text-center"%>
-          <%= f.radio_button :displayed, :true, style: "margin-left: 80px;" %>
+          <%= f.radio_button :displayed, :true, class: "ml-5 ml-md-0" %>
           <%= f.label :displayed, "公開", class: "col-form-label col-3" %>
-          <%= f.radio_button :displayed, :false %>
-          <%= f.label :displayed, "下書き保存", class: "col-form-label col-4" %>
+          <%= f.radio_button :displayed, :false, class: "ml-4 ml-md-0" %>
+          <%= f.label :displayed, "下書き保存", class: "col-form-label col-5" %>
         </div>
         <div class="row mt-5 d-flex justify-content-center">
-          <%= f.submit "変更を保存する", class: "btn btn-success mr-5"%>
+          <%= f.submit "変更を保存する", class: "btn btn-success"%>
         </div>
       <% end %>
     </div>

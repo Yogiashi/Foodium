@@ -1,4 +1,4 @@
-<% posts.reverse_each do |post| %>
+<% posts.each do |post| %>
   <div class=" mb-5 card">
     <div class="card-body">
       <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5", size: "80x80"%>

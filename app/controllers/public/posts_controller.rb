@@ -28,9 +28,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.where(displayed: :true).page(params[:posts_page]).per(12)
+    @posts = Post.all.where(displayed: :true).page(params[:posts_page]).per(12).order(created_at: :desc)
     # フォローしてるユーザーの投稿を取得
-    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true).page(params[:following_page]).per(12)
+    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true).page(params[:following_page]).per(12).order(created_at: :desc)
     @tag_list=Tag.all
   end
 
@@ -72,19 +72,19 @@ class Public::PostsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @posts = @tag.posts.page(params[:page]).per(12)
+    @posts = @tag.posts.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def search
-    @posts = Post.search(params[:word]).page(params[:page]).per(12)
-    @posts = Post.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12) if params[:min_search].present? or  params[:max_search].present?
+    @posts = Post.search(params[:word]).page(params[:page]).per(12).order(created_at: :desc)
+    @posts = Post.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?
       @tag_word = " "
       @tag_ids.each do |id|
         @tag_word = @tag_word + " " + '"' + Tag.find(id).name + '"'  if id != ""
       end
-      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}").page(params[:page]).per(12)
+      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}").page(params[:page]).per(12).order(created_at: :desc)
     end
   end
 

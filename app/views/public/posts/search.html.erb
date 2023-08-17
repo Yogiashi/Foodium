@@ -7,7 +7,6 @@
           <div class="">タグ: <strong><%= @tag_word %></strong></div>
           <div class="">価格:  <strong>"<%= params[:min_search] %> 〜 <%= params[:max_search] %>"</strong>円</div>
         </h4>
-      <h1 class="ml-4 mt-3 post-title">の投稿</h1>
       </div>
       <div class="flex mt-5">
         <%= render "public/users/post", posts: @posts %>
