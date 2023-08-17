@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
   
   def index
     @post = Post.find(params[:post_id])
-    @comments = Comment.all
+    @comments = @post.comments.all
   end
   
   def create
