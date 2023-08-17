@@ -2,28 +2,35 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-12 mb-5">
+        <div class="col-2 mb-5">
           <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
-          <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 show_profile_image", size: "90x90"%>
-          <strong><%= @post.user.name %></strong>
-          <% end %>
-          <% if @post.user.id == current_user.id %>
-            <ul class="menu">
-              <li class="text-center text-secondary">
-                <strong>・・・</strong>
-                <ul class="menuSub">
-                  <% if @post.displayed %>
-                  <li class=" my-1 border border-secondary text-center rounded">公開中</li>
-                <% else %>
-                  <li class=" my-1 border border-secondary text-center rounded">非公開</li>
-                <% end %>
-                  <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
-                  <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
-                </ul>
-              </li>
-            </ul>
+            <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 show_profile_image", size: "90x90"%>
           <% end %>
         </div>
+        <div class="col-6 col-md-8">
+          <strong><%= @post.user.name %></strong>
+        </div>
+          <div class="col-4 col-md-2">
+            <% if @post.user.id == current_user.id %>
+              <ul class="menu ml-md-5">
+                <li class="text-center text-secondary ">
+                  <strong>・・・</strong>
+                  <ul class="menuSub">
+                    <% if @post.displayed %>
+                    <li class=" my-1 border border-secondary text-center rounded">公開中</li>
+                  <% else %>
+                    <li class=" my-1 border border-secondary text-center rounded">非公開</li>
+                  <% end %>
+                    <li><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %></li>
+                    <li><%= link_to "削除", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
+                  </ul>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+
+
+
       </div>
       <div class="row">
         <div class="col-md-6 col-12">
