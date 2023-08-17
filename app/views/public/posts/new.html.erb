@@ -57,12 +57,12 @@
         </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
-          <%=f.label:"公開範囲",class:"col-sm-3 text-center"%>
-          <div class="col-4 col-md-3 d-flex ml-5 ml-md-0">
+          <%=f.label:"公開範囲",class:"col-form-label col-sm-3 text-center"%>
+          <div class="col-4 col-md-3 d-flex ml-5 ml-md-0" style="line-height: 20px;">
             <%= f.radio_button :displayed, :true, class: "mr-1" %>
             <%= f.label :displayed, "公開", class: "col-form-label" %>
           </div>
-          <div class="col-5 col-md-3 d-flex">
+          <div class="col-5 col-md-3 d-flex" style="line-height: 20px;">
             <%= f.radio_button :displayed, :false, class: "mr-1" %>
             <%= f.label :displayed, "下書き保存", class: "col-form-label" %>
           </div>
