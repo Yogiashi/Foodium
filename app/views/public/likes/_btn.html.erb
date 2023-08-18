@@ -1,12 +1,17 @@
-<% if post.liked?(current_user) %>
-  <%= link_to post_likes_path(post), method: :delete, remote: true, class: "text-decoration-none text-dark" do %>
-    <i class="fas fa-heart" style="color: red;"></i>
-    <%= post.likes.count %> いいね
+<% if post.user != current_user %>
+  <% if post.liked?(current_user) %>
+    <%= link_to post_likes_path(post), method: :delete, remote: true, class: "text-decoration-none text-dark" do %>
+      <i class="fas fa-heart" style="color: red;"></i>
+      <%= post.likes.count %> いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true, class: "text-decoration-none text-dark" do %>
+      <i class="far fa-heart"></i>
+      <%= post.likes.count %> いいね
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(post), method: :post, remote: true, class: "text-decoration-none text-dark" do %>
-    <i class="far fa-heart"></i>
-    <%= post.likes.count %> いいね
-  <% end %>
+  <i class="fas fa-heart" style="color: orange;"></i>
+  <%= post.likes.count %> いいね
 <% end %>
 
