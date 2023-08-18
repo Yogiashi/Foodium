@@ -7,8 +7,8 @@ class Public::CommentsController < ApplicationController
   end
   
   def create
-    @comments = Comment.all
     @post = Post.find(params[:post_id])
+     @comments = @post.comments.all
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
     comment.save
@@ -16,8 +16,8 @@ class Public::CommentsController < ApplicationController
   end
   
   def destroy
-    @comments = Comment.all
     @post = Post.find(params[:post_id])
+    @comments = @post.comments.all
     Comment.find(params[:id]).destroy
     # ajax
   end
