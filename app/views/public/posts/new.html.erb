@@ -5,77 +5,78 @@
       <% if current_user.email == 'guest@example.com'%>
         <h5 class="text-center mt-5">ゲストユーザーは投稿ができません。</h5>
       <% else %>
-      <%= form_with model: @post do |f| %>
-        <%= render 'layouts/errors', obj: @post %>
-        <div class="row mt-5">
-          <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0 mb-2", multiple: true, accept: 'image/*' %>
-          <p class="col-md-9 offset-md-3 col-11 offset-1">※ 添付できる画像は４枚までです。</p>
-          <div class="col-12">
-            <div id="image-preview" class="row ml-md-5">
-              <!--画像プレビュー機能-->
-              <% @post.post_images.each do |image| %>
-                <div class="col-4"><%= image_tag image, class: "img_prev img-fluid" %></div>
+        <%= form_with model: @post do |f| %>
+          <%= render 'layouts/errors', obj: @post %>
+          <div class="row mt-5">
+            <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0 mb-2", multiple: true, accept: 'image/*' %>
+            <p class="col-md-9 offset-md-3 col-11 offset-1">※ 添付できる画像は４枚までです。</p>
+            <div class="col-12">
+              <div id="image-preview" class="row ml-md-5">
+                <!--画像プレビュー機能-->
+                <% @post.post_images.each do |image| %>
+                  <div class="col-4"><%= image_tag image, class: "img_prev img-fluid" %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <%= f.label :ショップ名, class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
+            <%= f.text_field :shop_name, class: "col-sm-9 form-control"%>
+          </div>
+           <div class="row mt-5">
+            <%= f.label :料理名, class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
+            <%= f.text_field :dish_name, class: "col-sm-9 form-control"%>
+          </div>
+          <div class="row mt-5">
+            <%= f.label :キャプション, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.text_area :caption, class: "col-sm-9 form-control", placeholder: "キャプションを入力...", size: "30x5"%>
+          </div>
+          <!--価格選択-->
+          <div class="row mt-5">
+            <%= f.label :価格, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.number_field :price, class: "col-sm-9 form-control", placeholder: "半角で入力してください" %>
+          </div>
+          <!--地図情報入力フォーム-->
+          <div class="row mt-5">
+            <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
+            <%= f.text_field :address, class: 'col-sm-9 form-control', placeholder: "渋谷, スカイツリー, ⚪︎⚪︎タワー１階" %>
+          </div>
+          <!--タグ機能-->
+          <div class="row mt-5">
+            <%= f.label :タグ, class: "col-form-label col-sm-3 text-center" %>
+            <!--過去にユーザーが登録したタグ一覧-->
+            <div class="d-flex flex-row flex-wrap p-2 border rounded col-sm-9 mb-3">
+              <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) do |b| %>
+          	    <div class="mx-1">
+          	      <%= b.check_box %>
+          	      <%= b.label %>
+          	    </div>
               <% end %>
             </div>
+            <p class="offset-md-3">タグがなければ下記のフォームより入力してください</p>
+            <!--新規でタグを登録するフォーム-->
+            <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
           </div>
-        </div>
-        <div class="row mt-5">
-          <%= f.label :ショップ名, class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
-          <%= f.text_field :shop_name, class: "col-sm-9 form-control"%>
-        </div>
-         <div class="row mt-5">
-          <%= f.label :料理名, class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
-          <%= f.text_field :dish_name, class: "col-sm-9 form-control"%>
-        </div>
-        <div class="row mt-5">
-          <%= f.label :キャプション, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.text_area :caption, class: "col-sm-9 form-control", placeholder: "キャプションを入力...", size: "30x5"%>
-        </div>
-        <!--価格選択-->
-        <div class="row mt-5">
-          <%= f.label :価格, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.number_field :price, class: "col-sm-9 form-control", placeholder: "半角で入力してください" %>
-        </div>
-        <!--地図情報入力フォーム-->
-        <div class="row mt-5">
-          <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
-          <%= f.text_field :address, class: 'col-sm-9 form-control', placeholder: "渋谷, スカイツリー, ⚪︎⚪︎タワー１階" %>
-        </div>
-        <!--タグ機能-->
-        <div class="row mt-5">
-          <%= f.label :タグ, class: "col-form-label col-sm-3 text-center" %>
-          <!--過去にユーザーが登録したタグ一覧-->
-          <div class="d-flex flex-row flex-wrap p-2 border rounded col-sm-9 mb-3">
-            <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) do |b| %>
-        	    <div class="mx-1">
-        	      <%= b.check_box %>
-        	      <%= b.label %>
-        	    </div>
-            <% end %>
-          </div>
-          <p class="offset-md-3">タグがなければ下記のフォームより入力してください</p>
-          <!--新規でタグを登録するフォーム-->
-          <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
-        </div>
-        <!--投稿の公開・非公開ボタン-->
-        <div class="row mt-5">
-          <%=f.label:"公開範囲",class:"col-form-label col-sm-3 text-center"%>
-          <div class="col-sm-9 d-flex">
-             <div class="col-6 col-md-3 d-flex">
-              <%= f.radio_button :displayed, :true, class: "mr-2" %>
-              <%= f.label :displayed, "公開", class: "col-form-label" %>
-            </div>
-            <div class="col-6 col-md-3 d-flex">
-              <%= f.radio_button :displayed, :false, class: "mr-2" %>
-              <%= f.label :displayed, "下書き保存", class: "col-form-label" %>
+          <!--投稿の公開・非公開ボタン-->
+          <div class="row mt-5">
+            <%=f.label:"公開範囲",class:"col-form-label col-sm-3 text-center"%>
+            <div class="col-sm-9 d-flex">
+               <div class="col-6 col-md-3 d-flex">
+                <%= f.radio_button :displayed, :true, class: "mr-2 radio-btn" %>
+                <%= f.label :displayed, "公開", class: "col-form-label" %>
+              </div>
+              <div class="col-6 col-md-3 d-flex">
+                <%= f.radio_button :displayed, :false, class: "mr-2 radio-btn" %>
+                <%= f.label :displayed, "下書き保存", class: "col-form-label" %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row mt-5 d-flex justify-content-center">
-          <%= f.submit "投稿する", id: "/post", class: "btn btn-outline-primary"%>
-        </div>
+          <div class="row mt-5 d-flex justify-content-center">
+            <%= f.submit "投稿する", id: "/post", class: "btn btn-outline-primary"%>
+          </div>
+        <% end %>
       <% end %>
-      <% end %>
+    </div>
   </div>
 </div>
