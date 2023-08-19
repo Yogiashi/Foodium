@@ -10,7 +10,7 @@
           <div class="row mt-5">
             <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
             <!--画像プレビュー機能-->
-            <%= image_tag @user.get_profile_image, onClick: "$('.user_img_field').click()", class: "user_img_prev rounded-circle col-sm-4 col-8 mx-auto", size: "180x180" %>
+            <%= image_tag @user.get_profile_image, onClick: "$('.user_img_field').click()", class: "user_img_prev rounded-circle col-sm-4 col-8 mx-auto", size: "180x220" %>
             <%= f.file_field :profile_image, class: "mt-5 user_img_field mx-auto", style: 'display:none;', accept: 'image/*' %>
           </div>
           <div class="row mt-5">
