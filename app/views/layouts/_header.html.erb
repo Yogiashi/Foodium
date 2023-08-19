@@ -69,7 +69,7 @@
           </li>
           <li class="nav-item">
             <%= link_to notifications_path, class: "nav-link active" do %>
-              <% if current_user.notifications.where.not(user_id: current_user.id).where(checked: false).exists? %>
+              <% if current_user.notifications.where(checked: false).exists? %>
                 <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
               <% else %>
                 <i class="fa-sharp fa-solid fa-bell rounded-circle p-2 bg-light"></i>
