@@ -25,11 +25,11 @@
             <%= f.label :ステータス, class: "col-form-label col-sm-3 text-center"%>
             <div class="col-sm-9 d-flex">
               <div class="offset-2 offset-md-0 col-5 col-md-3 d-flex">
-                <%= f.radio_button :is_deleted, :false, class: "mr-2 radio-btn" %>
+                <%= f.radio_button :is_deleted, :false, class: "mr-2" %>
                 <%= f.label :is_deleted_false, "有効", class: "col-form-label" %>
               </div>
               <div class="col-5 col-md-3 d-flex">
-                <%= f.radio_button :is_deleted, :true, class: "mr-2 radio-btn" %>
+                <%= f.radio_button :is_deleted, :true, class: "mr-2" %>
                 <%= f.label :is_deleted_true, "退会", class: "col-form-label" %>
               </div>
             </div>
