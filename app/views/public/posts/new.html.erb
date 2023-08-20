@@ -3,7 +3,7 @@
     <div class="col-md-8 col-11">
       <h1 class="text-center title">新規投稿</h1>
       <%= form_with model: @post do |f| %>
-      <div class="row justify-content-center text-center mr-2"><%= render 'layouts/errors', obj: @post %></div>
+      <div class="row justify-content-center text-center mr-4"><%= render 'layouts/errors', obj: @post %></div>
         <div class="row mt-5">
           <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
           <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0 mb-2", multiple: true, accept: 'image/*' %>
@@ -65,7 +65,7 @@
             </div>
             <div class="form-check form-check-inline col-5 col-md-3 offset-3 offset-md-1">
               <%= f.radio_button :displayed, :false, class: "form-check-input" %>
-              <%= f.label :displayed, "下書き保存", class: "form-check-label" %>
+              <%= f.label :displayed, "非公開", class: "form-check-label" %>
             </div>
           </div>
         </div>
