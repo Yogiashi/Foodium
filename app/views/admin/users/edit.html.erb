@@ -24,11 +24,11 @@
           <div class="row mt-5">
             <%= f.label :ステータス, class: "col-form-label col-sm-3 text-center"%>
             <div class="col-sm-9 d-flex">
-              <div class="form-check form-check-inline col-3 offset-1">
+              <div class="form-check form-check-inline col-3 offset-2">
                 <%= f.radio_button :is_deleted, :false, class: "form-check-input" %>
                 <%= f.label :is_deleted_false, "有効", class: "form-check-label" %>
               </div>
-              <div class="form-check form-check-inline col-5 col-md-3 offset-3 offset-md-1">
+              <div class="form-check form-check-inline col-5 col-md-3 offset-2 offset-md-1">
                 <%= f.radio_button :is_deleted, :true, class: "form-check-input" %>
                 <%= f.label :is_deleted_true, "退会", class: "form-check-label" %>
               </div>
