@@ -23,13 +23,13 @@ SNSはまだあまり知られていないような料理やユーザーが普�
 ​
 ## 設計書
 - UI_Flows
-  https://drive.google.com/file/d/1ZXJm4GtCAxyrWvXtsxdnKv97ZPh871fm/view?usp=sharing
+  <br>https://drive.google.com/file/d/1ZXJm4GtCAxyrWvXtsxdnKv97ZPh871fm/view?usp=sharing
 - ワイヤーフレーム
-  https://drive.google.com/file/d/1HCGVqwAJXlfLxU6E9snt74KpSZ-jB9f9/view?usp=sharing
+  <br>https://drive.google.com/file/d/1HCGVqwAJXlfLxU6E9snt74KpSZ-jB9f9/view?usp=sharing
 - ER図
-  https://drive.google.com/file/d/1LfvFUM0TJx7z9ROokBPIKfie4YqHYx4T/view?usp=sharing
+  <br>https://drive.google.com/file/d/1LfvFUM0TJx7z9ROokBPIKfie4YqHYx4T/view?usp=sharing
 - テーブル定義書
-  https://docs.google.com/spreadsheets/d/1bMJXN4twcxzNIIlo9DQ8BlmHz_5ZkbkD1SD8RCQZB8c/edit?usp=sharing
+  <br>https://docs.google.com/spreadsheets/d/1bMJXN4twcxzNIIlo9DQ8BlmHz_5ZkbkD1SD8RCQZB8c/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -40,4 +40,4 @@ SNSはまだあまり知られていないような料理やユーザーが普�
 
 ## 使用素材
 - ロゴの作成に以下のサイトを使用
-　- Canva(https://www.canva.com/)
+  Canva(https://www.canva.com/)
