@@ -46,13 +46,18 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:name].split(',')
+    @post.user_id = current_user.id
+    # チェックボックスから送られてきたタグidを受け取る
+    old_tag_ids = params[:post][:tag_ids]
+    # 受け取った値から空白のものを取り除く
+    old_tag_ids.delete('')
+    # 受け取ったタグidからタグの名前を取得
+    old_tags = Tag.find(old_tag_ids).pluck('name')
+    # 新規で入力されたタグを受け取る
+    new_tags = params[:post][:name].split(',')
+    # チェックボックスから選択されたタグと新規で入力されたタグを足す
+    tag_list = new_tags + old_tags
     if @post.update(post_params)
-      @old_relations = PostTag.where(post_id: @post.id)
-      # それらを取り出し、消す
-      @old_relations.each do |relation|
-      relation.delete
-      end
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "投稿内容を更新しました。"
     else
