@@ -65,13 +65,13 @@
         <div class="row mt-5">
           <%=f.label:"公開範囲",class: "col-form-label col-sm-3 text-center" %>
           <div class="col-sm-9 d-flex">
-             <div class="col-6 col-md-3 d-flex">
-              <%= f.radio_button :displayed, :true, class: "mr-2" %>
-              <%= f.label :displayed, "公開", class: "col-form-label" %>
+             <div class="form-check form-check-inline col-3 offset-1">
+              <%= f.radio_button :displayed, :true, class: "form-check-input" %>
+              <%= f.label :displayed, "公開", class: "form-check-label" %>
             </div>
-            <div class="col-6 col-md-3 d-flex">
-              <%= f.radio_button :displayed, :false, class: "mr-2" %>
-              <%= f.label :displayed, "下書き保存", class: "col-form-label" %>
+            <div class="form-check form-check-inline col-5 col-md-3 offset-3 offset-md-1">
+              <%= f.radio_button :displayed, :false, class: "form-check-input" %>
+              <%= f.label :displayed, "下書き保存", class: "form-check-label" %>
             </div>
           </div>
         </div>
