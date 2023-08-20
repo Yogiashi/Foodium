@@ -27,6 +27,7 @@ class Post < ApplicationRecord
   end
 
   def save_tag(sent_tags)
+    sent_tags.uniq!
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
@@ -36,7 +37,8 @@ class Post < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+      tag = Tag.find_by(name: old)
+      self.post_tags.find_by!(tag_id: tag.id).destroy if tag.present?
     end
 
     # 新しいタグを保存
@@ -65,7 +67,7 @@ class Post < ApplicationRecord
         @posts = Post.where("price >= #{min_search}")
     end
   end
-  
+
   # 添付できる画像を４枚までに制限
   def validate_number_of_files
     return if post_images.length <= FILE_NUMBER_LIMIT
