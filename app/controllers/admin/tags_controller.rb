@@ -3,7 +3,7 @@ class Admin::TagsController < ApplicationController
 
   def index
     @tag = Tag.new
-    @tags = Tag.all
+    @tags = Tag.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def create
