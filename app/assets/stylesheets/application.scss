@@ -226,16 +226,26 @@ body {
   margin-top: 25vh;
 }
 
+.about-link {
+  margin-top: 60px;
+  font-family: cursive;
+}
+
 #about {
   height: 100vh;
   width: 100%;
   position: absolute;
   z-index: 20;
   background-color: #006400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.about-link {
-  margin-top: 60px;
-  font-family: cursive;
+
+.about-content {
+  height: 95vh;
+  width: 97vw;
+  background-color: #fff;
 }
 
 /*==投稿一覧画面とユーザー詳細画面のタブ設定==*/
@@ -361,14 +371,14 @@ body {
   .top-name {
     font-size: 90px;
     position: fixed;
-    top: 50px;
+    top: 30px;
     left: 20px;
     right: 20px;
     font-family: cursive;
   }
   .top-link {
     position: fixed;
-    bottom: 100px;
+    bottom: 150px;
     left: 20px;
     right: 20px;
   }
@@ -392,15 +402,31 @@ body {
     height: 21em;
   }
   #about {
+  width: 100%;
   position: absolute;
-  bottom: -100vh;
+  bottom: -240vh;
+  height: 240vh;
   }
   .about-link {
   font-size: 30px;
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
   right: 20px;
   font-family: cursive;
+  }
+  .about-content {
+   height: 235vh;
+   width: 92vw;
+  }
+  .draft-image {
+    width: 90vw;
+    margin-left: 3px;
+  }
+  .about-how-title {
+    width: 75%;
+  }
+  .about-image {
+    margin-left: 50px;
   }
 }

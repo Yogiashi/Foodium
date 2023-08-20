@@ -13,9 +13,9 @@ Admin.create!(
 
 users = User.create!(
   [
-    {email: 'a@example.com', name: 'user1', password: 'password',introduction: '食べることが大好きです。', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
-    {email: 'b@example.com', name: 'user2', password: 'password',introduction: 'よろしくお願いします！', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
-    {email: 'c@example.com', name: 'user3', password: 'password',introduction: 'カフェ巡りが趣味です。', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")}
+    {email: ENV['USER_MAIL1'], name: 'user1', password: ENV['USER_PASS'],introduction: '食べることが大好きです。', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
+    {email: ENV['USER_MAIL2'], name: 'user2', password: ENV['USER_PASS'],introduction: 'よろしくお願いします！', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
+    {email: ENV['USER_MAIL3'], name: 'user3', password: ENV['USER_PASS'],introduction: 'カフェ巡りが趣味です。', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")}
   ]
 )
 
