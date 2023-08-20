@@ -147,7 +147,7 @@ body {
   opacity: 0.9;/*不透明に変更*/
   z-index: 11;/*全面に出現*/
   background: gray;
-  padding-top: 5%;
+  padding-top: 8%;
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -173,8 +173,8 @@ body {
 /*===検索フォームを閉じるための×ボタン===*/
 .close-btn{
   position: absolute;
-  top:10px;
-  right:10px;
+  top: 10px;
+  right: 10px;
   z-index: 2;
   cursor: pointer;
   width: 60px;
@@ -226,6 +226,7 @@ body {
   margin-top: 25vh;
 }
 
+/*== aboutページ==*/
 .about-link {
   margin-top: 60px;
   font-family: cursive;
@@ -401,6 +402,8 @@ body {
   .post-image {
     height: 21em;
   }
+  
+  /*== aboutページ==*/
   #about {
   width: 100%;
   position: absolute;
