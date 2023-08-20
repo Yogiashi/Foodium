@@ -51,7 +51,7 @@ class Post < ApplicationRecord
   # キーワード検索
   def self.search(search)
     if search != nil && search != ''
-      Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").distinct
     else
       Post.all
     end

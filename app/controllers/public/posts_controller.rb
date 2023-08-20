@@ -82,7 +82,7 @@ class Public::PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:word]).page(params[:page]).per(12).order(created_at: :desc)
-    @posts = Post.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
+    @posts = @posts.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?
       @tag_word = " "
