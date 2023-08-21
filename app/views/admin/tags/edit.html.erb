@@ -1,16 +1,15 @@
 <div class="container">
-  <div class="row justify-content-center">
-  </div>
   <div class="row">
     <div class="col-md-6 col-12  mx-md-auto mt-5">
-      <h1 class="text-center title">タグを編集</h1>
+      <h1 class="responsive-title text-center">タグを編集</h1>
       <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
-      <%= render 'layouts/errors', obj: @tag %>
+      <!--エラーメッセージ-->
+      <div class="row justify-content-center text-center mr-4"><%= render 'layouts/errors', obj: @tag %></div>
         <div class="row mt-5">
-          <%= f.label :タグ名, class: "col-form-label col-3" %>
-          <%= f.text_field :name, class: "col-md-9  col-8 form-control"%>
+          <%= f.label :name, "タグ名", class: "col-form-label col-3" %>
+          <%= f.text_field :name, class: "form-control col-md-9 col-8"%>
         </div>
-        <div class="row mt-5 d-flex justify-content-center">
+        <div class="row d-flex justify-content-center mt-5">
           <%= f.submit "変更を保存する", class: "btn btn-success"%>
         </div>
       <% end %>

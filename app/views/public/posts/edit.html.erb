@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 col-11">
-      <h1 class="text-center title">投稿を編集</h1>
+      <h1 class="responsive-title text-center">投稿を編集</h1>
       <%= form_with model: @post do |f| %>
+      <!--エラーメッセージ-->
       <div class="row justify-content-center text-center mr-4"><%= render 'layouts/errors', obj: @post %></div>
         <div class="row mt-5">
-          <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
+          <%= f.label :post_images, "画像", class: "col-form-label col-sm-3 text-center"%>
           <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0  mb-2 text-center", multiple: true, accept: 'image/*' %>
           <p class="col-md-9 offset-md-3 col-11 offset-1">※ 添付できる画像は４枚までです。</p>
           <div class="col-12">
@@ -18,23 +19,23 @@
           </div>
         </div>
         <div class="row mt-5">
-          <%= f.label :ショップ名, class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
-          <%= f.text_field :shop_name, class: "col-sm-9 form-control"%>
+          <%= f.label :shop_name, "ショップ名", class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
+          <%= f.text_field :shop_name, class: "form-control col-sm-9"%>
         </div>
          <div class="row mt-5">
-          <%= f.label :料理名, class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
-          <%= f.text_field :dish_name, class: "col-sm-9 form-control"%>
+          <%= f.label :dish_name, "料理名", class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
+          <%= f.text_field :dish_name, class: "form-control col-sm-9"%>
         </div>
         <div class="row mt-5">
-          <%= f.label :キャプション, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.text_area :caption, class: "col-sm-9 form-control",placeholder: "キャプションを入力...", size: "30x5"%>
+          <%= f.label :caption, "キャプション", class: "col-form-label col-sm-3 text-center"%>
+          <%= f.text_area :caption, class: "form-control col-sm-9",placeholder: "キャプションを入力...", size: "30x5"%>
         </div>
         <!--価格選択-->
         <div class="row mt-5">
-          <%= f.label :価格, class: "col-form-label col-sm-3 text-center"%>
-          <%= f.number_field :price, class: "col-sm-9 form-control"%>
+          <%= f.label :price, "価格", class: "col-form-label col-sm-3 text-center"%>
+          <%= f.number_field :price, class: "form-control col-sm-9"%>
         </div>
-                <!--タグ機能-->
+        <!--タグ機能-->
         <div class="row mt-5">
           <%= f.label :タグ, class: "col-form-label col-sm-3 text-center" %>
           <!--過去にユーザーが登録したタグ一覧-->
@@ -48,12 +49,12 @@
           </div>
           <p class="offset-md-3">タグがなければ下記のフォームより入力してください</p>
           <!--新規でタグを登録するフォーム-->
-          <%= f.text_field :name, value: @tag_list, class: "offset-md-3 form-control", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
+          <%= f.text_field :name, value: @tag_list, class: "form-control offset-md-3", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
         </div>
-         <!--地図情報を追加-->
+        <!--地図情報を追加-->
         <div class="row mt-5">
           <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
-          <%= f.text_field :address, class: 'col-sm-9 form-control' %>
+          <%= f.text_field :address, class: 'form-control col-sm-9' %>
         </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
@@ -63,7 +64,7 @@
               <%= f.radio_button :displayed, :true, class: "form-check-input" %>
               <%= f.label :displayed, "公開", class: "form-check-label" %>
             </div>
-            <div class="form-check form-check-inline col-5 col-md-3 offset-2 offset-md-1">
+            <div class="form-check form-check-inline col-md-3 offset-md-1 col-5 offset-2">
               <%= f.radio_button :displayed, :false, class: "form-check-input" %>
               <%= f.label :displayed, "非公開", class: "form-check-label" %>
             </div>

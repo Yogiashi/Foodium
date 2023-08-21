@@ -15,7 +15,7 @@
  */
 
 
-/*===投稿画像のスワイパー設定==*/
+// 投稿画像のswiper設定
 .swiper {
   width: 100%;
   height: 100%;
@@ -32,23 +32,28 @@
   max-height: 100%;
 }
 
-// swiperナビゲーションボタン
+// swiperナビゲーションボタンのカラー変更
 :root {
   --swiper-navigation-color: #2f4f4f;
   --swiper-pagination-color: #2f4f4f;
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
- content: none !important;
+ content: none !important; //元のarrowボタンを非表示にする
 }
 
-/*エラーメッセージでフォームが崩れないように設定*/
+// エラーメッセージでフォームが崩れないように設定
 .field_with_errors {
   display: contents;
 }
 
-html {scroll-behavior: smooth;}
+// 同ページのリンクをクリックしたときスクロールするように設定
+html {
+  scroll-behavior: smooth;
+  
+}
 
+// ヘッダーのデザイン
 header {
   width: 100%;
   background-color: #006400;
@@ -58,7 +63,7 @@ header {
 }
 
 body {
-// 半角英数折返しの設定
+  // 半角英数折返しの設定
   word-wrap: break-word;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -75,7 +80,7 @@ body {
   padding-bottom: 5%;
 }
 
-/* ===新規登録・ログイン画面の設定===*/
+// ===新規登録・ログイン画面の設定===
 .form-background {
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -109,18 +114,21 @@ body {
   background-size: cover;
   background-position: center;
 }
+// ============================================
 
+// トップページ「Foodium」のデザイン
 .site-name {
   font-size: 50px;
   font-family: cursive;
 }
 
-/*投稿を横並びに設定*/
+// 投稿を横並びに設定
 .flex {
   display: flex;
   flex-flow: wrap;
 }
 
+// ヘッダーのナビゲーションhover時
 .nav-link:hover{
   opacity: 0.6;
   background-color: #fff;
@@ -129,23 +137,23 @@ body {
   border-radius: 10px;
 }
 
-/*==== 検索窓の設定 ====*/
+// ===検索窓の設定===
 
-/*検索窓背景のエリア*/
+// 検索窓背景のエリア
 #search-wrap{
   position: relative;
   top: 115px;
-  z-index: -1;/*最背面に設定*/
+  z-index: -1; // 最背面に設定
   opacity: 0;
-  transition: all 0.5s;/*transitionを使ってスムースに現れる*/
+  transition: all 0.5s; // transitionを使ってスムースに現れる
   width: 100%;
   height: 100%;
 }
 
-/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+// ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後のデザイン
 #search-wrap.panelactive{
-  opacity: 0.9;/*不透明に変更*/
-  z-index: 11;/*全面に出現*/
+  opacity: 0.9;
+  z-index: 11; // 最前面に設定
   background: gray;
   padding-top: 8%;
   padding-bottom: 20px;
@@ -153,12 +161,12 @@ body {
   justify-content: center;
 }
 
-/*検索窓のエリア*/
+// 検索窓のエリア
 #search-wrap .search-area{
-  display: none;/*検索窓のエリアは、はじめ非表示*/
+  display: none; // 検索窓のエリアは、はじめ非表示
 }
 
-/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+// ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後
 #search-wrap.panelactive .search-area{
   display: block;/*検索窓エリアを表示*/
   position: relative;
@@ -170,7 +178,7 @@ body {
   width: 400px;
 }
 
-/*===検索フォームを閉じるための×ボタン===*/
+// 検索フォームを閉じるための×ボタン
 .close-btn{
   position: absolute;
   top: 10px;
@@ -203,8 +211,9 @@ body {
     transform: translateY(-6px) rotate(135deg);
     width: 50%;
 }
+// =========================================
 
-/*==トップ画面のサイドバー==*/
+// ===トップ画面のサイドバー===
 .top-sidebar {
   width: 40vw;
   height: 100vh;
@@ -225,8 +234,9 @@ body {
 .top-link {
   margin-top: 25vh;
 }
+// ========================================
 
-/*== aboutページ==*/
+// === aboutページ===
 .about-link {
   margin-top: 60px;
   font-family: cursive;
@@ -248,8 +258,9 @@ body {
   width: 97vw;
   background-color: #fff;
 }
+// ========================================
 
-/*==投稿一覧画面とユーザー詳細画面のタブ設定==*/
+// ===投稿一覧画面とユーザー詳細画面のタブ設定===
 .tab {
   width: 45%;
   padding: 10px;
@@ -283,10 +294,10 @@ body {
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
+// =============================================
 
-/*==ユーザー編集画面の「・・・」の設定==*/
+// ===ユーザー編集画面の「・・・」の設定===
 .menu {
-
   display: flex;
   list-style-type: none;
   color: #fff;
@@ -315,6 +326,7 @@ body {
 .menuSub li a:hover {
   background: #ffa500;
 }
+// ====================================
 
 @media screen and (max-width:1200px) {
   .flex {
@@ -333,7 +345,7 @@ body {
   .comment-form {
     display: none;
   }
-  // xボタンを非表示
+  // フォロー・フォロワー一覧ページのxボタンを非表示
   .back-btn {
     display: none;
   }
@@ -344,8 +356,8 @@ body {
     background-image: image-url("ice.jpg");
     background-size: cover;
   }
-  // タグ検索結果画面のタイトルの調整
-  .title {
+  // 各ページのタイトル
+  .responsive-title {
     font-size: 25px;
   }
   // トップページのデザイン
@@ -359,7 +371,7 @@ body {
     right: 0;
   }
 
-  /*==トップページのサイドバーの設定==*/
+  // ===トップページのサイドバーの設定===
   .top-sidebar {
     width: 100vw;
     height: 100vh;
@@ -383,7 +395,9 @@ body {
     left: 20px;
     right: 20px;
   }
-  /* ===新規登録・ログイン画面の設定===*/
+  // ====================================
+  
+  // ===新規登録・ログイン画面の設定===
   .form-background {
     margin-top: 10%;
   }
@@ -391,19 +405,24 @@ body {
     margin-top: 30px;
     width: 330px;
   }
-  .profile-image {
+  // ====================================
+  // 投稿のユーザー画像
+  .post-profile-image {
     width: 60px;
     height: 60px;
   }
+  // ユーザー詳細画面のユーザー画像
   .user-show-profile-image {
     width: 80px;
     height: 80px;
   }
+  
   .post-image {
     height: 21em;
   }
   
-  /*== aboutページ==*/
+  
+  // === aboutページ===
   #about {
   width: 100%;
   position: absolute;
@@ -432,4 +451,5 @@ body {
   .about-image {
     margin-left: 50px;
   }
+  // ========================
 }

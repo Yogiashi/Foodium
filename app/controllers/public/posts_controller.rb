@@ -28,9 +28,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.where(displayed: :true).page(params[:posts_page]).per(12).order(created_at: :desc)
-    # フォローしてるユーザーの投稿を取得
-    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: :true).page(params[:following_page]).per(12).order(created_at: :desc)
+    # 公開中の投稿を取得
+    @posts = Post.all.where(displayed: true).page(params[:posts_page]).per(12).order(created_at: :desc)
+    # フォローしてるユーザーの公開中の投稿を取得
+    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: true).page(params[:following_page]).per(12).order(created_at: :desc)
     @tag_list=Tag.all
   end
 
@@ -41,7 +42,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list=@post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
@@ -77,11 +78,13 @@ class Public::PostsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @posts = @tag.posts.page(params[:page]).per(12).order(created_at: :desc)
+    @posts = @tag.posts.where(displayed: true).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def search
-    @posts = Post.search(params[:word]).page(params[:page]).per(12).order(created_at: :desc)
+    # 検索フォームから送られた値を受け取り公開中の投稿を取得
+    @posts = Post.search(params[:word]).where(displayed: :true).page(params[:page]).per(12).order(created_at: :desc)
+    # 価格検索フォームから送られた値があれば受け取り検索
     @posts = @posts.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?
@@ -89,6 +92,7 @@ class Public::PostsController < ApplicationController
       @tag_ids.each do |id|
         @tag_word = @tag_word + " " + '"' + Tag.find(id).name + '"'  if id != ""
       end
+      # タグチェックボックスから送られた値があれば受け取り検索
       @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).group("posts.id").having("count(*) = #{@tag_ids.length}").page(params[:page]).per(12).order(created_at: :desc)
     end
   end
@@ -97,7 +101,8 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit({post_images: []}, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
   end
-
+  
+  # urlから直接アクセスされるのを防ぐ
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user.id == current_user.id

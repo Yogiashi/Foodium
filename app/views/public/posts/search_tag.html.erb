@@ -13,8 +13,10 @@
   <div class="row  justify-content-center">
     <div class="col-12 mt-5">
       <div class="flex">
+        <!--投稿patial-->
         <%= render "public/users/post", posts: @posts %>
       </div>
+      <!--ページネーション-->
       <div class="d-flex justify-content-center mt-5"><%= paginate @posts %></div>
     </div>
   </div>

@@ -7,7 +7,7 @@
             <% @post.post_images.each do |image| %>
               <div class="swiper-slide">
                 <%= link_to post_path(@post) do %>
-                  <div class=""><%= image_tag image, class: "card-img-top", style: "height: 28em" %></div>
+                  <%= image_tag image, class: "card-img-top", style: "height: 28em" %>
                 <% end %>
               </div>
             <% end %>

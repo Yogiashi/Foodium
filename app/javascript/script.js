@@ -9,9 +9,8 @@ $(function() {
   });
 });
 
-// サイドバーの検索フォーム一覧
+// サイドバーの検索フォーム
 $(function() {
-  //開くボタンを押した時
   $("#search").click(function () {
     $("#search-wrap").addClass('panelactive');
   });
@@ -21,6 +20,8 @@ $(function() {
       $("#search-wrap").removeClass('panelactive');
   });
 });
+// =======================================================
+
 
 //管理者側のユーザー検索ボタン
 $(function() {
@@ -30,15 +31,16 @@ $(function() {
   });
 });
 
-  // 表示した検索フォーム以外の部分をクリックしたとき
+// 表示した検索フォーム以外の部分をクリックしたら閉じる
 $(document).on('click touchend', function(event) {
   if (!$(event.target).closest('.search-group').length) {
     $('.search-form').hide('slow');
      $(".btn1").show('slow');
   }
 });
+// ========================================================
 
-// 画像プレビュー機能
+// 複数画像プレビュー機能
 $(function(){
   $('.img_field').on('change', function(e) {
     let files = e.target.files;
@@ -56,7 +58,7 @@ $(function(){
   });
 });
 
-// preview.js
+// ユーザー画像プレビュー機能
 $(function() {
   function readURL(input) {
       if (input.files && input.files[0]) {
@@ -82,7 +84,7 @@ $('#top a').on('click',function(event){
 });
 });
 
-// ユーザー詳細ページの編集・削除ボタン
+// ユーザー詳細ページの「・・・」（編集・削除ボタン）
 $(function() {
   $("ul.menu li").hover(
     function() {

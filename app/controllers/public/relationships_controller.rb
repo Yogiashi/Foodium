@@ -5,23 +5,21 @@ class Public::RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     following = current_user.relationships.build(follower_id: params[:user_id])
     following.save
-    # redirect_back fallback_location: root_path
   end
   
   def destroy
     @user = User.find(params[:user_id])
     following = current_user.relationships.find_by(follower_id: params[:user_id])
     following.destroy
-    # redirect_back fallback_location: root_path
   end
   
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings #フォローしているユーザーを代入
   end
   
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers #フォロワーを代入
   end
 end

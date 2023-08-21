@@ -17,5 +17,5 @@ import Swiper from 'swiper/swiper-bundle.js';
 import 'swiper/swiper-bundle.css';
 
 Rails.start()
-// Turbolinks.start()
+// Turbolinks.start()　/*ターボリンクス無効化*/
 ActiveStorage.start()

@@ -5,13 +5,14 @@
       <table class="table mt-5">
         <% @users.each do |user| %>
         <tr>
-          <td class="">
+          <td>
             <%= link_to user_path(user), class: "text-decoration-none text-dark" do %>
               <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %>
             <% end %>
           </td>
           <td  style="vertical-align:middle;"><strong><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></strong></td>
           <td colspan="2",  style="vertical-align:middle;">
+            <!--フォローボタンpartial-->
             <div id="follow_btn_<%= user.id %>">
              <%= render 'public/relationships/btn', user: user %>
             </div>
