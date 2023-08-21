@@ -17,7 +17,7 @@
               <% end %>
               <!--ユーザー検索フォーム-->
               <div class="search-form mt-2", style='display:none;'>
-                <%= form_with url: admin_users_path, local: true, method: :get, class: "input-group" do |form| %>
+                <%= form_with url: admin_users_path, local: true, method: :get, class: "input-group" do |f| %>
                   <%= f.text_field :word, class: "form-control", placeholder: "ユーザー検索" %>
                   <%= button_tag type: "submit", class: " form-control btn btn-light col-3 ml-auto" do %>
           	         <i class="fas fa-search"></i>
