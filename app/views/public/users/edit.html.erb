@@ -1,25 +1,26 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 col-11">
-      <h1 class="text-center title">プロフィールを編集</h1>
+      <h1 class="responsive-title text-center">プロフィールを編集</h1>
       <% if @user.email == 'guest@example.com'%>
         <h5 class="text-center mt-5">ゲストユーザーはプロフィールの編集ができません。</h5>
       <% else %>
         <%= form_with model: @user do |f| %>
+        <!--エラーメッセージ-->
         <div class="row justify-content-center text-center mr-4"><%= render 'layouts/errors', obj: @user %></div>
           <div class="row mt-5">
-            <%= f.label :画像, class: "col-form-label col-sm-3 text-center"%>
+            <%= f.label :profile_image, "画像", class: "col-form-label col-sm-3 text-center"%>
             <!--画像プレビュー機能-->
             <%= image_tag @user.get_profile_image, onClick: "$('.user_img_field').click()", class: "user_img_prev rounded-circle col-sm-4 col-8 mx-auto", size: "180x220" %>
             <%= f.file_field :profile_image, class: "mt-5 user_img_field mx-auto", style: 'display:none;', accept: 'image/*' %>
           </div>
           <div class="row mt-5">
-            <%= f.label :ユーザーネーム, class: "col-form-label col-sm-3 text-center"%>
-            <%= f.text_field :name, class: "col-sm-9 form-control"%>
+            <%= f.label :name, "ユーザーネーム", class: "col-form-label col-sm-3 text-center"%>
+            <%= f.text_field :name, class: "form-control col-sm-9"%>
           </div>
           <div class="row mt-5">
-            <%= f.label :自己紹介, class: "col-form-label col-sm-3 text-center"%>
-            <%= f.text_area :introduction, class: "col-sm-9 form-control",placeholder: "50文字まで", size: "30x5"%>
+            <%= f.label :introduction, "自己紹介", class: "col-form-label col-sm-3 text-center"%>
+            <%= f.text_area :introduction, class: "form-control col-sm-9",placeholder: "50文字まで", size: "30x5"%>
           </div>
           <div class="row mt-5 d-flex justify-content-center">
             <%= f.submit "変更を保存する", class: "btn btn-outline-success mr-5"%>

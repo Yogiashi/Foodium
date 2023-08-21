@@ -2,7 +2,6 @@
   <div class="col-md-5 col-sm-12 mx-auto p-3 form-background">
     <h2 class="text-center site-name">Foodium</h2>
     <%= form_with model: @user, url: user_session_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
       <div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
       </div>

@@ -19,6 +19,7 @@
       <span><%= notice %></span>
     <% end %>
     <main>
+      <!--ここから検索フォーム-->
       <div id="search-wrap">
          <div class="close-btn"><span></span><span></span></div>
          <div class="search-area ">
@@ -48,10 +49,11 @@
             	    </div>
                 <% end %>
               </div>
-              <%= f.submit "絞り込み", class: "btn btn-light mx-auto mt-3 d-flex" %>
+              <%= f.submit "絞り込み", class: "btn btn-light d-flex mx-auto mt-3" %>
             <% end %>
           </div>
         </div>
+        <!--ここまで検索フォーム-->
         <%= yield %>
       </main>
   </body>

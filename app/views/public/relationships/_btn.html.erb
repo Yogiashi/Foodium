@@ -1,4 +1,7 @@
+<!--フォローボタン-->
+<!--ユーザーがログインユーザーでない場合にボタンを表示-->
 <% if user != current_user %>
+  <!--フォローしているかで分岐-->
   <% if current_user.following?(user) %>
     <%= link_to user_relationships_path(user), method: :delete, class:"text-decoration-none", remote: true do %>
       <button class="btn btn-secondary">フォロー中</button>

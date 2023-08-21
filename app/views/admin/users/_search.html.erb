@@ -1,3 +1,4 @@
+<!--ユーザー検索フォーム-->
 <%= form_with url: admin_users_path, local: true, method: :get do |form| %>
   <%= form.text_field :word %>
   <%= form.submit '検索' %>

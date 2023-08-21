@@ -1,25 +1,26 @@
+<!--コメント欄-->
 <table class="table table-borderless table-sm">
   <% comments.each do |comment| %>
-  <tr>
-    <td style="width: 15%;">
-      <%= image_tag comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
-    </td>
-    <td class="pt-3" style="width: 40%;"><%= link_to comment.user.name, user_path(comment.user), class: "text-decoration-none text-dark" %></td>
-    <% if comment.user == current_user %>
-    <td>
-      <%= link_to post_comment_path(comment.post_id, comment), class: "text-decoration-none text-dark btn btn-outline-light px-1 float-right", method: :delete, remote: true do %>
-      <i class="far fa-trash-alt"></i>削除
+    <tr>
+      <td style="width: 15%;">
+        <%= image_tag comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
+      </td>
+      <td class="pt-3" style="width: 40%;"><%= link_to comment.user.name, user_path(comment.user), class: "text-decoration-none text-dark" %></td>
+      <% if comment.user == current_user %>
+        <td>
+          <%= link_to post_comment_path(comment.post_id, comment), class: "btn btn-outline-light text-decoration-none text-dark float-right px-1", method: :delete, remote: true do %>
+            <i class="far fa-trash-alt"></i>削除
+          <% end %>
+        </td>
       <% end %>
-    </td>
-    <% end %>
-  </tr>
-  <tr>
-    <td colspan="3" class="px-5"><%= simple_format(comment.content) %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <!--コメント時間表示-->
-    <td colspan="2", class="text-right"><%= "#{time_ago_in_words(comment.created_at)}前" %></td>
-  </tr>
+    </tr>
+    <tr>
+      <td colspan="3" class="px-5"><%= simple_format(comment.content) %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <!--コメント時間表示-->
+      <td colspan="2", class="text-right"><%= "#{time_ago_in_words(comment.created_at)}前" %></td>
+    </tr>
   <% end %>
 </table>

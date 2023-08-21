@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-8 col-md-10 d-md-flex">
+        <div class="col-md-10 col-8 d-md-flex">
           <div class="">
             <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
               <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 profile-image", size: "120x120"%>
@@ -14,7 +14,7 @@
             <% end %>
           </div>
         </div>
-        <div class="col-4 col-md-2">
+        <div class="col-md-2 col-4">
           <% if @post.user.id == current_user.id %>
             <ul class="menu ml-md-5">
               <li class="text-center text-secondary ">

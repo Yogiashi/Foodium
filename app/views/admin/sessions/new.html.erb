@@ -1,16 +1,16 @@
 <div class="admin-image">
-  <div class="col-md-5 col-sm-12 mx-auto form-background pt-3">
-  <h2 class="text-center mt-5 site-name">admin</h2>
-  <%= form_with model: @admin, url: admin_session_path do |f| %>
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
-    </div>
-    <div class="field">
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control mt-4", placeholder: "パスワード" %>
-    </div>
-     <div class="actions d-flex justify-content-center pb-5">
-      <%= f.submit "ログイン", class: "btn btn-primary mt-4 py-2 px-4" %>
-    </div>
-  <% end %>
-</div>
+  <div class="form-background col-md-5 col-12 mx-auto pt-3">
+    <h2 class="site-name text-center mt-5">admin</h2>
+    <%= form_with model: @admin, url: admin_session_path do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-5", placeholder: "メールアドレス" %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control mt-4", placeholder: "パスワード" %>
+      </div>
+       <div class="d-flex justify-content-center pb-5">
+        <%= f.submit "ログイン", class: "btn btn-primary mt-4 py-2 px-4" %>
+      </div>
+    <% end %>
+  </div>
 </div>

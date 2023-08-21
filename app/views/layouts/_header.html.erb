@@ -15,11 +15,11 @@
               <%= link_to "#", class: "nav-link active btn1" do %>
                 <i class="fas fa-search rounded-circle p-2 bg-light"></i> 検索
               <% end %>
-              <!--検索フォーム-->
+              <!--ユーザー検索フォーム-->
               <div class="search-form mt-2", style='display:none;'>
                 <%= form_with url: admin_users_path, local: true, method: :get, class: "input-group" do |form| %>
-                  <%= form.text_field :word, class: "form-control", placeholder: "ユーザー検索" %>
-                  <%= button_tag type: "submit", class: "btn btn-light ml-auto form-control col-3" do %>
+                  <%= f.text_field :word, class: "form-control", placeholder: "ユーザー検索" %>
+                  <%= button_tag type: "submit", class: " form-control btn btn-light col-3 ml-auto" do %>
           	         <i class="fas fa-search"></i>
                   <% end %>
                 <% end %>
@@ -69,6 +69,7 @@
           </li>
           <li class="nav-item">
             <%= link_to notifications_path, class: "nav-link active" do %>
+              <!--未読の通知がある場合とない場合で分岐-->
               <% if current_user.notifications.where(checked: false).exists? %>
                 <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
               <% else %>

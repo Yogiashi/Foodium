@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 col-12">
-      <h1 class="text-center title">タグ一覧</h1>
+      <h1 class="responsive-title text-center">タグ一覧</h1>
       <%= render 'layouts/errors', obj: @tag %>
       <div class="mt-5">
       <%= form_with model: @tag, url: admin_tags_path do |f| %>
         <div class="row">
-          <%= f.label :name, "タグ追加", class: "col-md-2  col-4 col-form-label ml-1" %>
-          <%= f.text_field :name, class: "col-md-6 col-5 form-control" %>
+          <%= f.label :name, "タグ追加", class: "col-form-label col-md-2 col-4 ml-1" %>
+          <%= f.text_field :name, class: "form-control col-md-6 col-5" %>
           <%= f.submit "追加", class: "btn btn-success col-2 ml-md-2 ml-1"%>
         </div>
       <% end %>

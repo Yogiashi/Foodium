@@ -15,9 +15,8 @@ class Post < ApplicationRecord
   validates :price, presence: true
   validates :address, presence: true
   validate :validate_number_of_files
-
-  FILE_NUMBER_LIMIT = 4
-
+  
+  # 地図機能
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -28,7 +27,7 @@ class Post < ApplicationRecord
 
   def save_tag(sent_tags)
     sent_tags.uniq!
-    # タグが存在していれば、タグの名前を配列として全て取得
+    # タグが存在していれば、タグの名前を全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
     old_tags = current_tags - sent_tags
@@ -48,16 +47,17 @@ class Post < ApplicationRecord
    end
   end
 
-  # キーワード検索
+  # キーワード検索メソッド
   def self.search(search)
     if search != nil && search != ''
+      # タグテーブル、ユーザーテーブルのカラムも検索対象に含む
       Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR caption LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").distinct
     else
       Post.all
     end
   end
 
-  # 最小価格〜最大価格の
+  # 最小価格〜最大価格の検索メソッド
   def self.price_search(min_search, max_search)
     if max_search != '' && max_search != nil && min_search != '' && min_search != nil
         @posts = Post.where("price >= #{min_search} and price <= #{max_search}")
@@ -67,8 +67,9 @@ class Post < ApplicationRecord
         @posts = Post.where("price >= #{min_search}")
     end
   end
-
+  
   # 添付できる画像を４枚までに制限
+  FILE_NUMBER_LIMIT = 4
   def validate_number_of_files
     return if post_images.length <= FILE_NUMBER_LIMIT
     errors.add(:post_images, "の添付は#{FILE_NUMBER_LIMIT}枚までです。")

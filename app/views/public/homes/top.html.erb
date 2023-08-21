@@ -18,12 +18,14 @@
     </div>
   </div>
 </div>
+<!--サイドバー-->
 <div class="top-sidebar">
   <div class="top-name">Foodium</div>
   <div class="top-link">
     <div class="text-center text-dark">アカウントをお持ちの方<%= link_to "こちら", new_user_session_path, class: "text-success text-decoration-none" %></div>
     <div class="text-center text-dark">アカウントをお持ちでない方<%= link_to "こちら", new_user_registration_path, class: "text-success text-decoration-none" %></div>
   </div>
+  <!--aboutページへスクロールするリンク-->
   <%= link_to "#about", class: "text-dark text-decoration-none" do %>
     <div class="d-flex justify-content-center">
       <p class="about-link" style="font-size: 50px;">about<i class="fas fa-chevron-circle-down ml-2 mt-4" style="font-size: 30px;"></i></p>
@@ -38,10 +40,10 @@
       <p>Foodium(フーディアム)は、あなたの日々の外食を記録したり共有できるSNSサイトです。</p>
       <p>そして、あなたの知らない素敵なお店や料理に出会うことができます。</p>
     </div>
-    <h2 class="text-center mt-5 mb-3">なにができるの？</h2>
+    <h1 class="text-center mt-5 mb-3" style="font-family: cursive;">Usage</h1>
     <div class="d-md-flex justify-content-center mt-3">
       <div class="mr-md-5 mt-5 mt-md-0">
-         <h4 class="text-center rounded mx-auto about-how-title" style="background-color: #8fbc8f;">投稿して共有しよう！</h4>
+         <h4 class="about-how-title text-center rounded mx-auto" style="background-color: #8fbc8f;">投稿して共有しよう！</h4>
          <%= image_tag asset_path("posting.jpg"), class: "about-image", size: "250x320" %>
       </div>
       <div class="mr-md-5 mt-5 mt-md-0">
@@ -49,7 +51,7 @@
          <%= image_tag asset_path("draft-image.jpg"), class: "draft-image", size: "400x320" %>
       </div>
       <div class="mt-5 mt-md-0">
-         <h4 class="text-center rounded mx-auto about-how-title"  style="background-color: #8fbc8f;">お店や料理を探せる！</h4>
+         <h4 class=" about-how-title text-center rounded mx-auto"  style="background-color: #8fbc8f;">お店や料理を探せる！</h4>
          <%= image_tag asset_path("search-image.jpg"), class: "about-image", size: "250x320" %>
       </div>
     </div>

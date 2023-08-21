@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def index
     if params[:word]
-      @users = User.search(params[:word])
+      @users = User.search(params[:word]) #ユーザー検索フォームから送られた値を代入
     else
       @users = User.all
     end
@@ -13,17 +13,15 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
-    # 公開中の投稿を取得
-    @posts = @user.posts.where(displayed: :true).page(params[:posts_page]).per(12).order(created_at: :desc)
-    # いいねした投稿を取得
-    likes = Like.where(user_id: current_user.id).pluck(:post_id)
-    @liked_posts = Post.where(id: likes).page(params[:liked_page]).per(12).order(created_at: :desc)
+    @posts = @user.posts.where(displayed: true).page(params[:posts_page]).per(12).order(created_at: :desc) #公開中の投稿を取得
+    likes = Like.where(user_id: current_user.id).pluck(:post_id) #ログインユーザーがいいねした投稿idを取得
+    @liked_posts = Post.where(id: likes, displayed: true).page(params[:liked_page]).per(12).order(created_at: :desc) #公開中のいいねした投稿を取得
   end
-
-  # 下書き一覧ページ
+  
+  # 下書きアクション
   def draft
     @user = User.find(params[:id])
-    @posts = @user.posts.where(displayed: false).page(params[:page]).per(12).order(created_at: :desc)
+    @posts = @user.posts.where(displayed: false).page(params[:page]).per(12).order(created_at: :desc) #非公開中の投稿を取得
   end
 
   def edit
@@ -38,12 +36,11 @@ class Public::UsersController < ApplicationController
       render "edit"
     end
   end
-
+  
   # 退会アクション
   def withdraw
     @user = User.find(current_user.id)
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    @user.update(is_deleted: true)
+    @user.update(is_deleted: true)  # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to new_user_registration_path

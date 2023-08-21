@@ -3,10 +3,10 @@
     <div class="col-12 mx-auto">
       <h1 class="text-center ">通知</h1>
       <table class="table table-borderless d-flex justify-content-center">
-        <% if @notifications.present? %>
+        <% if @notifications.present? %> <!--通知があれば表示-->
           <% @notifications.each do |notification| %>
           <tr>
-            <td class=""><%= render "#{notification.action_type}", notification: notification %></td>
+            <td><%= render "#{notification.action_type}", notification: notification %></td>
           </tr>
           <% end %>
         <% else %>

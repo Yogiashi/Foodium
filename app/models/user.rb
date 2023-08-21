@@ -16,19 +16,23 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 150 }
-
+  
+  # プロフィール画像がなければ'no_image.jpg'を設定
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
-
+  
+  # フォローしているかの判別
   def following?(user)
     followings.include?(user)
   end
-
+  
+  # ユーザー検索メソッド
   def self.search(word)
       @user = User.where("name LIKE?","%#{word}%")
   end
-
+  
+  # ゲストログイン機能
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
