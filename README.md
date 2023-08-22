@@ -40,4 +40,4 @@ SNSはまだあまり知られていないような料理やユーザーが普�
 
 ## 使用素材
 - ロゴの作成に以下のサイトを使用
-  Canva(https://www.canva.com/)
+  <br>Canva(https://www.canva.com/)
