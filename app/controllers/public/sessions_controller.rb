@@ -43,9 +43,12 @@ class Public::SessionsController < Devise::SessionsController
   
   # 退会しているかを判断するメソッド
   def user_state
-    @user = User.find_by(email: params[:user][:email]) # 入力されたemailからアカウントを1件取得
-    return if !@user # アカウントを取得できなかった場合、このメソッドを終了する
-    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true) # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    # 入力されたemailからアカウントを1件取得
+    @user = User.find_by(email: params[:user][:email])
+    # アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@user
+     # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
       redirect_to new_user_registration_path
     end
   end

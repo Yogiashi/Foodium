@@ -29,9 +29,9 @@ class Post < ApplicationRecord
     sent_tags.uniq!
     # タグが存在していれば、タグの名前を全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 現在取得したタグから送られてきたタグを除いてoldtagとする
+    # 現在取得したタグから送られてきたタグを除いてold_tagとする
     old_tags = current_tags - sent_tags
-    # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
+    # 送信されてきたタグから現在存在するタグを除いたタグをnew_tagsとする
     new_tags = sent_tags - current_tags
 
     # 古いタグを消す
@@ -50,7 +50,6 @@ class Post < ApplicationRecord
   # キーワード検索メソッド
   def self.search(search)
     if search != nil && search != ''
-      # タグテーブル、ユーザーテーブルのカラムも検索対象に含む
       Post.joins(:tags).joins(:user).where('shop_name LIKE(?) OR dish_name LIKE(?) OR caption LIKE(?) OR address LIKE(?) OR tags.name LIKE(?) OR users.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").distinct
     else
       Post.all

@@ -3,8 +3,10 @@ class Public::NotificationsController < ApplicationController
 
   def index
     @notifications = current_user.notifications.order(created_at: :desc)
-    @notifications.where(checked: false).each do |notification| #未読の通知を探してnotificationに代入
-      notification.update(checked: true) #通知を既読に更新
+    # 未読の通知を取得
+    @notifications.where(checked: false).each do |notification|
+      # 通知を既読に更新
+      notification.update(checked: true)
     end
   end
 

@@ -12,14 +12,12 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
     comment.save
-    # ajax
   end
   
   def destroy
     @post = Post.find(params[:post_id])
     @comments = @post.comments.all
     Comment.find(params[:id]).destroy
-    # ajax
   end
   
   private
