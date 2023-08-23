@@ -35,6 +35,11 @@
           <%= f.label :price, "価格", class: "col-form-label col-sm-3 text-center"%>
           <%= f.number_field :price, class: "form-control col-sm-9"%>
         </div>
+        <!--地図情報入力フォーム-->
+        <div class="row mt-5">
+          <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
+          <%= f.text_field :address, class: 'form-control col-sm-9', placeholder: "渋谷, スカイツリー, ⚪︎⚪︎タワー１階" %>
+        </div>
         <!--タグ機能-->
         <div class="row mt-5">
           <%= f.label :タグ, class: "col-form-label col-sm-3 text-center" %>
@@ -51,11 +56,6 @@
           <!--新規でタグを登録するフォーム-->
           <%= f.text_field :name, value: @tag_list, class: "form-control offset-md-3", placeholder: ",(カンマ)で区切ると複数のタグを登録できます"%>
         </div>
-        <!--地図情報を追加-->
-        <div class="row mt-5">
-          <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
-          <%= f.text_field :address, class: 'form-control col-sm-9' %>
-        </div>
         <!--投稿の公開・非公開ボタン-->
         <div class="row mt-5">
           <%=f.label:"公開範囲",class: "col-form-label col-sm-3 text-center" %>
@@ -70,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-5 d-flex justify-content-center">
+        <div class="row d-flex justify-content-center mt-5">
           <%= f.submit "変更を保存する", class: "btn btn-success"%>
         </div>
       <% end %>
