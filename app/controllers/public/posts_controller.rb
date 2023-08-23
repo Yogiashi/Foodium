@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -73,18 +73,18 @@ class Public::PostsController < ApplicationController
   end
 
   def search_tag
-    #検索結果画面でもタグ一覧表示
+    # 検索結果画面でもタグ一覧表示
     @tag_list = Tag.all
-    #検索されたタグを受け取る
+    # 検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
-    #検索されたタグに紐づく投稿を表示
+    # 検索されたタグに紐づく投稿を表示
     @posts = @tag.posts.where(displayed: true).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def search
     # 検索フォームから送られた値を受け取り公開中の投稿を取得
     @posts = Post.search(params[:word]).where(displayed: :true).page(params[:page]).per(12).order(created_at: :desc)
-    # 価格検索フォームから送られた値があれば受け取り@postsに
+    # 価格検索フォームから送られた値があれば受け取り@postsに代入
     @posts = @posts.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
     if @tag_ids.present?

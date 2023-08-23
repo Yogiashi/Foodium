@@ -15,11 +15,13 @@ class Public::RelationshipsController < ApplicationController
   
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings #フォローしているユーザーを代入
+    # フォローしているユーザーを代入
+    @users = user.followings
   end
   
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers #フォロワーを代入
+    # フォロワーを代入
+    @users = user.followers
   end
 end
