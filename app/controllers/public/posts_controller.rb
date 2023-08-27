@@ -83,7 +83,7 @@ class Public::PostsController < ApplicationController
 
   def search
     # 検索フォームから送られた値を受け取り公開中の投稿を取得
-    @posts = Post.search(params[:word]).where(displayed: :true).page(params[:page]).per(12).order(created_at: :desc)
+    @posts = Post.search(params[:word]).where(displayed: true).page(params[:page]).per(12).order(created_at: :desc)
     # 価格検索フォームから送られた値があれば受け取り@postsに代入
     @posts = @posts.price_search(params[:min_search], params[:max_search]).page(params[:page]).per(12).order(created_at: :desc) if params[:min_search].present? or  params[:max_search].present?
     @tag_ids = params[:tag_ids]&.select(&:present?)
@@ -93,7 +93,7 @@ class Public::PostsController < ApplicationController
         @tag_word = @tag_word + " " + '"' + Tag.find(id).name + '"'  if id != ""
       end
       # タグチェックボックスから送られた値があれば受け取り@postsに代入
-      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).page(params[:page]).per(12).order(created_at: :desc)
+      @posts = @posts.joins(:post_tags).where(post_tags: {tag_id: @tag_ids}).distinct.page(params[:page]).per(12).order(created_at: :desc)
     end
   end
 
@@ -101,7 +101,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit({post_images: []}, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
   end
-  
+
   # urlから直接アクセスされるのを防ぐ
   def is_matching_login_user
     post = Post.find(params[:id])
