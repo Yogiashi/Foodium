@@ -17,7 +17,7 @@ class Public::LikesController < ApplicationController
     like = current_user.likes.find_by(post_id: @post.id)
     like.destroy
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
-    @liked_posts = Post.find(id: likes, displayed: true)
+    @liked_posts = Post.where(id: likes, displayed: true)
     @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: true)
   end
 end

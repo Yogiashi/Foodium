@@ -50,7 +50,7 @@
 // 同ページのリンクをクリックしたときスクロールするように設定
 html {
   scroll-behavior: smooth;
-  
+
 }
 
 // ヘッダーのデザイン
@@ -243,19 +243,11 @@ body {
 }
 
 #about {
-  height: 100vh;
-  width: 100%;
+  width: 100vw;
+  hegiht: 100vh;
   position: absolute;
   z-index: 20;
-  background-color: #006400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.about-content {
-  height: 95vh;
-  width: 97vw;
+  border: 10px solid #006400;
   background-color: #fff;
 }
 // ========================================
@@ -396,7 +388,7 @@ body {
     right: 20px;
   }
   // ====================================
-  
+
   // ===新規登録・ログイン画面の設定===
   .form-background {
     margin-top: 10%;
@@ -416,40 +408,22 @@ body {
     width: 80px;
     height: 80px;
   }
-  
+
   .post-image {
     height: 21em;
   }
-  
-  
+
   // === aboutページ===
-  #about {
-  width: 100%;
-  position: absolute;
-  bottom: -260vh;
-  height: 260vh;
-  }
   .about-link {
-  font-size: 30px;
-  position: fixed;
-  bottom: 10px;
-  left: 20px;
-  right: 20px;
-  font-family: cursive;
+    font-size: 30px;
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+    font-family: cursive;
   }
-  .about-content {
-   height: 255vh;
-   width: 92vw;
-  }
-  .draft-image {
-    width: 90vw;
-    margin-left: 3px;
-  }
-  .about-how-title {
-    width: 75%;
-  }
-  .about-image {
-    margin-left: 50px;
+  .about-usage-title {
+    width: 80%;
   }
   // ========================
 }
