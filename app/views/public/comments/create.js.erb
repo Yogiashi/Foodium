@@ -1,3 +1,5 @@
 $('#post-comments').html("<%= j(render "comments", comments: @comments) %>");
-$('#comment_count').html("<%= @post.comments.count %> コメント")
+$('#comment_count_<%= @post.id %>').html("<%= @post.comments.count %> コメント")
+<!--フォローしているユーザーの投稿-->
+$('#following_posts').html("<%= j(render "public/posts/post", posts: @following_posts) %>");
 $("textarea").val('');
