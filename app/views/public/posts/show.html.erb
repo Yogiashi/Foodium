@@ -57,7 +57,7 @@
               <div id="like_btn_<%= @post.id %>" class="mr-md-3 mr-2"><%= render "public/likes/btn", post: @post %></div>
               <%= link_to post_comments_path(@post), class: "text-decoration-none text-dark" do %>
               <i class="far fa-comment"></i>
-              <span id="comment_count"><%= @post.comments.count %> コメント</span>
+              <span id="comment_count_<%= @post.id %>"><%= @post.comments.count %> コメント</span>
               <% end %>
               <!--投稿時間表示-->
               <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
