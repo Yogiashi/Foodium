@@ -56,7 +56,7 @@ html {
 // ヘッダーのデザイン
 header {
   width: 100%;
-  background-color: #006400;
+  background-color: #2f4f4f;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -247,7 +247,7 @@ body {
   hegiht: 100vh;
   position: absolute;
   z-index: 20;
-  border: 10px solid #006400;
+  border: 10px solid #2f4f4f;
   background-color: #fff;
 }
 // ========================================
@@ -268,7 +268,7 @@ body {
 // タブがactiveのときのデザイン
 .tab-active {
   color: #FFF;
-  background: #2f4f4f;
+  background: #008080;
   transition: all 0.2s ease-in-out;
 }
 
