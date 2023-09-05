@@ -9,6 +9,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def posts
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.where(displayed: true)
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -25,7 +30,7 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)

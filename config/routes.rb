@@ -17,10 +17,13 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    root to: "users#index"
-    resources :users, only: [:index, :show, :edit, :update]
+    root to: 'users#index'
+    resources :users, only: [:index, :show, :edit, :update] do
+      get 'posts'
+    end
     resources :tags, except: [:new, :show]
-   end
+    resources :posts, only: [:show, :destroy]
+  end
 
    scope module: :public do
     root to:  'homes#top'
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
     resources :posts do
       collection do
       # タグ検索のルーティング
-      get "search_tag"
+      get 'search_tag'
       get 'search'
       end
       resource :likes, only: [:create, :destroy]
