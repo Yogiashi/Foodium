@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-10 col-8 d-md-flex">
+          <div>
+            <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
+              <%= image_tag @post.user.get_profile_image, class: "rounded-circle mr-md-5 mr-2 user-show-profile-image", size: "120x120"%>
+            <% end %>
+          </div>
+          <div class="mt-md-4 pt-3">
+            <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
+              <i class="fas fa-user"></i> <%= @post.user.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-2 col-4">
+            <ul class="menu ml-md-5">
+              <li class="text-center text-secondary ">
+                <strong>・・・</strong>
+                <ul class="menuSub">
+                  <% if @post.displayed %>
+                  <li class=" my-1 border border-secondary text-center rounded">公開中</li>
+                <% else %>
+                  <li class=" my-1 border border-secondary text-center rounded">非公開</li>
+                <% end %>
+                  <li><%= link_to "削除", admin_post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-6 col-12">
+          <div class="row">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <% @post.post_images.each do |image| %>
+                  <div class="swiper-slide">
+                    <div style="height: 470px"><%= image_tag image %></div>
+                  </div>
+                <% end %>
+              </div>
+              <!-- ページネーションの要素 -->
+              <div class="swiper-pagination"></div>
+              <!-- ナビゲーションボタン （前、次） -->
+              <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left mr-3"></i></div>
+              <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 d-flex border-bottom">
+              <!--投稿時間表示-->
+              <div class="ml-auto mr-2"><%= "#{time_ago_in_words(@post.created_at)}前" %></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mb-3">
+              <!--タグ-->
+              <% @post_tags.each do |tag| %>
+                 <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none" %></strong><%= "(#{tag.posts.count})" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12 mt-5">
+          <div class="row p-2">
+            <p class="col-sm-4 text-center">ショップ名</p>
+             <h3 class="col-sm-8 text-center"><%= @post.shop_name %></h3>
+          </div>
+          <hr>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-4 text-center">料理名</p>
+              <h4 class="col-sm-8 text-center"><%= @post.dish_name %></h4>
+          </div>
+          <hr>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-4 text-center">価格</p>
+             <div class="col-sm-8 text-center"><%= @post.price %> 円</div>
+          </div>
+          <hr>
+          <div class="row p-2">
+            <p class="col-form-label col-sm-4 text-center">キャプション</p>
+            <div class="col-sm-8 border rounded p-3"><%= simple_format(@post.caption) %></div>
+          </div>
+          <hr>
+          <div class="row mt-4 p-2">
+            <p class="col-sm-4 text-center">場所</p>
+              <p class="col-sm-8 text-center"><%= @post.address %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
