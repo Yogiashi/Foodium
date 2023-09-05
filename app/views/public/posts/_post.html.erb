@@ -35,7 +35,7 @@
       </div>
       <!--タグ付け-->
       <% post.tags.each do |tag| %>
-      <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %></strong>
+      <i class="fas fa-tag"></i><strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %></strong>
       <% end %>
       <!--コメントフォーム-->
       <div class="comment-form"><%= render "public/comments/form", post: post, comment: Comment.new %></div>

@@ -3,51 +3,48 @@
     <h1 class="responsive-title text-center mx-auto mb-5"><%= @user.name %>さんの投稿</h1>
   </div>
   <div class="row">
-    <div class="col-12">
-      <div class="flex">
-        <% if @posts.exists? %>
-          <% @posts.each do |post| %>
-            <div class="card mb-3 ml-2" style="width: 22rem; height: 30rem;">
-              <div class="card-body">
-                <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5 post-profile-image", size: "60x60"%>
-                <i class="fas fa-user"></i> <%= post.user.name %>
-              </div>
-              <div class="swiper post-image mt-3">
-                <div class="swiper-wrapper">
-                  <% post.post_images.each do |image| %>
-                    <div class="swiper-slide">
-                      <%= link_to admin_post_path(post) do %>
-                        <%= image_tag image, style: "height: 35em" %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-                <!-- ページネーションの要素 -->
-                <div class="swiper-pagination"></div>
-                <!-- ナビゲーションボタン （前、次） -->
-                <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left mr-3"></i></div>
-                <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
-              </div>
-              <div class="d-flex border-bottom">
-                <%= link_to post_comments_path(post), class: "text-decoration-none text-dark ml-3" do %>
-                <i class="far fa-comment"></i>
-                <span id="comment_count_<%= post.id %>"><%= post.comments.count %> コメント</span>
+    <div class="col-12 flex">
+      <% if @posts.exists? %>
+        <% @posts.each do |post| %>
+          <div class="card mb-3 ml-2" style="width: 22rem; height: 30rem;">
+            <div class="card-body">
+              <%= image_tag post.user.get_profile_image, class: "rounded-circle mr-5 post-profile-image", size: "60x60"%>
+              <i class="fas fa-user"></i> <%= post.user.name %>
+            </div>
+            <div class="swiper post-image mt-3">
+              <div class="swiper-wrapper">
+                <% post.post_images.each do |image| %>
+                  <div class="swiper-slide">
+                    <%= link_to admin_post_path(post) do %>
+                      <%= image_tag image, style: "height: 35em" %>
+                    <% end %>
+                  </div>
                 <% end %>
+              </div>
+              <!-- ページネーションの要素 -->
+              <div class="swiper-pagination"></div>
+              <!-- ナビゲーションボタン （前、次） -->
+              <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left mr-3"></i></div>
+              <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex border-bottom">
                 <!--投稿時間表示-->
                 <div class="ml-auto mr-2"><%= "#{time_ago_in_words(post.created_at)}前" %></div>
               </div>
-              <div class="m-1">
-                <!--タグ-->
-                <% post.tags.each do |tag| %>
-                  <i class="fas fa-tag ml-1"></i> <%= tag.name %>
-                <% end %>
-              </div>
+              <!--タグ付け-->
+              <% post.tags.limit(3).each do |tag| %>
+                <i class="fas fa-tag"></i><strong><%= tag.name %></strong>
+              <% end %>
+              <% if post.tags.count > 3 %>
+                ...
+              <% end %>
             </div>
-          <% end %>
-        <% else %>
-          <h3 class="mx-auto text-center mt-5">投稿はありません</h3>
+          </div>
         <% end %>
-      </div>
+      <% else %>
+        <h3 class="mx-auto text-center mt-5">投稿はありません</h3>
+      <% end %>
     </div>
   </div>
 </div>
