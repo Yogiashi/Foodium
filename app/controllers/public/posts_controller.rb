@@ -29,9 +29,9 @@ class Public::PostsController < ApplicationController
 
   def index
     # 公開中の投稿を取得
-    @posts = Post.all.where(displayed: true).page(params[:posts_page]).per(12).order(created_at: :desc)
+    @posts = Post.all.where(displayed: true).page(params[:posts_page]).per(10).order(created_at: :desc)
     # フォローしてるユーザーの公開中の投稿を取得
-    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: true).page(params[:following_page]).per(12).order(created_at: :desc)
+    @following_posts = Post.where(user_id: [*current_user.following_ids], displayed: true).page(params[:following_page]).per(10).order(created_at: :desc)
     @tag_list=Tag.all
   end
 

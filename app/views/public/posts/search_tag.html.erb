@@ -4,7 +4,7 @@
       <h1 class="text-center title">タグが"<%= @tag.name %>"の投稿一覧</h1>
     </div>
   </div>
-  <div class="d-md-flex justify-content-center">
+  <div class="">
     <!--タグ一覧-->
     <% @tag_list.each do |list| %>
         <span class="mr-1"><strong><%=link_to list.name, search_tag_posts_path(tag_id: list.id), class: "text-dark" %></strong><%="(#{list.posts.where(displayed: true).count})" %></span>
