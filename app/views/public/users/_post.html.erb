@@ -26,8 +26,11 @@
         <% end %>
       </div>
       <!--タグ-->
-      <% post.tags.each do |tag| %>
-        <i class="fas fa-tag"></i> <%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %>
+      <% post.tags.limit(3).each do |tag| %>
+        <i class="fas fa-tag"></i><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none mr-1" %>
+      <% end %>
+      <% if post.tags.count > 3 %>
+        ...
       <% end %>
     </div>
   </div>

@@ -10,14 +10,14 @@
         <span class="mr-1"><strong><%=link_to list.name, search_tag_posts_path(tag_id: list.id), class: "text-dark" %></strong><%="(#{list.posts.where(displayed: true).count})" %></span>
     <% end %>
   </div>
-  <div class="row  justify-content-center">
-    <div class="col-12 mt-5">
-      <div class="flex">
+  <div class="row">
+  
+      <div class="col-12 flex mt-5">
         <!--投稿patial-->
         <%= render "public/users/post", posts: @posts %>
       </div>
       <!--ページネーション-->
       <div class="d-flex justify-content-center mt-5"><%= paginate @posts %></div>
-    </div>
+   
   </div>
 </div>
