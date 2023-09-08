@@ -14,7 +14,7 @@
             <% end %>
           </div>
         </div>
-        <div class="col-md-2 col-5">
+        <div class="col-md-2 col-5 p-md-2 p-0">
           <% if @post.user.id == current_user.id %>
             <ul class="menu float-right">
               <li class="text-center text-secondary ">
@@ -31,7 +31,9 @@
               </li>
             </ul>
           <% else %>
-            <div class="float-right"><%= link_to "通報する", new_user_report_path(@post.user), class: "btn btn-danger ml-auto" %></div>
+            <ul style="list-style: none;">
+              <li><%= link_to "通報する", new_user_report_path(@post.user), class: "btn btn-danger ml-auto" %></li>
+            </ul>
           <% end %>
         </div>
       </div>
@@ -42,7 +44,7 @@
               <div class="swiper-wrapper">
                 <% @post.post_images.each do |image| %>
                   <div class="swiper-slide">
-                    <div style="height: 470px"><%= image_tag image %></div>
+                    <%= image_tag image, style: "height: 470px" %>
                   </div>
                 <% end %>
               </div>

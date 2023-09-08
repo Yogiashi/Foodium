@@ -22,10 +22,6 @@ SNSはまだあまり知られていないような料理やユーザーが普�
 - 全国の料理やお店を検索したい時
 ​
 ## 設計書
-- UI_Flows
-  <br>https://drive.google.com/file/d/1ZXJm4GtCAxyrWvXtsxdnKv97ZPh871fm/view?usp=sharing
-- ワイヤーフレーム
-  <br>https://drive.google.com/file/d/1HCGVqwAJXlfLxU6E9snt74KpSZ-jB9f9/view?usp=sharing
 - ER図
   <br>https://drive.google.com/file/d/1LfvFUM0TJx7z9ROokBPIKfie4YqHYx4T/view?usp=sharing
 - テーブル定義書
