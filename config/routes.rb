@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :tags, except: [:new, :show]
     resources :posts, only: [:show, :destroy]
+    resources :reports, only: [:index, :show, :update]
   end
 
    scope module: :public do
@@ -50,6 +51,8 @@ Rails.application.routes.draw do
         # 下書き一覧ページのルーティング
         get :draft
       end
+      # ユーザーを通報するためのルーティング
+      resources :reports, only: [:new, :create]
       resource :relationships, only: [:create, :destroy]
       # フォローしてるユーザーを取得するためのルーティング
       get 'followings' => 'relationships#followings', as: 'followings'

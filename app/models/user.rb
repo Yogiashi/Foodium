@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id
   has_many :followers, through: :reverse_of_relationships, source: :following
   has_many :notifications, dependent: :destroy
+  has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true

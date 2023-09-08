@@ -11,16 +11,18 @@
         <div class="py-1 col-11 col-md-4 border rounded bg-light mb-3"><%= simple_format(@user.introduction) %></div>
       </div>
       <div class="row justify-content-center mb-5">
+        <!--フォローボタンpartial-->
+        <span id="follow_btn_<%= @user.id %>", class="mb-3">
+           <%= render 'public/relationships/btn', user: @user %>
+        </span>
         <% if @user.id == current_user.id %>
           <div class="d-flex">
             <div class="mr-2 mr-md-4"><%=link_to "下書き一覧", draft_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
              <div class="ml-md-4"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
           </div>
+          <% else %>
+            <div class="ml-5"><%= link_to "通報する", new_user_report_path(@user), class: "btn btn-danger" %></div>
          <% end %>
-         <!--フォローボタンpartial-->
-        <span id="follow_btn_<%= @user.id %>", class="mb-3">
-           <%= render 'public/relationships/btn', user: @user %>
-        </span>
       </div>
       <div class="d-flex justify-content-center">
         <span class="mr-4 mr-md-5">投稿数 <%= @user.posts.count %></span>
