@@ -50,7 +50,6 @@
 // 同ページのリンクをクリックしたときスクロールするように設定
 html {
   scroll-behavior: smooth;
-
 }
 
 // ヘッダーのデザイン
@@ -308,6 +307,7 @@ body {
   margin-left: -6px;
   padding: 0;
   display: none;
+  margin: 0 auto;
 }
 
 .menuSub li a {
