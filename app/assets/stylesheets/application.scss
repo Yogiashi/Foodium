@@ -75,7 +75,7 @@ body {
 }
 
 .container {
-  margin-top: 150px;
+  margin-top: 120px;
   padding-bottom: 5%;
 }
 
@@ -141,7 +141,7 @@ body {
 // 検索窓背景のエリア
 #search-wrap{
   position: relative;
-  top: 115px;
+  top: 71px;
   z-index: -1; // 最背面に設定
   opacity: 0;
   transition: all 0.5s; // transitionを使ってスムースに現れる
@@ -211,6 +211,10 @@ body {
     width: 50%;
 }
 // =========================================
+
+.card {
+  box-shadow: 3px 0px 10px 0px rgba(47,79,79, 0.7);
+}
 
 // ===トップ画面のサイドバー===
 .top-sidebar {
@@ -304,10 +308,8 @@ body {
 
 .menuSub {
   position: absolute;
-  margin-left: -6px;
   padding: 0;
   display: none;
-  margin: 0 auto;
 }
 
 .menuSub li a {
@@ -410,7 +412,7 @@ body {
   }
 
   .post-image {
-    height: 21em;
+    height: 20em;
   }
 
   // === aboutページ===
