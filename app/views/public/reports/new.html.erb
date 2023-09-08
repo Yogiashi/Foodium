@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-11">
+      <h1 class="responsive-title text-center">通報</h1>
+      <%= form_with model:[@user, @report] do |f| %>
+        <div class="row mt-5">
+          <%= f.label :reason, '理由', class: "col-form-label col-sm-3 text-center" %>
+          <%= f.text_area :reason, rows:'3', class:"form-control col-sm-8" %>
+        </div>
+        <div class="row d-flex justify-content-center mt-5">
+          <%= f.submit "通報する", class: "btn btn-danger"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

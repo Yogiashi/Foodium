@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
     if params[:word]
       @users = User.search(params[:word])
     else
-      @users = User.all
+      @users = User.all.page(params[:page]).per(15)
     end
   end
 
