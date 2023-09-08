@@ -14,9 +14,7 @@
   <body class="full-page">
     <% if user_signed_in? or admin_signed_in? %>
       <header><%= render "layouts/header" %></header>
-    <% end %>
-    <% if notice %>
-      <span><%= notice %></span>
+      <span class="ml-1" style="position:relative; top: 120px; z-index: 100;"><%= notice %></span>
     <% end %>
     <main>
       <!--ここから検索フォーム-->
