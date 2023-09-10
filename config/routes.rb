@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
     resources :tags, except: [:new, :show]
     resources :posts, only: [:show, :destroy]
-    resources :reports, only: [:index, :show, :update]
+    resources :reports, only: [:index, :show, :update, :destroy]
   end
 
    scope module: :public do
@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     patch  '/users/withdraw' => 'users#withdraw'
     # 通知機能のルーティング
     resources :notifications, only: [:index, :destroy]
+    # 通報完了画面のルーティング
+    get 'reports/completed' => 'reports#completed', as: 'completed'
     resources :posts do
       collection do
       # タグ検索のルーティング

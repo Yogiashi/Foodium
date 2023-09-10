@@ -18,4 +18,4 @@ ja:
       status:
         waiting: 対応待ち
         keep: 保留
-        finish: 対応済み
+        finished: 対応済み

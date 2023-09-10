@@ -11,10 +11,13 @@ class Public::ReportsController < ApplicationController
     @report.reporter_id = current_user.id
     @report.reported_id = @user.id
     if @report.save
-      redirect_to post_path(@user), notice: "ご報告ありがとうございます。"
+      redirect_to completed_path
     else
       render :new
     end
+  end
+  
+  def completed
   end
   
   private

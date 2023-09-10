@@ -11,10 +11,16 @@ class Admin::ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if @report.update(report_params)
-      redirect_to admin_report_path(@report)
+      redirect_to admin_reports_path
     else
-      render :edit
+      render :show
     end
+  end
+  
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to admin_reports_path
   end
 
   private
