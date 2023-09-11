@@ -13,6 +13,8 @@ ja:
         address: 場所
       tag:
         name: タグ
+      report:
+        reason: 理由
   enums:
     report:
       status:
