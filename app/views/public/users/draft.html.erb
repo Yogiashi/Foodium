@@ -1,11 +1,13 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12">
+  <div class="row">
+    <div class="col-12 justify-content-center">
       <h1 class="responsive-title text-center mb-5">非公開中の投稿</h1>
+    <div class="col-12">
       <!--投稿partial-->
-      <div class="flex justify-content-center"><%= render "post", posts: @posts %></div>
+      <div class="flex"><%= render "post", posts: @posts %></div>
       <!--ページネーション-->
       <div class="d-flex justify-content-center mt-5"><%= paginate @posts %></div>
     </div>
+   </div>
   </div>
 </div>

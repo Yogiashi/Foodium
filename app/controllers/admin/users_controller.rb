@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     if params[:word]
-      @users = User.search(params[:word])
+      @users = User.search(params[:word]).page(params[:page]).per(15)
     else
       @users = User.all.page(params[:page]).per(15)
     end
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), notice: "ユーザー情報の編集に成功しました。"
     else
       render :edit
     end
