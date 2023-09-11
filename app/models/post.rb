@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   validates :price, presence: true
   validates :address, presence: true
   validate :validate_number_of_files
-  
+
   # 地図機能
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -66,7 +66,7 @@ class Post < ApplicationRecord
         @posts = Post.where("price >= #{min_search}")
     end
   end
-  
+
   # 添付できる画像を４枚までに制限
   FILE_NUMBER_LIMIT = 4
   def validate_number_of_files

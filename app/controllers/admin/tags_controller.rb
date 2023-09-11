@@ -32,7 +32,7 @@ class Admin::TagsController < ApplicationController
   def destroy
     tag = Tag.find(params[:id])
     tag.destroy
-    redirect_to admin_tags_path
+    redirect_to admin_tags_path, notice: "タグの削除に成功しました。"
   end
 
   private

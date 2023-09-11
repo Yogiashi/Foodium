@@ -1,20 +1,14 @@
 <div class="container">
   <div class="row">
-    <!--戻るボタン-->
-    <%= link_to :back, class: "back-btn ml-auto text-dark" do %>
-    <i class="fas fa-times fa-3x"></i>
-    <% end %>
-  </div>
-  <div class="row">
     <div class="col-md-6 col-12 mx-auto">
       <h1 class="responsive-title text-center mb-5">フォロー中</h1>
       <% if @users.exists? %>
-        <table class="table table-borderless">
+        <table class="table table-borderless text-center">
           <% @users.each do |user| %>
-            <tr style="vertical-align:middle;">
+            <tr>
               <td style="vertical-align:middle;">
                 <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %>
+                <%= image_tag user.get_profile_image, size: '60x60', class: "rounded-circle" %>
                 <% end %>
               </td>
               <td style="vertical-align:middle;"><%= link_to user.name, user_path(user), class: "text-decoration-none text-dark" %></td>
@@ -25,7 +19,7 @@
           <% end %>
         </table>
       <% else %>
-       <h3 class="text-center mt-5">ユーザーはいません</h3>
+        <h3 class="text-center mt-5">ユーザーはいません</h3>
       <% end %>
     </div>
   </div>

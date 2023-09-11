@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <div id="top">
-          <a href="#"><%= image_tag asset_path("Foodium.jpg"), class: "navbar-brand", size: "80x70" %></a>
+          <a href="#"><%= image_tag asset_path("Foodium.jpg"), class: "navbar-brand", size: "90x80" %></a>
         </div>
         <!--ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,12 @@
             </li>
             <li class="nav-item">
               <%= link_to admin_users_path, class: "nav-link active" do %>
-              <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー
+              <i class="fas fa-users rounded-circle p-2 bg-light"></i> ユーザー一覧
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_tags_path, class: "nav-link active" do %>
-                <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ
+                <i class="fas fa-tags rounded-circle p-2 bg-light"></i> タグ一覧
               <% end %>
             </li>
             <li class="nav-item">

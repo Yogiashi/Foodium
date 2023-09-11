@@ -11,16 +11,16 @@ class Admin::ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if @report.update(report_params)
-      redirect_to admin_reports_path
+      redirect_to admin_reports_path, notice: "通報ステータスの変更に成功しました。"
     else
       render :show
     end
   end
-  
+
   def destroy
     @report = Report.find(params[:id])
     @report.destroy
-    redirect_to admin_reports_path
+    redirect_to admin_reports_path, notice: "通報の削除に成功しました。"
   end
 
   private
