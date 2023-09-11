@@ -3,7 +3,9 @@
     <div class="col-md-8 col-11">
       <h1 class="responsive-title text-center">通報</h1>
       <%= form_with model:[@user, @report] do |f| %>
-        <div class="row mt-5">
+       <!--エラーメッセージ-->
+       <div class="row justify-content-center text-center mr-4 mt-3"><%= render 'layouts/errors', obj: @report %></div>
+        <div class="row mt-3">
           <%= f.label :reason, '理由', class: "col-form-label col-sm-3 text-center" %>
           <%= f.text_area :reason, rows:'3', class:"form-control col-sm-8" %>
         </div>
