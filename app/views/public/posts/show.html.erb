@@ -71,7 +71,7 @@
             <div class="col-12 mb-3">
               <!--タグ-->
               <% @post_tags.each do |tag| %>
-                 <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none" %></strong><%= "(#{tag.posts.count})" %>
+                 <i class="fas fa-tag"></i> <strong><%= link_to tag.name, search_tag_posts_path(tag_id: tag.id), class: "text-dark text-decoration-none" %></strong><%= "(#{tag.posts.where(displayed: true).count})" %>
               <% end %>
             </div>
           </div>
