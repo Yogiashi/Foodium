@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
+    <!--戻るボタン-->
+    <%= link_to :back, class: "back-btn ml-auto text-dark" do %>
+    <i class="fas fa-times fa-3x"></i>
+    <% end %>
+  </div>
+  <div class="row">
     <div class="col-md-6 col-12 mx-auto">
       <h1 class="responsive-title text-center mb-5">フォロワー</h1>
       <% if @users.exists? %>
