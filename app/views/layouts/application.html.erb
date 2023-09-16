@@ -12,8 +12,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="full-page">
+    <header><%= render "layouts/header" %></header>
     <% if user_signed_in? or admin_signed_in? %>
-      <header><%= render "layouts/header" %></header>
       <span class="ml-1" style="position:relative; top: 96px;"><%= notice %></span>
     <% end %>
     <main>
