@@ -5,23 +5,23 @@
       <table class="table table-borderless text-center mt-5">
           <tbody>
             <tr>
-              <td>通報ID</td>
+              <th>通報ID</th>
               <td><%= @report.id %></td>
             </tr>
             <tr>
-              <td>ユーザーネーム</td>
+              <th>ユーザーネーム</th>
               <td><span class="mr-5"><%= link_to @report.reported.name, admin_user_path(@report.reported) %></span><span><%= link_to "投稿一覧", admin_user_posts_path(@report.reported)%></span></td>
             </tr>
             <tr>
-              <td>通報者</td>
+              <th>通報者</th>
               <td><%= link_to @report.reporter.name, admin_user_path(@report.reporter) %></td>
             </tr>
             <tr>
-              <td>理由</td>
+              <th>理由</th>
               <td class="border"><%= @report.reason %></td>
             </tr>
             <tr>
-              <td>対応ステータス</td>
+              <th>対応ステータス</th>
               <td>
                 <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
                   <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>

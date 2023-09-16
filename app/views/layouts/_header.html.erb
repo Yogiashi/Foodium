@@ -36,26 +36,26 @@
               <% end %>
             </li>
             <li class="nav-item">
-            <%= link_to admin_reports_path, class: "nav-link active" do %>
-              <!--未読の通知がある場合とない場合で分岐-->
-              <% if Report.all.where(status: :waiting).exists? %>
-                <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
-              <% else %>
-                <i class="fa-sharp fa-solid fa-bell rounded-circle p-2 bg-light"></i>
+              <%= link_to admin_reports_path, class: "nav-link active" do %>
+                <!--未読の通知がある場合とない場合で分岐-->
+                <% if Report.all.where(status: :waiting).exists? %>
+                  <i class="fa-sharp fa-solid fa-bell fa-beat rounded-circle p-2 bg-dark" style="color: #f2ee7d;"></i>
+                <% else %>
+                  <i class="fa-sharp fa-solid fa-bell rounded-circle p-2 bg-light"></i>
+                <% end %>
+                通報一覧
               <% end %>
-              通報一覧
-            <% end %>
-          </li>
+            </li>
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link active" do %>
               <i class="fas fa-sign-out-alt rounded-circle p-2 bg-light"></i> ログアウト
               <% end %>
             </li>
           </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-<% end %>
+    </nav>
+  <% end %>
 <% elsif user_signed_in? %>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
