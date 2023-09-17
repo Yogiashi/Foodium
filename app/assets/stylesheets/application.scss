@@ -34,8 +34,8 @@
 
 // swiperナビゲーションボタンのカラー変更
 :root {
-  --swiper-navigation-color: #2f4f4f;
-  --swiper-pagination-color: #2f4f4f;
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
@@ -153,8 +153,8 @@ body {
 #search-wrap.panelactive{
   opacity: 0.9;
   z-index: 11; // 最前面に設定
-  background: gray;
-  padding-top: 8%;
+  background: #a9a9a9;
+  padding-top: 5%;
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -428,4 +428,7 @@ body {
     width: 80%;
   }
   // ========================
+  #search-wrap.panelactive{
+    padding-top: 10%;
+  }
 }
