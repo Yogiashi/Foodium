@@ -28,7 +28,7 @@ class Post < ApplicationRecord
   def save_tag(sent_tags)
     sent_tags.uniq!
     # タグが存在していれば、タグの名前を全て取得
-    current_tags = self.tags.pluck(:name) if self.tags.exists?
+    current_tags = self.tags.pluck(:name)
     # 現在取得したタグから送られてきたタグを除いてold_tagとする
     old_tags = current_tags - sent_tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnew_tagsとする

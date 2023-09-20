@@ -11,7 +11,7 @@ class Admin::TagsController < ApplicationController
     if @tag.save
       redirect_to admin_tags_path, notice: "タグの登録に成功しました。"
     else
-      @tags = Tag.all
+      @tags = Tag.all.page(params[:page]).per(10).order(created_at: :desc)
       render :index
     end
   end

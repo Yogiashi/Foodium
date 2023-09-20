@@ -19,8 +19,7 @@ class Public::PostsController < ApplicationController
     new_tags = params[:post][:name].split(',')
     # チェックボックスから選択されたタグと新規で入力されたタグを足す
     tag_list = new_tags + old_tags
-    if @post.save
-      @post.save_tag(tag_list)
+    if @post.save && @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿に成功しました。"
     else
       render :new
@@ -38,6 +37,9 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
+    if @post.displayed == false && @post.user != current_user
+      redirect_to posts_path
+    end
   end
 
   def edit
