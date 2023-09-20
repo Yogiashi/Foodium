@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 col-12 mx-auto">
-      <h3 class="responsive-title text-center mb-5"><%= @user.name %>さんの<br>フォロー一覧</h3>
+      <h2 class="responsive-title text-center mb-5"><%= @user.name %>さんの<br>フォロー一覧</h2>
       <% if @users.exists? %>
         <table class="table table-borderless text-center">
           <% @users.each do |user| %>
