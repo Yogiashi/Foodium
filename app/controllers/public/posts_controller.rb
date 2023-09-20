@@ -19,9 +19,11 @@ class Public::PostsController < ApplicationController
     new_tags = params[:post][:name].split(',')
     # チェックボックスから選択されたタグと新規で入力されたタグを足す
     tag_list = new_tags + old_tags
-    if @post.save && @post.save_tag(tag_list)
+    if @post.save
+      @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿に成功しました。"
     else
+      @post.save_tag(tag_list)
       render :new
     end
   end
@@ -37,6 +39,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
+    # 非公開の投稿をurlから直接アクセスされるのを防ぐ
     if @post.displayed == false && @post.user != current_user
       redirect_to posts_path
     end
@@ -101,7 +104,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit({post_images: []}, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :tag, :displayed)
+    params.require(:post).permit({post_images: []}, :shop_name, :dish_name, :caption, :price, :address, :latitude, :longitude, :displayed)
   end
 
   # urlから直接アクセスされるのを防ぐ

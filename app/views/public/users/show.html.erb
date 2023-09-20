@@ -17,7 +17,7 @@
         </span>
         <% if @user.id == current_user.id %>
           <div class="d-flex">
-            <div class="mr-2 mr-md-4"><%=link_to "下書き一覧", draft_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
+            <div class="mr-2 mr-md-4"><%=link_to "非公開の投稿", draft_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
              <div class="ml-md-4"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark", style: "width: 170px;" %></div>
           </div>
           <% else %>
