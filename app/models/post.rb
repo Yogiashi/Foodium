@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :post_images, presence: true
   validates :shop_name, presence: true
   validates :dish_name, presence: true
-  validates :caption, presence: true, length: { maximum: 200 }
+  validates :caption, length: { maximum: 200 }
   validates :price, presence: true
   validates :address, presence: true
   validate :validate_number_of_files
