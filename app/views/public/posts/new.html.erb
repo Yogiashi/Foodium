@@ -6,7 +6,7 @@
       <!--エラーメッセージ-->
       <div class="row justify-content-center text-center mr-4"><%= render 'layouts/errors', obj: @post %></div>
         <div class="row mt-5">
-          <%= f.label :post_images, "画像", class: "col-form-label col-sm-3 text-center"%>
+          <%= f.label :post_images, "画像(必須)", class: "col-form-label col-sm-3 text-center"%>
           <%= f.file_field :post_images, class: "img_field col-sm-9 ml-3 ml-md-0 mb-2", multiple: true, accept: 'image/*' %>
           <p class="col-md-9 offset-md-3 col-11 offset-1">※ 添付できる画像は４枚までです。</p>
           <div class="col-12">
@@ -19,11 +19,11 @@
           </div>
         </div>
         <div class="row mt-5">
-          <%= f.label :shop_name, "ショップ名", class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
+          <%= f.label :shop_name, "ショップ名(必須)", class: "col-form-label col-sm-3 text-center", placeholder: "お店の名前を入力..."%>
           <%= f.text_field :shop_name, class: "form-control col-sm-9"%>
         </div>
          <div class="row mt-5">
-          <%= f.label :dish_name, "料理名", class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
+          <%= f.label :dish_name, "料理名(必須)", class: "col-form-label col-sm-3 text-center", placeholder: "料理の名前を入力..."%>
           <%= f.text_field :dish_name, class: "col-sm-9 form-control"%>
         </div>
         <div class="row mt-5">
@@ -32,12 +32,12 @@
         </div>
         <!--価格選択-->
         <div class="row mt-5">
-          <%= f.label :price, "価格", class: "col-form-label col-sm-3 text-center"%>
+          <%= f.label :price, "価格(必須)", class: "col-form-label col-sm-3 text-center"%>
           <%= f.number_field :price, class: "form-control col-sm-9", placeholder: "半角で入力してください" %>
         </div>
         <!--地図情報入力フォーム-->
         <div class="row mt-5">
-          <%= f.label :address, '場所', class: "col-form-label col-sm-3 text-center" %>
+          <%= f.label :address, '場所(必須)', class: "col-form-label col-sm-3 text-center" %>
           <%= f.text_field :address, class: 'form-control col-sm-9', placeholder: "渋谷, スカイツリー, ⚪︎⚪︎タワー１階" %>
         </div>
         <!--タグ機能-->
